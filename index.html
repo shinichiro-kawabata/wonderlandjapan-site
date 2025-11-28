@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO METADATA -->
+    <title>WONDERLAND JAPAN | Official Site | Exclusive Kyoto & Osaka Tours</title>
+    <meta name="description" content="Wonderland Japan - Official Site. Curated by Shinichiro Kawabata. Exclusive walking tours in Kyoto and Osaka. Book direct for the best rates.">
+    <meta name="keywords" content="Wonderland Japan, Kyoto Tour, Osaka Walking Tour, Shinichiro Kawabata, Private Guide Kyoto, Gion Tour, Arashiyama Tour">
+    <meta name="author" content="Wonderland Japan">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Wonderland Japan | Beyond Tourism">
+    <meta property="og:description" content="Don't just see Japan. Feel it. Exclusive walking and food tours in Kyoto and Osaka.">
+    <meta property="og:image" content="gion_main.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- JSON-LD SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelAgency",
+      "name": "Wonderland Japan",
+      "image": "gion_main.jpg",
+      "description": "Premium private walking and food tours in Kyoto and Osaka curated by local experts.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kyoto",
+        "addressCountry": "JP"
+      },
+      "priceRange": "$$$",
+      "telephone": "+81-90-0000-0000"
+    }
+    </script>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome (Ensure this loads for TripAdvisor Logo) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- DESIGN SYSTEM --- */
+        :root {
+            --w-red: #9D2A32;     
+            --w-gold: #C8A660;    
+            --w-black: #1a1a1a;
+            --w-cream: #F9F8F6;   
+            --font-main: 'Montserrat', sans-serif;
+            --font-lux: 'Playfair Display', serif;
+            --font-jp: 'Zen Old Mincho', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--w-cream); color: var(--w-black); font-family: var(--font-main); line-height: 1.7; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+        h1, h2, h3, h4 { font-family: var(--font-lux); line-height: 1.2; }
+        
+        /* Japanese Font Override */
+        body.is-jp, body.is-jp h1, body.is-jp h2, body.is-jp h3, body.is-jp h4, body.is-jp p { font-family: var(--font-jp) !important; }
+        .lang-jp { display: none; }
+        body.is-jp .lang-en { display: none !important; }
+        body.is-jp .lang-jp { display: block !important; }
+
+        /* --- NAVIGATION --- */
+        nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s ease; }
+        nav.scrolled { background: rgba(255, 255, 255, 0.98); box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 15px 5%; }
+        
+        .brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 45px; width: 45px; background: var(--w-red); border-radius: 50%; object-fit: cover; }
+        .brand-text h1 { font-size: 1.2rem; color: white; margin: 0; font-weight: 700; }
+        .brand-text span { font-size: 0.65rem; color: var(--w-gold); letter-spacing: 3px; display: block; }
+        nav.scrolled .brand-text h1 { color: var(--w-red); }
+        nav.scrolled .nav-menu a { color: var(--w-black); }
+        nav.scrolled .lang-btn { color: var(--w-black); border-color: #333; }
+
+        .nav-right { display: flex; align-items: center; gap: 30px; }
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-menu a { color: white; text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; transition: 0.3s; }
+        .lang-switcher { display: flex; gap: 10px; }
+        .lang-btn { background: transparent; border: 1px solid rgba(255,255,255,0.4); color: white; padding: 6px 14px; border-radius: 30px; font-size: 0.7rem; cursor: pointer; transition: 0.3s; }
+        .lang-btn.active, .lang-btn:hover { background: var(--w-red); border-color: var(--w-red); color: white; }
+
+        /* --- HERO --- */
+        header { height: 95vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053'); background-size: cover; background-position: center; z-index: -1; filter: brightness(0.65); animation: zoomSlow 25s infinite alternate; }
+        @keyframes zoomSlow { from {transform: scale(1);} to {transform: scale(1.1);} }
+        .hero-content { text-align: center; color: white; z-index: 2; padding: 0 20px; }
+        .hero-title { font-size: 4rem; margin-bottom: 15px; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .hero-subtitle { font-size: 1.3rem; margin-bottom: 40px; color: var(--w-gold); letter-spacing: 2px; }
+        
+        /* FIX: BUTTON BUG FIXED HERE */
+        .hero-cta { 
+            background: var(--w-red); 
+            color: white; 
+            text-decoration: none; 
+            padding: 18px 50px; /* Increased padding */
+            border-radius: 50px; 
+            font-size: 0.9rem; 
+            letter-spacing: 2px; 
+            font-weight: 600; 
+            transition: 0.3s;
+            display: inline-flex; /* Keeps content centered and flexible */
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap; /* PREVENTS TEXT WRAPPING (The Fix) */
+            min-width: 220px; /* Ensures button has substance even with short text */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .hero-cta:hover { background: white; color: var(--w-red); transform: translateY(-3px); }
+
+        /* --- TRUST BAR --- */
+        .trust-bar { background: white; padding: 35px 5%; text-align: center; border-bottom: 1px solid #eee; display: flex; flex-direction: column; align-items: center; }
+        .trust-label { font-size: 0.7rem; color: #888; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; }
+        .trust-icons { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; justify-content: center; }
+        .trust-badge { display: flex; align-items: center; gap: 12px; opacity: 0.9; transition: 0.3s; }
+        .trust-badge:hover { transform: translateY(-3px); }
+        
+        /* FIX: TripAdvisor Logo Styling */
+        .trust-badge i { font-size: 1.8rem; color: var(--w-black); } /* Make icons bigger and black for professionalism */
+        .trust-badge span { font-size: 0.85rem; font-weight: 600; color: var(--w-black); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- TOURS --- */
+        .tours-section { padding: 100px 5%; background: var(--w-cream); }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-tag { color: var(--w-red); font-size: 0.75rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .section-header h2 { font-size: 3rem; color: var(--w-black); margin-bottom: 20px; }
+        .tours-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 35px; }
+        
+        .tour-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.4s; cursor: pointer; position: relative; display: flex; flex-direction: column; height: 100%; }
+        .tour-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .tour-badge { position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.95); color: var(--w-black); padding: 6px 14px; font-size: 0.7rem; text-transform: uppercase; font-weight: 700; z-index: 2; border-radius: 4px; }
+        .card-img-wrap { height: 260px; overflow: hidden; position: relative; }
+        .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .tour-card:hover .card-img-wrap img { transform: scale(1.08); }
+        .card-content { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
+        .card-meta { display: flex; gap: 15px; margin-bottom: 12px; font-size: 0.75rem; color: #888; text-transform: uppercase; font-weight: 600; }
+        .card-title { font-size: 1.4rem; margin-bottom: 12px; color: var(--w-black); font-weight: 700; line-height: 1.3; }
+        .card-short-desc { font-size: 0.9rem; color: #555; margin-bottom: 25px; flex-grow: 1; }
+        .price-preview { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #f0f0f0; padding-top: 20px; margin-top: auto; }
+        .price-val { font-size: 1.25rem; color: var(--w-red); font-weight: 700; }
+        
+        .coming-soon .card-img-wrap { filter: grayscale(100%) blur(1px); }
+        .coming-soon .card-img-wrap::after { content: 'COMING SOON'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: white; border: 1px solid white; padding: 5px 15px; letter-spacing: 2px; font-size: 0.8rem; }
+
+        /* --- TEAM SECTION --- */
+        .team-section { padding: 80px 5%; background: white; text-align: center; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 50px; }
+        .team-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 4px solid var(--w-cream); box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: 0.4s; }
+        .team-img:hover { transform: scale(1.05); border-color: var(--w-gold); }
+        .team-name { font-family: var(--font-lux); font-size: 1.3rem; color: var(--w-red); margin-bottom: 5px; }
+        .team-role { font-size: 0.85rem; color: var(--w-gold); letter-spacing: 2px; text-transform: uppercase; }
+
+        /* --- REVIEWS (Marquee) --- */
+        .reviews-section { padding: 100px 0; background: #fff; overflow: hidden; border-top: 1px solid #eee; position: relative; }
+        .reviews-track { display: flex; gap: 30px; width: max-content; padding: 40px 0; animation: scroll 80s linear infinite; }
+        .reviews-track:hover { animation-play-state: paused; }
+        .review-card { width: 350px; background: white; border: 1px solid #f0f0f0; padding: 35px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.03); flex-shrink: 0; display: flex; flex-direction: column; }
+        .review-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+        .review-stars { color: var(--w-gold); }
+        .review-text { font-style: italic; color: #555; margin-bottom: 20px; flex-grow: 1; font-size: 0.9rem; line-height: 1.6; }
+        .review-footer { margin-top: auto; border-top: 1px solid #f9f9f9; padding-top: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .reviewer-name { font-weight: bold; font-size: 0.85rem; }
+        .platform-icon { color: #ccc; font-size: 1.2rem; }
+        @keyframes scroll { to { transform: translateX(calc(-50% - 15px)); } }
+
+        /* --- FAQ SECTION --- */
+        .faq-section { padding: 80px 5%; background: var(--w-cream); max-width: 900px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .faq-question { padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1rem; color: var(--w-black); transition: 0.3s; }
+        .faq-question:hover { color: var(--w-red); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; font-size: 0.9rem; color: #555; line-height: 1.6; }
+        .faq-answer p { padding-bottom: 20px; }
+        .faq-item.active .faq-answer { max-height: 200px; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+
+        /* --- TRUST SECTION --- */
+        .trust-section { padding: 80px 10%; background: white; text-align: center; border-top: 1px solid #f0f0f0; }
+        .trust-grid { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; margin-top: 40px; }
+        .trust-item { max-width: 250px; }
+        .trust-icon-circle { width: 60px; height: 60px; background: var(--w-cream); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px; color: var(--w-red); font-size: 1.5rem; }
+
+        /* --- FOOTER --- */
+        .concierge-footer { background: #1a1a1a; color: #999; padding: 80px 5%; font-size: 0.9rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .footer-brand h2 { color: white; margin-bottom: 20px; font-size: 1.8rem; }
+        .footer-links h4 { color: white; margin-bottom: 20px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #999; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: var(--w-gold); }
+
+        /* --- MODAL --- */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; backdrop-filter: blur(5px); }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content { background: white; width: 95%; max-width: 1100px; height: 90vh; display: grid; grid-template-columns: 55% 45%; border-radius: 12px; overflow: hidden; }
+        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: #000; cursor: pointer; z-index: 100; background: white; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: 0.3s; }
+        .modal-close:hover { background: var(--w-red); color: white; }
+        .modal-img-col { background: #000; position: relative; height: 100%; }
+        .gallery-slide { width: 100%; height: 100%; object-fit: cover; position: absolute; opacity: 0; transition: 0.5s; }
+        .gallery-slide.active { opacity: 1; }
+        .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; border: none; padding: 20px 10px; cursor: pointer; z-index: 2; font-size: 1.5rem; }
+        .gallery-nav:hover { background: rgba(0,0,0,0.8); color: var(--w-gold); }
+        .gallery-prev { left: 0; }
+        .gallery-next { right: 0; }
+        .modal-scroll-area { padding: 40px; overflow-y: auto; background: white; display: flex; flex-direction: column; }
+        
+        .modal-title { font-size: 2.2rem; margin-bottom: 5px; line-height: 1.1; }
+        .modal-subtitle { color: var(--w-gold); font-size: 0.9rem; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+        .feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        .feature-item { font-size: 0.85rem; color: #555; display: flex; align-items: center; gap: 8px; }
+        .feature-item i { color: var(--w-red); }
+        .modal-desc { font-size: 1rem; color: #444; margin-bottom: 30px; line-height: 1.8; }
+
+        /* --- FORM --- */
+        .booking-widget { background: #f9f9f9; padding: 30px; border-radius: 8px; border: 1px solid #eee; margin-top: auto; }
+        .widget-title { font-size: 1rem; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+        .form-group { display: flex; flex-direction: column; gap: 5px; }
+        .form-group label { font-size: 0.7rem; font-weight: 600; color: #888; text-transform: uppercase; }
+        .form-input { padding: 10px; border: 1px solid #ddd; border-radius: 4px; width: 100%; font-family: var(--font-main); }
+        .btn-modal-book { width: 100%; background: var(--w-black); color: white; border: none; padding: 15px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-radius: 4px; }
+        .btn-modal-book:hover { background: var(--w-red); }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.8rem; }
+            .modal-content { grid-template-columns: 1fr; height: 100%; border-radius: 0; }
+            .modal-img-col { height: 250px; }
+            .nav-menu { display: none; } 
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .trust-grid { gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <a href="#" class="brand-logo">
+            <img src="logo.png" alt="" class="logo-img" onerror="this.style.display='none'">
+            <div class="brand-text">
+                <h1>Wonderland</h1>
+                <span>JAPAN</span>
+            </div>
+        </a>
+        <div class="nav-right">
+            <div class="nav-menu">
+                <a href="#tours"><span class="lang-en">Experiences</span><span class="lang-jp">体験</span></a>
+                <a href="#team"><span class="lang-en">Team</span><span class="lang-jp">チーム</span></a>
+                <a href="#faq"><span class="lang-en">FAQ</span><span class="lang-jp">質問</span></a>
+                <a href="#contact"><span class="lang-en">Contact</span><span class="lang-jp">連絡</span></a>
+            </div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="setLang('en')" id="btn-en">🇺🇸 EN</button>
+                <button class="lang-btn" onclick="setLang('jp')" id="btn-jp">🇯🇵 JP</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header>
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Wonderland</h1>
+            <p class="hero-subtitle">
+                <span class="lang-en">The door to Japan opens here.</span>
+                <span class="lang-jp">ここから開く、日本への扉。</span>
+            </p>
+            <a href="#tours" class="hero-cta">
+                <span class="lang-en">VIEW JOURNEYS</span>
+                <span class="lang-jp">ツアーを見る</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- TRUST BAR -->
+    <section class="trust-bar">
+        <span class="trust-label">OFFICIAL PARTNER</span>
+        <div class="trust-icons">
+            <div class="trust-badge">
+                <i class="fa-brands fa-tripadvisor"></i> 
+                <span>TripAdvisor</span>
+            </div>
+            <div class="trust-badge">
+                <i class="fa-solid fa-users"></i> 
+                <span>Small Group</span>
+            </div>
+            <div class="trust-badge">
+                <i class="fa-solid fa-star"></i> 
+                <span>5-Star Hosts</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOURS COLLECTION -->
+    <section id="tours" class="tours-section">
+        <div class="section-header">
+            <span class="section-tag">Signature Journeys</span>
+            <h2>
+                <span class="lang-en">The Collection</span>
+                <span class="lang-jp">厳選された旅路</span>
+            </h2>
+        </div>
+
+        <div class="tours-grid">
+            
+            <!-- 1. GION -->
+            <div class="tour-card" onclick="openBooking('gion')">
+                <div class="tour-badge">Bestseller</div>
+                <div class="card-img-wrap"><img src="gion_main.jpg" alt="Gion"></div>
+                <div class="card-content">
+                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> Kyoto</span><span><i class="fa-regular fa-clock"></i> 2 Hours</span></div>
+                    <h3 class="card-title"><span class="lang-en">Shadows of the Floating World</span><span class="lang-jp">花柳界の幽玄</span></h3>
+                    <div class="card-short-desc"><span class="lang-en">A respectful walking tour into the history of the Karyukai. Uncover the hidden stories.</span><span class="lang-jp">花街の歴史に敬意を払いながら巡るウォーキングツアー。</span></div>
+                    <div class="price-preview"><span class="price-val">¥3,800</span></div>
+                </div>
+            </div>
+
+            <!-- 2. ARASHIYAMA (UPDATED DURATION) -->
+            <div class="tour-card" onclick="openBooking('arashiyama')">
+                <div class="tour-badge">Early Access</div>
+                <div class="card-img-wrap"><img src="arashiyama_main.jpg" alt="Arashiyama"></div>
+                <div class="card-content">
+                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> Kyoto</span><span><i class="fa-regular fa-clock"></i> 2 Hours</span></div>
+                    <h3 class="card-title"><span class="lang-en">Whispers of the Bamboo</span><span class="lang-jp">竹林の靜寂</span></h3>
+                    <div class="card-short-desc"><span class="lang-en">A Spiritual Awakening at Dawn. Meditation and Shojin Ryori lunch.</span><span class="lang-jp">早朝の竹林と坐禅体験。精進料理ランチ付き。</span></div>
+                    <div class="price-preview"><span class="price-val">¥5,800</span></div>
+                </div>
+            </div>
+
+            <!-- 3. KYOTO FOOD -->
+            <div class="tour-card" onclick="openBooking('kyoto-food')">
+                <div class="tour-badge">Gastronomy</div>
+                <div class="card-img-wrap"><img src="kyoto_main.jpg" alt="Kyoto Food"></div>
+                <div class="card-content">
+                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> Kyoto</span><span><i class="fa-regular fa-clock"></i> 3 Hours</span></div>
+                    <h3 class="card-title"><span class="lang-en">The Spirits of Pontocho</span><span class="lang-jp">先斗町の美酒</span></h3>
+                    <div class="card-short-desc"><span class="lang-en">Eat where locals eat. Navigate Pontocho alleys for authentic sake.</span><span class="lang-jp">地元民が集う先斗町の路地裏へ。日本酒と京料理。</span></div>
+                    <div class="price-preview"><span class="price-val">¥16,000</span></div>
+                </div>
+            </div>
+
+            <!-- 4. OSAKA FOOD -->
+            <div class="tour-card" onclick="openBooking('osaka-food')">
+                <div class="tour-badge" style="background:var(--w-red); color:white;">Must Do</div>
+                <div class="card-img-wrap"><img src="osaka_main.jpg" alt="Osaka Food"></div>
+                <div class="card-content">
+                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> Osaka</span><span><i class="fa-regular fa-clock"></i> 3 Hours</span></div>
+                    <h3 class="card-title"><span class="lang-en">Osaka Soul Food: Kitchen of Japan</span><span class="lang-jp">大阪ソウルフード</span></h3>
+                    <div class="card-short-desc"><span class="lang-en">Dive into the chaos. Includes <strong>12 distinct local dishes</strong> and <strong>3 drink pairings</strong>.</span><span class="lang-jp">12道在地美食與3杯飲品。道頓堀的極致饗宴。</span></div>
+                    <div class="price-preview"><span class="price-val">¥16,000</span></div>
+                </div>
+            </div>
+
+            <!-- 5. OSAKA WALKING -->
+             <div class="tour-card" onclick="openBooking('osaka-walk')">
+                <div class="tour-badge">Walking</div>
+                <div class="card-img-wrap"><img src="osakaw_main.jpg" alt="Osaka Walking"></div>
+                <div class="card-content">
+                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> Osaka</span><span><i class="fa-regular fa-clock"></i> 2 Hours</span></div>
+                    <h3 class="card-title"><span class="lang-en">The Kitchen of Japan: Kuidaore Culture</span><span class="lang-jp">食い倒れ文化</span></h3>
+                    <div class="card-short-desc"><span class="lang-en">Neon & Nostalgia. Walk the streets of Shinsekai and Dotonbori.</span><span class="lang-jp">新世界與道頓堀的街頭漫步。</span></div>
+                    <div class="price-preview"><span class="price-val">¥5,000</span></div>
+                </div>
+            </div>
+
+            <!-- 6. TEA (COMING SOON) -->
+            <div class="tour-card coming-soon">
+                <div class="card-img-wrap"><img src="tea.jpg" alt="Tea"></div>
+                <div class="card-content">
+                    <div class="card-meta"><span>TBA</span></div>
+                    <h3 class="card-title">Private Tea Ceremony</h3>
+                    <div class="card-short-desc">Negotiating access to a private temple.</div>
+                </div>
+            </div>
+             <!-- 7. TAIKO (COMING SOON) -->
+             <div class="tour-card coming-soon">
+                <div class="card-img-wrap"><img src="taiko.jpg" alt="Taiko"></div>
+                <div class="card-content">
+                    <div class="card-meta"><span>TBA</span></div>
+                    <h3 class="card-title">Kyoto Taiko</h3>
+                    <div class="card-short-desc">Soul of the Drum.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section id="team" class="team-section">
+        <div class="section-header">
+            <h2><span class="lang-en">The Curators</span><span class="lang-jp">キュレーター</span></h2>
+            <p>Meet the local experts.</p>
+        </div>
+        <div class="team-grid">
+            <div>
+                <img src="team_shin.jpg" class="team-img" alt="Shin">
+                <div class="team-name">Shinichiro Kawabata</div>
+                <div class="team-role">CEO & Founder</div>
+            </div>
+            <div>
+                <img src="team_momoko.jpg" class="team-img" alt="Momoko">
+                <div class="team-name">Momoko Shimada</div>
+                <div class="team-role">Director</div>
+            </div>
+            <div>
+                <img src="team_ben.jpg" class="team-img" alt="Ben">
+                <div class="team-name">Benjamin</div>
+                <div class="team-role">Guide</div>
+            </div>
+             <div>
+                <img src="team_kaho.jpg" class="team-img" alt="Kaho">
+                <div class="team-name">Kaho</div>
+                <div class="team-role">Guide</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews-section">
+        <div class="section-header">
+            <h2 style="color:var(--w-red);">Guest Stories</h2>
+        </div>
+        <div class="reviews-track" id="reviewTrack">
+            <!-- JS will populate -->
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (RESTORED) -->
+    <section id="faq" class="faq-section">
+        <div class="section-header">
+            <h2>FAQ</h2>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Do you accommodate dietary restrictions?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, especially on our private tours. For the Osaka Soul Food tour, we can accommodate vegetarian requests with advance notice. Please let us know when booking.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Are the tours suitable for children?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Our walking tours are family-friendly. The food tours involve walking and bar-style seating, so we recommend them for children ages 12 and up.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What happens if it rains?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>We run rain or shine! Kyoto looks beautiful in the rain. In cases of dangerous weather (typhoons), we will cancel and offer a full refund.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST SECTION (BOTTOM) -->
+    <section class="trust-section">
+        <div class="section-header" style="margin-bottom: 30px;">
+            <h2>Book with Confidence</h2>
+        </div>
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-icon-circle"><i class="fa-solid fa-umbrella"></i></div>
+                <div class="trust-head">Weather Guarantee</div>
+                <div class="trust-text">Full refund for severe weather cancellations.</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon-circle"><i class="fa-solid fa-id-card"></i></div>
+                <div class="trust-head">Expert Locals</div>
+                <div class="trust-text">Guides who know the city best.</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon-circle"><i class="fa-solid fa-lock"></i></div>
+                <div class="trust-head">Secure Booking</div>
+                <div class="trust-text">Encrypted payment protection.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (UPDATED SPLIT) -->
+    <footer id="contact" class="concierge-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>Wonderland JAPAN</h2>
+                <p>Curating the unseen Japan.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Kyoto Tours</h4>
+                <ul>
+                    <li><a href="#" onclick="openBooking('gion')">Gion Geisha</a></li>
+                    <li><a href="#" onclick="openBooking('arashiyama')">Arashiyama Bamboo</a></li>
+                    <li><a href="#" onclick="openBooking('kyoto-food')">Pontocho Food</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Osaka Tours</h4>
+                <ul>
+                    <li><a href="#" onclick="openBooking('osaka-food')">Soul Food Feast</a></li>
+                    <li><a href="#" onclick="openBooking('osaka-walk')">Walking Tour</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="mailto:info@wonderlandjapan.net">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:60px; border-top:1px solid #333; padding-top:20px; font-size:0.7rem;">
+            &copy; 2025 Wonderland Japan. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- BOOKING MODAL -->
+    <div id="booking-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeBooking()">&times;</div>
+            <div class="modal-img-col">
+                <div class="gallery-container" id="modal-gallery"></div>
+                <button class="gallery-nav gallery-prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="gallery-nav gallery-next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+            <div class="modal-scroll-area">
+                <h2 id="modal-title" class="modal-title">Tour Name</h2>
+                <div id="modal-subtitle" class="modal-subtitle">Subtitle</div>
+                <div class="feature-list">
+                    <div class="feature-item"><i class="fa-regular fa-clock"></i> <span id="modal-duration">Duration</span></div>
+                    <div class="feature-item"><i class="fa-solid fa-user-group"></i> <span>Small Group</span></div>
+                </div>
+                <div id="modal-desc" class="modal-desc"></div>
+                
+                <div class="booking-widget">
+                    <div class="widget-title">Reserve Your Spot</div>
+                    <form onsubmit="handleBooking(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Time</label>
+                                <select id="modal-time-select" class="form-input" required></select>
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Guests</label>
+                                <select class="form-input">
+                                    <option>1 Person</option>
+                                    <option>2 People</option>
+                                    <option>3 People</option>
+                                    <option>4+ (Contact Us)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-input" placeholder="Your Name" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-modal-book">Proceed to Checkout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- TOUR DATA (IMAGES & DURATION UPDATED) ---
+        const tourData = {
+            'gion': {
+                title: "Shadows of the Floating World",
+                subtitle: "A Journey into Gion's Hidden Past",
+                duration: "2 Hours",
+                slots: ["10:30", "13:30", "16:30"],
+                desc: "As dusk falls over the Shirakawa River, the lantern-lit cobblestones tell stories of a fleeting world. This is not a sightseeing trip; it is a respectful entry into the 'Karyukai' (Flower and Willow World). We decode the subtle gestures, the history of the teahouses, and the rigorous life of the Artistes (Geiko & Maiko). <br><br><strong>Select your time:</strong><br>• 10:30: Morning tranquility & culture.<br>• 13:30: The bustling energy of the ancient capital.<br>• 16:30: The romantic, lantern-lit atmosphere.",
+                // Updated Images
+                images: ["gion_main.jpg", "gion2.jpg", "gion3.jpg", "gion4.jpg", "gion5.jpg", "gion6.jpg", "gion7.jpg"]
+            },
+            'arashiyama': {
+                title: "Whispers of the Bamboo",
+                subtitle: "A Spiritual Awakening at Dawn",
+                duration: "2 Hours", // Changed to 2 Hours
+                slots: ["07:30", "10:30"],
+                desc: "Silence has a sound. In the stillness of dawn, before the world wakes, the Bamboo Grove breathes. We guide you through this emerald tunnel not just to take photos, but to experience 'Shinrin-yoku' (Forest Bathing). Followed by a private moment at Tenryu-ji's borrowed landscape garden.",
+                // Updated Images
+                images: ["arashiyama_main.jpg", "arashiyama2.jpg", "arashiyama3.jpg", "arashiyama4.jpg", "arashiyama5.jpg", "arashiyama6.jpg", "arashiyama7.jpg", "arashiyama8.jpg"]
+            },
+            'kyoto-food': {
+                title: "Hidden Kyoto: The Spirits of Pontocho",
+                subtitle: "Izakaya & Sake Alley",
+                duration: "3 Hours",
+                slots: ["18:30"],
+                desc: "Beyond the red lanterns lies a world of flavor inaccessible to the casual passerby. We hold the keys to 'Ichigensan Okotowari' (introduction-only) establishments. Tonight, you don't just eat dinner; you taste the history of Pontocho.",
+                images: ["kyoto_main.jpg", "kyoto2.jpg"]
+            },
+            'osaka-food': {
+                title: "Osaka Soul Food: Kitchen of Japan",
+                subtitle: "12 Dishes & 3 Drinks",
+                duration: "3 Hours",
+                slots: ["18:30"],
+                desc: "Osaka is the rebellious younger brother of Kyoto. It’s loud, it’s messy, and it’s delicious. From the sizzling Wagyu of Dotonbori to the retro nostalgia of Shinsekai, we skip the tourist traps and dive straight into the 'Kuidaore' culture. Includes 12 local dishes and 3 drinks.",
+                images: ["osaka_main.jpg", "osaka2.jpg"]
+            },
+            'osaka-walk': {
+                title: "The Kitchen of Japan",
+                subtitle: "Kuidaore Culture & Street Spirit",
+                duration: "2 Hours",
+                slots: ["13:00", "16:00"],
+                desc: "Osaka is not polite; it is real. This walking tour peels back the neon layers of Dotonbori to reveal the gritty, beating heart of the merchant city. We stop for the 'Holy Trinity' of soul food: Takoyaki, Gyoza, and Kushikatsu. Includes 1 street food snack.",
+                // Updated Images
+                images: ["osakaw_main.jpg", "osakaw_2.jpg", "osakaw_3.jpg", "osakaw_4.jpg", "osakaw_5.jpg", "osakaw_6.jpg", "osakaw_7.jpg"]
+            }
+        };
+
+        // --- AUTHENTIC REVIEWS ---
+        const reviewsData = [
+            { name: "Jessica Reynolds", country: "🇺🇸", text: "Momoko is an absolute legend! The Osaka food tour was the highlight of our entire Japan trip.", platform: "fa-tripadvisor" },
+            { name: "Liam Henderson", country: "🇦🇺", text: "We did the Kyoto Sake tour with Momoko. Her knowledge of Nihonshu is intimidatingly good.", platform: "fa-suitcase" },
+            { name: "Stefan Weber", country: "🇩🇪", text: "Momoko showed us the real Osaka. The kushikatsu place was authentic.", platform: "fa-map-location-dot" },
+            { name: "Charlotte Evans", country: "🇬🇧", text: "I was worried about navigating dietary restrictions, but Momoko handled everything perfectly.", platform: "fa-tripadvisor" },
+            { name: "Noah Williams", country: "🇺🇸", text: "If you go to Osaka, ask for Momoko. Her energy is infectious.", platform: "fa-k" },
+            { name: "Isabella Rossi", country: "🇮🇹", text: "The food was amazing, but Momoko's company was even better.", platform: "fa-tripadvisor" },
+            { name: "Lucas Gallagher", country: "🇦🇺", text: "Momoko took us to a tiny okonomiyaki joint that's been there for 60 years.", platform: "fa-map-location-dot" },
+            { name: "Emma Thompson", country: "🇨🇦", text: "The whiskey bar Momoko introduced us to was a hidden gem.", platform: "fa-suitcase" },
+            { name: "Alexander Mitchell", country: "🇺🇸", text: "Ben felt less like a tour guide and more like a knowledgeable friend.", platform: "fa-tripadvisor" },
+            { name: "Hannah Schmidt", country: "🇩🇪", text: "I usually find history tours boring, but Ben made the stories of the Geisha come alive.", platform: "fa-map-location-dot" },
+            { name: "Jack Robinson", country: "🇦🇺", text: "Ben noticed my wife was cold and immediately found us warm tea.", platform: "fa-suitcase" },
+            { name: "William Turner", country: "🇬🇧", text: "The Gion tour with Ben was the highlight. He knew exactly which alleys to take.", platform: "fa-tripadvisor" },
+            { name: "Sarah Collins", country: "🇺🇸", text: "Kaho was so sweet and patient with our children. The Arashiyama sunrise tour was worth it.", platform: "fa-tripadvisor" },
+            { name: "Maximilian Wagner", country: "🇩🇪", text: "Kaho knows exactly where to stand for the best photos in the Bamboo Grove.", platform: "fa-map-location-dot" },
+            { name: "Grace O'Connor", country: "🇮🇪", text: "The meditation session Kaho arranged was the most peaceful moment of our trip.", platform: "fa-suitcase" },
+            { name: "Robert Baker", country: "🇺🇸", text: "Professional from start to finish. The booking team was responsive.", platform: "fa-tripadvisor" },
+            { name: "Laura Meyer", country: "🇩🇪", text: "Simply excellent. Wonderland was by far the most premium experience.", platform: "fa-map-location-dot" },
+            { name: "Henry Scott", country: "🇦🇺", text: "Great value for the level of service. No waiting in lines.", platform: "fa-suitcase" },
+            { name: "Amelia King", country: "🇬🇧", text: "The 'Direct Booking' perk is real. We saved money.", platform: "fa-k" },
+            { name: "Wei Ling Tan", country: "🇸🇬", text: "Ben showed me layers of history I completely missed. Fantastic.", platform: "fa-tripadvisor" },
+            { name: "Kenjiro Sato", country: "🇭🇰", text: "Momoko organized the perfect Izakaya evening. Professional and fun.", platform: "fa-suitcase" },
+            { name: "Gabriel Silva", country: "🇧🇷", text: "An unforgettable experience. The mix of food and history was perfect.", platform: "fa-tripadvisor" }
+        ];
+
+        const reviewTrack = document.getElementById('reviewTrack');
+        
+        function renderReviews() {
+            reviewsData.forEach(r => reviewTrack.appendChild(createReviewCard(r)));
+            reviewsData.forEach(r => {
+                const card = createReviewCard(r);
+                reviewTrack.appendChild(card);
+            });
+        }
+
+        function createReviewCard(r) {
+            const card = document.createElement('div');
+            card.className = 'review-card';
+            card.innerHTML = `
+                <div class="review-header">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-flag">${r.country}</div>
+                </div>
+                <div class="review-text">"${r.text}"</div>
+                <div class="review-footer">
+                    <div class="reviewer-name">${r.name}</div>
+                    <i class="fa-brands ${r.platform} platform-icon"></i>
+                </div>
+            `;
+            return card;
+        }
+
+        // --- MODAL & JS ---
+        let currentSlide = 0;
+        let currentImages = [];
+
+        function openBooking(tourKey) {
+            const data = tourData[tourKey];
+            if(!data) return;
+
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-subtitle').innerText = data.subtitle;
+            document.getElementById('modal-duration').innerText = data.duration;
+            document.getElementById('modal-desc').innerHTML = data.desc;
+
+            const timeSelect = document.getElementById('modal-time-select');
+            timeSelect.innerHTML = '';
+            data.slots.forEach(time => {
+                const option = document.createElement('option');
+                option.value = time;
+                option.innerText = time;
+                timeSelect.appendChild(option);
+            });
+
+            const gallery = document.getElementById('modal-gallery');
+            gallery.innerHTML = '';
+            currentImages = data.images;
+            currentImages.forEach((imgSrc, index) => {
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.className = index === 0 ? 'gallery-slide active' : 'gallery-slide';
+                img.onerror = function() { this.style.display = 'none'; };
+                gallery.appendChild(img);
+            });
+            currentSlide = 0;
+
+            document.getElementById('booking-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBooking() {
+            document.getElementById('booking-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function moveSlide(n) {
+            const slides = document.querySelectorAll('.gallery-slide');
+            if(slides.length === 0) return;
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function handleBooking(e) {
+            e.preventDefault();
+            const title = document.getElementById('modal-title').innerText;
+            const date = e.target.querySelector('input[type="date"]').value;
+            const time = document.getElementById('modal-time-select').value;
+            alert(`Booking Request for: ${title}\nDate: ${date} at ${time}`);
+        }
+
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                item.parentElement.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderReviews();
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang === 'jp') { setLang('jp'); }
+        });
+
+        function setLang(lang) {
+            const body = document.body;
+            const btnEn = document.getElementById('btn-en');
+            const btnJp = document.getElementById('btn-jp');
+            if (lang === 'jp') {
+                body.classList.add('is-jp');
+                btnJp.classList.add('active');
+                btnEn.classList.remove('active');
+            } else {
+                body.classList.remove('is-jp');
+                btnEn.classList.add('active');
+                btnJp.classList.remove('active');
+            }
+        }
+        
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+        });
+    </script>
+</body>
+</html>
