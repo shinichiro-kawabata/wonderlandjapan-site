@@ -125,7 +125,20 @@
         /* --- TEAM SECTION --- */
         .team-section { padding: 80px 5%; background: white; text-align: center; }
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 50px; }
-        .team-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 4px solid var(--w-cream); box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: 0.4s; background: #eee; }
+        
+        /* Updated: Added margin: 0 auto to center the block-level images */
+        .team-img { 
+            width: 180px; 
+            height: 180px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin: 0 auto 20px auto; /* Centered with bottom margin */
+            border: 4px solid var(--w-cream); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            transition: 0.4s; 
+            background: #eee; 
+        }
+        
         .team-img:hover { transform: scale(1.05); border-color: var(--w-gold); }
         .team-name { font-family: var(--font-lux); font-size: 1.3rem; color: var(--w-red); margin-bottom: 5px; }
         .team-role { font-size: 0.85rem; color: var(--w-gold); letter-spacing: 2px; text-transform: uppercase; }
