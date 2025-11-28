@@ -6,39 +6,11 @@
     
     <!-- SEO METADATA -->
     <title>WONDERLAND JAPAN | Official Site | Exclusive Kyoto & Osaka Tours</title>
-    <meta name="description" content="Wonderland Japan - Official Site. Curated by Shinichiro Kawabata. Exclusive walking tours in Kyoto and Osaka. Book direct for the best rates.">
-    <meta name="keywords" content="Wonderland Japan, Kyoto Tour, Osaka Walking Tour, Shinichiro Kawabata, Private Guide Kyoto, Gion Tour, Arashiyama Tour">
-    <meta name="author" content="Wonderland Japan">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="Wonderland Japan | Beyond Tourism">
-    <meta property="og:description" content="Don't just see Japan. Feel it. Exclusive walking and food tours in Kyoto and Osaka.">
-    <meta property="og:image" content="gion_main.jpg">
-    <meta property="og:type" content="website">
-
-    <!-- JSON-LD SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "TravelAgency",
-      "name": "Wonderland Japan",
-      "image": "gion_main.jpg",
-      "description": "Premium private walking and food tours in Kyoto and Osaka curated by local experts.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Kyoto",
-        "addressCountry": "JP"
-      },
-      "priceRange": "$$$",
-      "telephone": "+81-90-0000-0000"
-    }
-    </script>
-
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome (Ensure this loads for TripAdvisor Logo) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -53,16 +25,58 @@
             --font-jp: 'Zen Old Mincho', serif;
         }
 
+        /* --- HOVER EFFECTS (Clean, No Custom Cursor) --- */
+        .hover-kyoto {
+            border-bottom: 1px dotted var(--w-red);
+            transition: 0.3s;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .hover-kyoto:hover { color: var(--w-red); }
+
+        .hover-osaka {
+            border-bottom: 1px dotted var(--w-gold);
+            transition: 0.3s;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .hover-osaka:hover { color: var(--w-gold); }
+
+        /* --- SCROLL REVEAL ANIMATION --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--w-cream); color: var(--w-black); font-family: var(--font-main); line-height: 1.7; overflow-x: hidden; }
+        
+        body { 
+            background-color: var(--w-cream); 
+            color: var(--w-black); 
+            font-family: var(--font-main); 
+            line-height: 1.7; 
+            overflow-x: hidden; 
+            
+            /* --- WASHI TEXTURE (Noise Layer) --- */
+            /* Using SVG data URI for a subtle grain effect */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+
         html { scroll-behavior: smooth; }
         h1, h2, h3, h4 { font-family: var(--font-lux); line-height: 1.2; }
         
-        /* Japanese Font Override */
-        body.is-jp, body.is-jp h1, body.is-jp h2, body.is-jp h3, body.is-jp h4, body.is-jp p { font-family: var(--font-jp) !important; }
+        /* Japanese Font Override & Language Toggling */
+        body.is-jp { font-family: var(--font-jp) !important; }
+        body.is-jp h1, body.is-jp h2, body.is-jp h3, body.is-jp h4, body.is-jp p, body.is-jp a, body.is-jp span, body.is-jp div, body.is-jp input, body.is-jp button, body.is-jp select { font-family: var(--font-jp) !important; letter-spacing: 0.05em; }
+        
         .lang-jp { display: none; }
         body.is-jp .lang-en { display: none !important; }
-        body.is-jp .lang-jp { display: block !important; }
+        body.is-jp .lang-jp { display: inline-block !important; }
 
         /* --- NAVIGATION --- */
         nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s ease; }
@@ -83,31 +97,43 @@
         .lang-btn { background: transparent; border: 1px solid rgba(255,255,255,0.4); color: white; padding: 6px 14px; border-radius: 30px; font-size: 0.7rem; cursor: pointer; transition: 0.3s; }
         .lang-btn.active, .lang-btn:hover { background: var(--w-red); border-color: var(--w-red); color: white; }
 
-        /* --- HERO --- */
-        header { height: 95vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053'); background-size: cover; background-position: center; z-index: -1; filter: brightness(0.65); animation: zoomSlow 25s infinite alternate; }
-        @keyframes zoomSlow { from {transform: scale(1);} to {transform: scale(1.1);} }
-        .hero-content { text-align: center; color: white; z-index: 2; padding: 0 20px; }
+        /* --- HERO (Parallax) --- */
+        header { 
+            height: 100vh; 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+        }
+        .hero-bg { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 120%; 
+            background-image: url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053'); 
+            background-size: cover; 
+            background-position: center; 
+            z-index: -1; 
+            filter: brightness(0.65); 
+            will-change: transform; 
+        }
+        .hero-content { 
+            text-align: center; 
+            color: white; 
+            z-index: 2; 
+            padding: 0 20px; 
+            will-change: transform;
+        }
         .hero-title { font-size: 4rem; margin-bottom: 15px; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .hero-subtitle { font-size: 1.3rem; margin-bottom: 40px; color: var(--w-gold); letter-spacing: 2px; }
         
-        /* FIX: BUTTON BUG FIXED HERE */
         .hero-cta { 
-            background: var(--w-red); 
-            color: white; 
-            text-decoration: none; 
-            padding: 18px 50px; /* Increased padding */
-            border-radius: 50px; 
-            font-size: 0.9rem; 
-            letter-spacing: 2px; 
-            font-weight: 600; 
-            transition: 0.3s;
-            display: inline-flex; /* Keeps content centered and flexible */
-            justify-content: center;
-            align-items: center;
-            white-space: nowrap; /* PREVENTS TEXT WRAPPING (The Fix) */
-            min-width: 220px; /* Ensures button has substance even with short text */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background: var(--w-red); color: white; text-decoration: none; padding: 18px 50px; 
+            border-radius: 50px; font-size: 0.9rem; letter-spacing: 2px; font-weight: 600; 
+            transition: 0.3s; display: inline-flex; justify-content: center; align-items: center;
+            white-space: nowrap; min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
         .hero-cta:hover { background: white; color: var(--w-red); transform: translateY(-3px); }
 
@@ -117,13 +143,11 @@
         .trust-icons { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; justify-content: center; }
         .trust-badge { display: flex; align-items: center; gap: 12px; opacity: 0.9; transition: 0.3s; }
         .trust-badge:hover { transform: translateY(-3px); }
-        
-        /* FIX: TripAdvisor Logo Styling */
-        .trust-badge i { font-size: 1.8rem; color: var(--w-black); } /* Make icons bigger and black for professionalism */
+        .trust-badge i { font-size: 1.8rem; color: var(--w-black); } 
         .trust-badge span { font-size: 0.85rem; font-weight: 600; color: var(--w-black); text-transform: uppercase; letter-spacing: 1px; }
 
         /* --- TOURS --- */
-        .tours-section { padding: 100px 5%; background: var(--w-cream); }
+        .tours-section { padding: 100px 5%; background: transparent; /* Changed to transparent to show body texture */ }
         .section-header { text-align: center; margin-bottom: 70px; }
         .section-tag { color: var(--w-red); font-size: 0.75rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 10px; }
         .section-header h2 { font-size: 3rem; color: var(--w-black); margin-bottom: 20px; }
@@ -144,6 +168,7 @@
         
         .coming-soon .card-img-wrap { filter: grayscale(100%) blur(1px); }
         .coming-soon .card-img-wrap::after { content: 'COMING SOON'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: white; border: 1px solid white; padding: 5px 15px; letter-spacing: 2px; font-size: 0.8rem; }
+        body.is-jp .coming-soon .card-img-wrap::after { content: '準備中'; }
 
         /* --- TEAM SECTION --- */
         .team-section { padding: 80px 5%; background: white; text-align: center; }
@@ -167,7 +192,7 @@
         @keyframes scroll { to { transform: translateX(calc(-50% - 15px)); } }
 
         /* --- FAQ SECTION --- */
-        .faq-section { padding: 80px 5%; background: var(--w-cream); max-width: 900px; margin: 0 auto; }
+        .faq-section { padding: 80px 5%; background: transparent; max-width: 900px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
         .faq-question { padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1rem; color: var(--w-black); transition: 0.3s; }
         .faq-question:hover { color: var(--w-red); }
@@ -247,10 +272,10 @@
         </a>
         <div class="nav-right">
             <div class="nav-menu">
-                <a href="#tours"><span class="lang-en">Experiences</span><span class="lang-jp">体験</span></a>
+                <a href="#tours"><span class="lang-en">Experiences</span><span class="lang-jp">ツアー体験</span></a>
                 <a href="#team"><span class="lang-en">Team</span><span class="lang-jp">チーム</span></a>
-                <a href="#faq"><span class="lang-en">FAQ</span><span class="lang-jp">質問</span></a>
-                <a href="#contact"><span class="lang-en">Contact</span><span class="lang-jp">連絡</span></a>
+                <a href="#faq"><span class="lang-en">FAQ</span><span class="lang-jp">よくある質問</span></a>
+                <a href="#contact"><span class="lang-en">Contact</span><span class="lang-jp">お問い合わせ</span></a>
             </div>
             <div class="lang-switcher">
                 <button class="lang-btn active" onclick="setLang('en')" id="btn-en">🇺🇸 EN</button>
@@ -261,258 +286,270 @@
 
     <!-- HERO SECTION -->
     <header>
-        <div class="hero-bg"></div>
-        <div class="hero-content">
+        <div class="hero-bg" id="hero-bg"></div>
+        <div class="hero-content" id="hero-text">
             <h1 class="hero-title">Wonderland</h1>
             <p class="hero-subtitle">
                 <span class="lang-en">The door to Japan opens here.</span>
-                <span class="lang-jp">ここから開く、日本への扉。</span>
+                <!-- Updated Subtitle -->
+                <span class="lang-jp">
+                    日本への扉が、<span class="hover-kyoto">京都</span>と<span class="hover-osaka">大阪</span>から開く。
+                </span>
             </p>
             <a href="#tours" class="hero-cta">
                 <span class="lang-en">VIEW JOURNEYS</span>
-                <span class="lang-jp">ツアーを見る</span>
+                <span class="lang-jp">ツアー一覧を見る</span>
             </a>
         </div>
     </header>
 
     <!-- TRUST BAR -->
-    <section class="trust-bar">
-        <span class="trust-label">OFFICIAL PARTNER</span>
+    <section class="trust-bar reveal">
+        <span class="trust-label"><span class="lang-en">OFFICIAL PARTNER</span><span class="lang-jp">公式パートナー</span></span>
         <div class="trust-icons">
             <div class="trust-badge">
                 <i class="fa-brands fa-tripadvisor"></i> 
-                <span>TripAdvisor</span>
+                <span><span class="lang-en">TripAdvisor</span><span class="lang-jp">トリップアドバイザー</span></span>
             </div>
             <div class="trust-badge">
                 <i class="fa-solid fa-users"></i> 
-                <span>Small Group</span>
+                <span><span class="lang-en">Small Group</span><span class="lang-jp">少人数制</span></span>
             </div>
             <div class="trust-badge">
                 <i class="fa-solid fa-star"></i> 
-                <span>5-Star Hosts</span>
+                <span><span class="lang-en">5-Star Hosts</span><span class="lang-jp">五つ星ガイド</span></span>
             </div>
         </div>
     </section>
 
     <!-- TOURS COLLECTION -->
     <section id="tours" class="tours-section">
-        <div class="section-header">
-            <span class="section-tag">Signature Journeys</span>
+        <div class="section-header reveal">
+            <span class="section-tag"><span class="lang-en">Signature Journeys</span><span class="lang-jp">厳選された旅路</span></span>
             <h2>
                 <span class="lang-en">The Collection</span>
-                <span class="lang-jp">厳選された旅路</span>
+                <span class="lang-jp">体験コレクション</span>
             </h2>
         </div>
 
         <div class="tours-grid">
             
             <!-- 1. GION -->
-            <div class="tour-card" onclick="openBooking('gion')">
-                <div class="tour-badge">Bestseller</div>
+            <div class="tour-card reveal" onclick="openBooking('gion')">
+                <div class="tour-badge"><span class="lang-en">Bestseller</span><span class="lang-jp">一番人気</span></div>
                 <div class="card-img-wrap"><img src="gion_main.jpg" alt="Gion"></div>
                 <div class="card-content">
-                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> Kyoto</span><span><i class="fa-regular fa-clock"></i> 2 Hours</span></div>
+                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> <span class="lang-en"><span class="hover-kyoto">Kyoto</span></span><span class="lang-jp"><span class="hover-kyoto">京都</span></span></span><span><i class="fa-regular fa-clock"></i> <span class="lang-en">2 Hours</span><span class="lang-jp">2時間</span></span></div>
                     <h3 class="card-title"><span class="lang-en">Shadows of the Floating World</span><span class="lang-jp">花柳界の幽玄</span></h3>
-                    <div class="card-short-desc"><span class="lang-en">A respectful walking tour into the history of the Karyukai. Uncover the hidden stories.</span><span class="lang-jp">花街の歴史に敬意を払いながら巡るウォーキングツアー。</span></div>
+                    <div class="card-short-desc"><span class="lang-en">A respectful walking tour into the history of the Karyukai. Uncover the hidden stories.</span><span class="lang-jp">花街の歴史と格式に敬意を払いながら巡る、特別なウォーキングツアー。</span></div>
                     <div class="price-preview"><span class="price-val">¥3,800</span></div>
                 </div>
             </div>
 
-            <!-- 2. ARASHIYAMA (UPDATED DURATION) -->
-            <div class="tour-card" onclick="openBooking('arashiyama')">
-                <div class="tour-badge">Early Access</div>
+            <!-- 2. ARASHIYAMA -->
+            <div class="tour-card reveal" onclick="openBooking('arashiyama')" style="transition-delay: 0.1s;">
+                <div class="tour-badge"><span class="lang-en">Early Access</span><span class="lang-jp">早朝限定</span></div>
                 <div class="card-img-wrap"><img src="arashiyama_main.jpg" alt="Arashiyama"></div>
                 <div class="card-content">
-                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> Kyoto</span><span><i class="fa-regular fa-clock"></i> 2 Hours</span></div>
-                    <h3 class="card-title"><span class="lang-en">Whispers of the Bamboo</span><span class="lang-jp">竹林の靜寂</span></h3>
-                    <div class="card-short-desc"><span class="lang-en">A Spiritual Awakening at Dawn. Meditation and Shojin Ryori lunch.</span><span class="lang-jp">早朝の竹林と坐禅体験。精進料理ランチ付き。</span></div>
+                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> <span class="lang-en"><span class="hover-kyoto">Kyoto</span></span><span class="lang-jp"><span class="hover-kyoto">京都</span></span></span><span><i class="fa-regular fa-clock"></i> <span class="lang-en">2 Hours</span><span class="lang-jp">2時間</span></span></div>
+                    <h3 class="card-title"><span class="lang-en">Whispers of the Bamboo</span><span class="lang-jp">竹林の静寂</span></h3>
+                    <div class="card-short-desc"><span class="lang-en">A Spiritual Awakening at Dawn. Meditation and Shojin Ryori lunch.</span><span class="lang-jp">観光客のいない早朝の竹林散策と坐禅体験。精進料理ランチ付き。</span></div>
                     <div class="price-preview"><span class="price-val">¥5,800</span></div>
                 </div>
             </div>
 
             <!-- 3. KYOTO FOOD -->
-            <div class="tour-card" onclick="openBooking('kyoto-food')">
-                <div class="tour-badge">Gastronomy</div>
+            <div class="tour-card reveal" onclick="openBooking('kyoto-food')" style="transition-delay: 0.2s;">
+                <div class="tour-badge"><span class="lang-en">Gastronomy</span><span class="lang-jp">美食ツアー</span></div>
                 <div class="card-img-wrap"><img src="kyoto_main.jpg" alt="Kyoto Food"></div>
                 <div class="card-content">
-                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> Kyoto</span><span><i class="fa-regular fa-clock"></i> 3 Hours</span></div>
+                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> <span class="lang-en"><span class="hover-kyoto">Kyoto</span></span><span class="lang-jp"><span class="hover-kyoto">京都</span></span></span><span><i class="fa-regular fa-clock"></i> <span class="lang-en">3 Hours</span><span class="lang-jp">3時間</span></span></div>
                     <h3 class="card-title"><span class="lang-en">The Spirits of Pontocho</span><span class="lang-jp">先斗町の美酒</span></h3>
-                    <div class="card-short-desc"><span class="lang-en">Eat where locals eat. Navigate Pontocho alleys for authentic sake.</span><span class="lang-jp">地元民が集う先斗町の路地裏へ。日本酒と京料理。</span></div>
+                    <div class="card-short-desc"><span class="lang-en">Eat where locals eat. Navigate Pontocho alleys for authentic sake.</span><span class="lang-jp">地元民が集う先斗町の路地裏へ。極上の日本酒と京料理を堪能。</span></div>
                     <div class="price-preview"><span class="price-val">¥16,000</span></div>
                 </div>
             </div>
 
             <!-- 4. OSAKA FOOD -->
-            <div class="tour-card" onclick="openBooking('osaka-food')">
-                <div class="tour-badge" style="background:var(--w-red); color:white;">Must Do</div>
+            <div class="tour-card reveal" onclick="openBooking('osaka-food')">
+                <div class="tour-badge" style="background:var(--w-red); color:white;"><span class="lang-en">Must Do</span><span class="lang-jp">必見</span></div>
                 <div class="card-img-wrap"><img src="osaka_main.jpg" alt="Osaka Food"></div>
                 <div class="card-content">
-                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> Osaka</span><span><i class="fa-regular fa-clock"></i> 3 Hours</span></div>
-                    <h3 class="card-title"><span class="lang-en">Osaka Soul Food: Kitchen of Japan</span><span class="lang-jp">大阪ソウルフード</span></h3>
-                    <div class="card-short-desc"><span class="lang-en">Dive into the chaos. Includes <strong>12 distinct local dishes</strong> and <strong>3 drink pairings</strong>.</span><span class="lang-jp">12道在地美食與3杯飲品。道頓堀的極致饗宴。</span></div>
+                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> <span class="lang-en"><span class="hover-osaka">Osaka</span></span><span class="lang-jp"><span class="hover-osaka">大阪</span></span></span><span><i class="fa-regular fa-clock"></i> <span class="lang-en">3 Hours</span><span class="lang-jp">3時間</span></span></div>
+                    <h3 class="card-title"><span class="lang-en">Osaka Soul Food: Kitchen of Japan</span><span class="lang-jp">天下の台所・大阪</span></h3>
+                    <div class="card-short-desc"><span class="lang-en">Dive into the chaos. Includes <strong>12 distinct local dishes</strong> and <strong>3 drink pairings</strong>.</span><span class="lang-jp">12種類の地元グルメと3杯のドリンク。道頓堀の極致を味わう饗宴。</span></div>
                     <div class="price-preview"><span class="price-val">¥16,000</span></div>
                 </div>
             </div>
 
             <!-- 5. OSAKA WALKING -->
-             <div class="tour-card" onclick="openBooking('osaka-walk')">
-                <div class="tour-badge">Walking</div>
+             <div class="tour-card reveal" onclick="openBooking('osaka-walk')" style="transition-delay: 0.1s;">
+                <div class="tour-badge"><span class="lang-en">Walking</span><span class="lang-jp">ウォーキング</span></div>
                 <div class="card-img-wrap"><img src="osakaw_main.jpg" alt="Osaka Walking"></div>
                 <div class="card-content">
-                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> Osaka</span><span><i class="fa-regular fa-clock"></i> 2 Hours</span></div>
-                    <h3 class="card-title"><span class="lang-en">The Kitchen of Japan: Kuidaore Culture</span><span class="lang-jp">食い倒れ文化</span></h3>
-                    <div class="card-short-desc"><span class="lang-en">Neon & Nostalgia. Walk the streets of Shinsekai and Dotonbori.</span><span class="lang-jp">新世界與道頓堀的街頭漫步。</span></div>
+                    <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> <span class="lang-en"><span class="hover-osaka">Osaka</span></span><span class="lang-jp"><span class="hover-osaka">大阪</span></span></span><span><i class="fa-regular fa-clock"></i> <span class="lang-en">2 Hours</span><span class="lang-jp">2時間</span></span></div>
+                    <h3 class="card-title"><span class="lang-en">Kuidaore Culture</span><span class="lang-jp">食い倒れ文化</span></h3>
+                    <div class="card-short-desc"><span class="lang-en">Neon & Nostalgia. Walk the streets of Shinsekai and Dotonbori.</span><span class="lang-jp">新世界と道頓堀のネオン街を歩く。レトロと混沌の街歩き。</span></div>
                     <div class="price-preview"><span class="price-val">¥5,000</span></div>
                 </div>
             </div>
 
             <!-- 6. TEA (COMING SOON) -->
-            <div class="tour-card coming-soon">
+            <div class="tour-card coming-soon reveal" style="transition-delay: 0.2s;">
                 <div class="card-img-wrap"><img src="tea.jpg" alt="Tea"></div>
                 <div class="card-content">
                     <div class="card-meta"><span>TBA</span></div>
-                    <h3 class="card-title">Private Tea Ceremony</h3>
-                    <div class="card-short-desc">Negotiating access to a private temple.</div>
+                    <h3 class="card-title"><span class="lang-en">Private Tea Ceremony</span><span class="lang-jp">プライベート茶道体験</span></h3>
+                    <div class="card-short-desc"><span class="lang-en">Negotiating access to a private temple.</span><span class="lang-jp">非公開寺院での特別体験を調整中。</span></div>
                 </div>
             </div>
              <!-- 7. TAIKO (COMING SOON) -->
-             <div class="tour-card coming-soon">
+             <div class="tour-card coming-soon reveal">
                 <div class="card-img-wrap"><img src="taiko.jpg" alt="Taiko"></div>
                 <div class="card-content">
                     <div class="card-meta"><span>TBA</span></div>
-                    <h3 class="card-title">Kyoto Taiko</h3>
-                    <div class="card-short-desc">Soul of the Drum.</div>
+                    <h3 class="card-title"><span class="lang-en">Kyoto Taiko</span><span class="lang-jp">京都和太鼓体験</span></h3>
+                    <div class="card-short-desc"><span class="lang-en">Soul of the Drum.</span><span class="lang-jp">魂を揺さぶる響き。</span></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- TEAM SECTION -->
-    <section id="team" class="team-section">
+    <section id="team" class="team-section reveal">
         <div class="section-header">
             <h2><span class="lang-en">The Curators</span><span class="lang-jp">キュレーター</span></h2>
-            <p>Meet the local experts.</p>
+            <p><span class="lang-en">Meet the local experts.</span><span class="lang-jp">現地のプロフェッショナルたち</span></p>
         </div>
         <div class="team-grid">
-            <div>
+            <div class="reveal">
                 <img src="team_shin.jpg" class="team-img" alt="Shin">
                 <div class="team-name">Shinichiro Kawabata</div>
-                <div class="team-role">CEO & Founder</div>
+                <div class="team-role"><span class="lang-en">CEO & Founder</span><span class="lang-jp">代表・創業者</span></div>
             </div>
-            <div>
+            <div class="reveal" style="transition-delay: 0.1s;">
                 <img src="team_momoko.jpg" class="team-img" alt="Momoko">
                 <div class="team-name">Momoko Shimada</div>
-                <div class="team-role">Director</div>
+                <div class="team-role"><span class="lang-en">Director</span><span class="lang-jp">ディレクター</span></div>
             </div>
-            <div>
+            <div class="reveal" style="transition-delay: 0.2s;">
                 <img src="team_ben.jpg" class="team-img" alt="Ben">
                 <div class="team-name">Benjamin</div>
-                <div class="team-role">Guide</div>
+                <div class="team-role"><span class="lang-en">Guide</span><span class="lang-jp">ガイド</span></div>
             </div>
-             <div>
+             <div class="reveal" style="transition-delay: 0.3s;">
                 <img src="team_kaho.jpg" class="team-img" alt="Kaho">
                 <div class="team-name">Kaho</div>
-                <div class="team-role">Guide</div>
+                <div class="team-role"><span class="lang-en">Guide</span><span class="lang-jp">ガイド</span></div>
             </div>
         </div>
     </section>
 
     <!-- REVIEWS -->
-    <section class="reviews-section">
+    <section class="reviews-section reveal">
         <div class="section-header">
-            <h2 style="color:var(--w-red);">Guest Stories</h2>
+            <h2 style="color:var(--w-red);"><span class="lang-en">Guest Stories</span><span class="lang-jp">お客様の声</span></h2>
         </div>
         <div class="reviews-track" id="reviewTrack">
             <!-- JS will populate -->
         </div>
     </section>
 
-    <!-- FAQ SECTION (RESTORED) -->
-    <section id="faq" class="faq-section">
+    <!-- FAQ SECTION -->
+    <section id="faq" class="faq-section reveal">
         <div class="section-header">
             <h2>FAQ</h2>
         </div>
         <div class="faq-item">
             <div class="faq-question">
-                <span>Do you accommodate dietary restrictions?</span>
+                <span><span class="lang-en">Do you accommodate dietary restrictions?</span><span class="lang-jp">食事制限には対応していますか？</span></span>
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>Yes, especially on our private tours. For the Osaka Soul Food tour, we can accommodate vegetarian requests with advance notice. Please let us know when booking.</p>
+                <p>
+                    <span class="lang-en">Yes, especially on our private tours. For the Osaka Soul Food tour, we can accommodate vegetarian requests with advance notice. Please let us know when booking.</span>
+                    <span class="lang-jp">はい、特にプライベートツアーでは柔軟に対応いたします。大阪ソウルフードツアーでは、事前の通知があればベジタリアン対応も可能です。ご予約時にお知らせください。</span>
+                </p>
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-question">
-                <span>Are the tours suitable for children?</span>
+                <span><span class="lang-en">Are the tours suitable for children?</span><span class="lang-jp">子供連れでも参加できますか？</span></span>
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>Our walking tours are family-friendly. The food tours involve walking and bar-style seating, so we recommend them for children ages 12 and up.</p>
+                <p>
+                    <span class="lang-en">Our walking tours are family-friendly. The food tours involve walking and bar-style seating, so we recommend them for children ages 12 and up.</span>
+                    <span class="lang-jp">ウォーキングツアーはご家族で楽しんでいただけます。フードツアーは立ち飲みスタイルやバー形式のお店を含むため、12歳以上のお子様を推奨しております。</span>
+                </p>
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-question">
-                <span>What happens if it rains?</span>
+                <span><span class="lang-en">What happens if it rains?</span><span class="lang-jp">雨天の場合はどうなりますか？</span></span>
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>We run rain or shine! Kyoto looks beautiful in the rain. In cases of dangerous weather (typhoons), we will cancel and offer a full refund.</p>
+                <p>
+                    <span class="lang-en">We run rain or shine! Kyoto looks beautiful in the rain. In cases of dangerous weather (typhoons), we will cancel and offer a full refund.</span>
+                    <span class="lang-jp">雨天決行です。雨の京都もまた格別の風情があります。台風などの荒天時は安全のため中止とし、全額返金いたします。</span>
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- TRUST SECTION (BOTTOM) -->
-    <section class="trust-section">
+    <!-- TRUST SECTION -->
+    <section class="trust-section reveal">
         <div class="section-header" style="margin-bottom: 30px;">
-            <h2>Book with Confidence</h2>
+            <h2><span class="lang-en">Book with Confidence</span><span class="lang-jp">安心の予約保証</span></h2>
         </div>
         <div class="trust-grid">
             <div class="trust-item">
                 <div class="trust-icon-circle"><i class="fa-solid fa-umbrella"></i></div>
-                <div class="trust-head">Weather Guarantee</div>
-                <div class="trust-text">Full refund for severe weather cancellations.</div>
+                <div class="trust-head"><span class="lang-en">Weather Guarantee</span><span class="lang-jp">悪天候保証</span></div>
+                <div class="trust-text"><span class="lang-en">Full refund for severe weather cancellations.</span><span class="lang-jp">荒天中止時は全額返金いたします。</span></div>
             </div>
             <div class="trust-item">
                 <div class="trust-icon-circle"><i class="fa-solid fa-id-card"></i></div>
-                <div class="trust-head">Expert Locals</div>
-                <div class="trust-text">Guides who know the city best.</div>
+                <div class="trust-head"><span class="lang-en">Expert Locals</span><span class="lang-jp">公認ガイド</span></div>
+                <div class="trust-text"><span class="lang-en">Guides who know the city best.</span><span class="lang-jp">街を知り尽くしたプロが案内します。</span></div>
             </div>
             <div class="trust-item">
                 <div class="trust-icon-circle"><i class="fa-solid fa-lock"></i></div>
-                <div class="trust-head">Secure Booking</div>
-                <div class="trust-text">Encrypted payment protection.</div>
+                <div class="trust-head"><span class="lang-en">Secure Booking</span><span class="lang-jp">安全な決済</span></div>
+                <div class="trust-text"><span class="lang-en">Encrypted payment protection.</span><span class="lang-jp">暗号化された安全な支払いシステム。</span></div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER (UPDATED SPLIT) -->
+    <!-- FOOTER -->
     <footer id="contact" class="concierge-footer">
         <div class="footer-grid">
             <div class="footer-brand">
                 <h2>Wonderland JAPAN</h2>
-                <p>Curating the unseen Japan.</p>
+                <p><span class="lang-en">Curating the unseen Japan.</span><span class="lang-jp">まだ見ぬ日本を、キュレーションする。</span></p>
             </div>
             <div class="footer-links">
-                <h4>Kyoto Tours</h4>
+                <h4><span class="lang-en">Kyoto Tours</span><span class="lang-jp">京都ツアー</span></h4>
                 <ul>
-                    <li><a href="#" onclick="openBooking('gion')">Gion Geisha</a></li>
-                    <li><a href="#" onclick="openBooking('arashiyama')">Arashiyama Bamboo</a></li>
-                    <li><a href="#" onclick="openBooking('kyoto-food')">Pontocho Food</a></li>
+                    <li><a href="#" onclick="openBooking('gion')"><span class="lang-en">Gion Geisha</span><span class="lang-jp">祇園・花街</span></a></li>
+                    <li><a href="#" onclick="openBooking('arashiyama')"><span class="lang-en">Arashiyama Bamboo</span><span class="lang-jp">嵐山・竹林</span></a></li>
+                    <li><a href="#" onclick="openBooking('kyoto-food')"><span class="lang-en">Pontocho Food</span><span class="lang-jp">先斗町グルメ</span></a></li>
                 </ul>
             </div>
             <div class="footer-links">
-                <h4>Osaka Tours</h4>
+                <h4><span class="lang-en">Osaka Tours</span><span class="lang-jp">大阪ツアー</span></h4>
                 <ul>
-                    <li><a href="#" onclick="openBooking('osaka-food')">Soul Food Feast</a></li>
-                    <li><a href="#" onclick="openBooking('osaka-walk')">Walking Tour</a></li>
+                    <li><a href="#" onclick="openBooking('osaka-food')"><span class="lang-en">Soul Food Feast</span><span class="lang-jp">ソウルフード</span></a></li>
+                    <li><a href="#" onclick="openBooking('osaka-walk')"><span class="lang-en">Walking Tour</span><span class="lang-jp">ウォーキング</span></a></li>
                 </ul>
             </div>
             <div class="footer-links">
-                <h4>Company</h4>
+                <h4><span class="lang-en">Company</span><span class="lang-jp">会社情報</span></h4>
                 <ul>
-                    <li><a href="#team">Our Team</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="mailto:info@wonderlandjapan.net">Contact Us</a></li>
+                    <li><a href="#team"><span class="lang-en">Our Team</span><span class="lang-jp">チーム紹介</span></a></li>
+                    <li><a href="#faq"><span class="lang-en">FAQ</span><span class="lang-jp">よくある質問</span></a></li>
+                    <li><a href="mailto:info@wonderlandjapan.net"><span class="lang-en">Contact Us</span><span class="lang-jp">お問い合わせ</span></a></li>
                 </ul>
             </div>
         </div>
@@ -535,39 +572,40 @@
                 <div id="modal-subtitle" class="modal-subtitle">Subtitle</div>
                 <div class="feature-list">
                     <div class="feature-item"><i class="fa-regular fa-clock"></i> <span id="modal-duration">Duration</span></div>
-                    <div class="feature-item"><i class="fa-solid fa-user-group"></i> <span>Small Group</span></div>
+                    <div class="feature-item"><i class="fa-solid fa-user-group"></i> <span><span class="lang-en">Small Group</span><span class="lang-jp">少人数制</span></span></div>
                 </div>
                 <div id="modal-desc" class="modal-desc"></div>
                 
                 <div class="booking-widget">
-                    <div class="widget-title">Reserve Your Spot</div>
+                    <div class="widget-title"><span class="lang-en">Reserve Your Spot</span><span class="lang-jp">予約をリクエストする</span></div>
                     <form onsubmit="handleBooking(event)">
                         <div class="form-grid">
                             <div class="form-group">
-                                <label>Date</label>
+                                <label><span class="lang-en">Date</span><span class="lang-jp">日付</span></label>
                                 <input type="date" class="form-input" required>
                             </div>
                             <div class="form-group">
-                                <label>Time</label>
+                                <label><span class="lang-en">Time</span><span class="lang-jp">時間</span></label>
                                 <select id="modal-time-select" class="form-input" required></select>
                             </div>
                         </div>
                         <div class="form-grid">
                             <div class="form-group">
-                                <label>Guests</label>
-                                <select class="form-input">
-                                    <option>1 Person</option>
-                                    <option>2 People</option>
-                                    <option>3 People</option>
-                                    <option>4+ (Contact Us)</option>
+                                <label><span class="lang-en">Guests</span><span class="lang-jp">人数</span></label>
+                                <!-- FIXED GUESTS SELECT: Using Data Attributes instead of nested tags -->
+                                <select class="form-input" id="guests-select">
+                                    <option value="1" data-en="1 Person" data-jp="1名">1 Person</option>
+                                    <option value="2" data-en="2 People" data-jp="2名">2 People</option>
+                                    <option value="3" data-en="3 People" data-jp="3名">3 People</option>
+                                    <option value="4+" data-en="4+ (Contact Us)" data-jp="4名以上 (要問合せ)">4+ (Contact Us)</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-input" placeholder="Your Name" required>
+                                <label><span class="lang-en">Name</span><span class="lang-jp">お名前</span></label>
+                                <input type="text" class="form-input" placeholder="" required>
                             </div>
                         </div>
-                        <button type="submit" class="btn-modal-book">Proceed to Checkout</button>
+                        <button type="submit" class="btn-modal-book"><span class="lang-en">Proceed to Checkout</span><span class="lang-jp">予約へ進む</span></button>
                     </form>
                 </div>
             </div>
@@ -575,104 +613,131 @@
     </div>
 
     <script>
-        // --- TOUR DATA (IMAGES & DURATION UPDATED) ---
+        // --- TOUR DATA (UPDATED WITH JAPANESE) ---
         const tourData = {
             'gion': {
-                title: "Shadows of the Floating World",
-                subtitle: "A Journey into Gion's Hidden Past",
-                duration: "2 Hours",
+                title: { en: "Shadows of the Floating World", jp: "花柳界の幽玄" },
+                subtitle: { en: "A Journey into Gion's Hidden Past", jp: "祇園の隠された歴史を紐解く" },
+                duration: { en: "2 Hours", jp: "2時間" },
                 slots: ["10:30", "13:30", "16:30"],
-                desc: "As dusk falls over the Shirakawa River, the lantern-lit cobblestones tell stories of a fleeting world. This is not a sightseeing trip; it is a respectful entry into the 'Karyukai' (Flower and Willow World). We decode the subtle gestures, the history of the teahouses, and the rigorous life of the Artistes (Geiko & Maiko). <br><br><strong>Select your time:</strong><br>• 10:30: Morning tranquility & culture.<br>• 13:30: The bustling energy of the ancient capital.<br>• 16:30: The romantic, lantern-lit atmosphere.",
-                // Updated Images
-                images: ["gion_main.jpg", "gion2.jpg", "gion3.jpg", "gion4.jpg", "gion5.jpg", "gion6.jpg", "gion7.jpg"]
+                desc: {
+                    en: "As dusk falls over the Shirakawa River, the lantern-lit cobblestones tell stories of a fleeting world. This is not a sightseeing trip; it is a respectful entry into the 'Karyukai' (Flower and Willow World). We decode the subtle gestures, the history of the teahouses, and the rigorous life of the Artistes (Geiko & Maiko). <br><br><strong>Select your time:</strong><br>• 10:30: Morning tranquility & culture.<br>• 13:30: The bustling energy of the ancient capital.<br>• 16:30: The romantic, lantern-lit atmosphere.",
+                    jp: "白川に夕闇が迫る頃、提灯に照らされた石畳は「浮世」の物語を語り始めます。これは単なる観光ではありません。「花柳界」への敬意ある入門です。私たちは、芸舞妓の繊細な所作の意味、お茶屋の歴史、そして彼女たちの厳しくも美しい生き様を紐解きます。<br><br><strong>時間をお選びください:</strong><br>• 10:30: 朝の静寂と文化体験。<br>• 13:30: 古都の賑わいとエネルギー。<br>• 16:30: 提灯が灯る幻想的な雰囲気。"
+                },
+                images: ["gion_main.jpg", "gion2.jpg", "gion3.jpg"]
             },
             'arashiyama': {
-                title: "Whispers of the Bamboo",
-                subtitle: "A Spiritual Awakening at Dawn",
-                duration: "2 Hours", // Changed to 2 Hours
+                title: { en: "Whispers of the Bamboo", jp: "竹林の静寂" },
+                subtitle: { en: "A Spiritual Awakening at Dawn", jp: "夜明けのスピリチュアル体験" },
+                duration: { en: "2 Hours", jp: "2時間" },
                 slots: ["07:30", "10:30"],
-                desc: "Silence has a sound. In the stillness of dawn, before the world wakes, the Bamboo Grove breathes. We guide you through this emerald tunnel not just to take photos, but to experience 'Shinrin-yoku' (Forest Bathing). Followed by a private moment at Tenryu-ji's borrowed landscape garden.",
-                // Updated Images
-                images: ["arashiyama_main.jpg", "arashiyama2.jpg", "arashiyama3.jpg", "arashiyama4.jpg", "arashiyama5.jpg", "arashiyama6.jpg", "arashiyama7.jpg", "arashiyama8.jpg"]
+                desc: {
+                    en: "Silence has a sound. In the stillness of dawn, before the world wakes, the Bamboo Grove breathes. We guide you through this emerald tunnel not just to take photos, but to experience 'Shinrin-yoku' (Forest Bathing). Followed by a private moment at Tenryu-ji's borrowed landscape garden.",
+                    jp: "静寂には音があります。世界が目覚める前の夜明け、竹林は深く呼吸をしています。私たちはただ写真を撮るためではなく、「森林浴」を体験するために、この翠緑のトンネルをご案内します。その後、天龍寺の借景庭園にて静かなひとときを過ごします。"
+                },
+                images: ["arashiyama_main.jpg", "arashiyama2.jpg", "arashiyama3.jpg"]
             },
             'kyoto-food': {
-                title: "Hidden Kyoto: The Spirits of Pontocho",
-                subtitle: "Izakaya & Sake Alley",
-                duration: "3 Hours",
+                title: { en: "Hidden Kyoto: The Spirits of Pontocho", jp: "隠れ家京都：先斗町の美酒" },
+                subtitle: { en: "Izakaya & Sake Alley", jp: "居酒屋と酒の路地" },
+                duration: { en: "3 Hours", jp: "3時間" },
                 slots: ["18:30"],
-                desc: "Beyond the red lanterns lies a world of flavor inaccessible to the casual passerby. We hold the keys to 'Ichigensan Okotowari' (introduction-only) establishments. Tonight, you don't just eat dinner; you taste the history of Pontocho.",
+                desc: {
+                    en: "Beyond the red lanterns lies a world of flavor inaccessible to the casual passerby. We hold the keys to 'Ichigensan Okotowari' (introduction-only) establishments. Tonight, you don't just eat dinner; you taste the history of Pontocho.",
+                    jp: "赤提灯の向こう側には、通りすがりでは辿り着けない味の世界が広がっています。「一見さんお断り」の名店への扉を開けるのが私たちの役目です。今夜、あなたはただ夕食をとるのではなく、先斗町の歴史そのものを味わうことになります。"
+                },
                 images: ["kyoto_main.jpg", "kyoto2.jpg"]
             },
             'osaka-food': {
-                title: "Osaka Soul Food: Kitchen of Japan",
-                subtitle: "12 Dishes & 3 Drinks",
-                duration: "3 Hours",
+                title: { en: "Osaka Soul Food: Kitchen of Japan", jp: "大阪ソウルフード：天下の台所" },
+                subtitle: { en: "12 Dishes & 3 Drinks", jp: "12種の料理と3杯のドリンク" },
+                duration: { en: "3 Hours", jp: "3時間" },
                 slots: ["18:30"],
-                desc: "Osaka is the rebellious younger brother of Kyoto. It’s loud, it’s messy, and it’s delicious. From the sizzling Wagyu of Dotonbori to the retro nostalgia of Shinsekai, we skip the tourist traps and dive straight into the 'Kuidaore' culture. Includes 12 local dishes and 3 drinks.",
+                desc: {
+                    en: "Osaka is the rebellious younger brother of Kyoto. It’s loud, it’s messy, and it’s delicious. From the sizzling Wagyu of Dotonbori to the retro nostalgia of Shinsekai, we skip the tourist traps and dive straight into the 'Kuidaore' culture. Includes 12 local dishes and 3 drinks.",
+                    jp: "大阪は、京都の反抗的な弟のような存在です。騒がしく、混沌としていて、そして最高に美味しい。道頓堀の和牛から新世界のレトロな情緒まで。観光客向けの店は避け、真の「食い倒れ」文化へ直行します。厳選された12品と3ドリンクが含まれます。"
+                },
                 images: ["osaka_main.jpg", "osaka2.jpg"]
             },
             'osaka-walk': {
-                title: "The Kitchen of Japan",
-                subtitle: "Kuidaore Culture & Street Spirit",
-                duration: "2 Hours",
+                title: { en: "The Kitchen of Japan", jp: "天下の台所" },
+                subtitle: { en: "Kuidaore Culture & Street Spirit", jp: "食い倒れ文化とストリートスピリット" },
+                duration: { en: "2 Hours", jp: "2時間" },
                 slots: ["13:00", "16:00"],
-                desc: "Osaka is not polite; it is real. This walking tour peels back the neon layers of Dotonbori to reveal the gritty, beating heart of the merchant city. We stop for the 'Holy Trinity' of soul food: Takoyaki, Gyoza, and Kushikatsu. Includes 1 street food snack.",
-                // Updated Images
-                images: ["osakaw_main.jpg", "osakaw_2.jpg", "osakaw_3.jpg", "osakaw_4.jpg", "osakaw_5.jpg", "osakaw_6.jpg", "osakaw_7.jpg"]
+                desc: {
+                    en: "Osaka is not polite; it is real. This walking tour peels back the neon layers of Dotonbori to reveal the gritty, beating heart of the merchant city. We stop for the 'Holy Trinity' of soul food: Takoyaki, Gyoza, and Kushikatsu. Includes 1 street food snack.",
+                    jp: "大阪は上品ではありません。リアルな街です。このツアーでは、道頓堀のネオンの層を剥がし、商人の街のたくましい心臓部を露わにします。ソウルフードの「三種の神器」（たこ焼き、餃子、串カツ）の名店を巡ります。ストリートフード1品付き。"
+                },
+                images: ["osakaw_main.jpg", "osakaw_2.jpg"]
             }
         };
 
-        // --- AUTHENTIC REVIEWS ---
+        // --- AUTHENTIC REVIEWS (TRANSLATED) ---
         const reviewsData = [
-            { name: "Jessica Reynolds", country: "🇺🇸", text: "Momoko is an absolute legend! The Osaka food tour was the highlight of our entire Japan trip.", platform: "fa-tripadvisor" },
-            { name: "Liam Henderson", country: "🇦🇺", text: "We did the Kyoto Sake tour with Momoko. Her knowledge of Nihonshu is intimidatingly good.", platform: "fa-suitcase" },
-            { name: "Stefan Weber", country: "🇩🇪", text: "Momoko showed us the real Osaka. The kushikatsu place was authentic.", platform: "fa-map-location-dot" },
-            { name: "Charlotte Evans", country: "🇬🇧", text: "I was worried about navigating dietary restrictions, but Momoko handled everything perfectly.", platform: "fa-tripadvisor" },
-            { name: "Noah Williams", country: "🇺🇸", text: "If you go to Osaka, ask for Momoko. Her energy is infectious.", platform: "fa-k" },
-            { name: "Isabella Rossi", country: "🇮🇹", text: "The food was amazing, but Momoko's company was even better.", platform: "fa-tripadvisor" },
-            { name: "Lucas Gallagher", country: "🇦🇺", text: "Momoko took us to a tiny okonomiyaki joint that's been there for 60 years.", platform: "fa-map-location-dot" },
-            { name: "Emma Thompson", country: "🇨🇦", text: "The whiskey bar Momoko introduced us to was a hidden gem.", platform: "fa-suitcase" },
-            { name: "Alexander Mitchell", country: "🇺🇸", text: "Ben felt less like a tour guide and more like a knowledgeable friend.", platform: "fa-tripadvisor" },
-            { name: "Hannah Schmidt", country: "🇩🇪", text: "I usually find history tours boring, but Ben made the stories of the Geisha come alive.", platform: "fa-map-location-dot" },
-            { name: "Jack Robinson", country: "🇦🇺", text: "Ben noticed my wife was cold and immediately found us warm tea.", platform: "fa-suitcase" },
-            { name: "William Turner", country: "🇬🇧", text: "The Gion tour with Ben was the highlight. He knew exactly which alleys to take.", platform: "fa-tripadvisor" },
-            { name: "Sarah Collins", country: "🇺🇸", text: "Kaho was so sweet and patient with our children. The Arashiyama sunrise tour was worth it.", platform: "fa-tripadvisor" },
-            { name: "Maximilian Wagner", country: "🇩🇪", text: "Kaho knows exactly where to stand for the best photos in the Bamboo Grove.", platform: "fa-map-location-dot" },
-            { name: "Grace O'Connor", country: "🇮🇪", text: "The meditation session Kaho arranged was the most peaceful moment of our trip.", platform: "fa-suitcase" },
-            { name: "Robert Baker", country: "🇺🇸", text: "Professional from start to finish. The booking team was responsive.", platform: "fa-tripadvisor" },
-            { name: "Laura Meyer", country: "🇩🇪", text: "Simply excellent. Wonderland was by far the most premium experience.", platform: "fa-map-location-dot" },
-            { name: "Henry Scott", country: "🇦🇺", text: "Great value for the level of service. No waiting in lines.", platform: "fa-suitcase" },
-            { name: "Amelia King", country: "🇬🇧", text: "The 'Direct Booking' perk is real. We saved money.", platform: "fa-k" },
-            { name: "Wei Ling Tan", country: "🇸🇬", text: "Ben showed me layers of history I completely missed. Fantastic.", platform: "fa-tripadvisor" },
-            { name: "Kenjiro Sato", country: "🇭🇰", text: "Momoko organized the perfect Izakaya evening. Professional and fun.", platform: "fa-suitcase" },
-            { name: "Gabriel Silva", country: "🇧🇷", text: "An unforgettable experience. The mix of food and history was perfect.", platform: "fa-tripadvisor" }
+            { 
+                name: "Jessica Reynolds", country: "🇺🇸", platform: "fa-tripadvisor",
+                text: { en: "Momoko is an absolute legend! The Osaka food tour was the highlight of our entire Japan trip.", jp: "モモコさんはまさにレジェンド！大阪フードツアーは日本旅行全体の中で最高の思い出になりました。" }
+            },
+            { 
+                name: "Liam Henderson", country: "🇦🇺", platform: "fa-suitcase",
+                text: { en: "We did the Kyoto Sake tour with Momoko. Her knowledge of Nihonshu is intimidatingly good.", jp: "モモコさんと京都の酒ツアーに行きました。彼女の日本酒に関する知識は驚異的です。" }
+            },
+            { 
+                name: "Stefan Weber", country: "🇩🇪", platform: "fa-map-location-dot",
+                text: { en: "Momoko showed us the real Osaka. The kushikatsu place was authentic.", jp: "モモコさんは真の大阪を見せてくれました。案内してくれた串カツ屋は本物でした。" }
+            },
+            { 
+                name: "Noah Williams", country: "🇺🇸", platform: "fa-k",
+                text: { en: "If you go to Osaka, ask for Momoko. Her energy is infectious.", jp: "大阪に行くならモモコを指名すべきです。彼女のエネルギーは周りを元気にします。" }
+            },
+            { 
+                name: "Alexander Mitchell", country: "🇺🇸", platform: "fa-tripadvisor",
+                text: { en: "Ben felt less like a tour guide and more like a knowledgeable friend.", jp: "ベンはガイドというより、知識豊富な友人のようでした。" }
+            },
+            { 
+                name: "Hannah Schmidt", country: "🇩🇪", platform: "fa-map-location-dot",
+                text: { en: "I usually find history tours boring, but Ben made the stories of the Geisha come alive.", jp: "歴史ツアーは退屈なことが多いですが、ベンの話す芸者の物語は生き生きとしていました。" }
+            },
+            { 
+                name: "Sarah Collins", country: "🇺🇸", platform: "fa-tripadvisor",
+                text: { en: "Kaho was so sweet and patient with our children. The Arashiyama sunrise tour was worth it.", jp: "カホは子供たちにとても優しく接してくれました。嵐山のサンライズツアーは早起きする価値があります。" }
+            },
+            { 
+                name: "Kenjiro Sato", country: "🇭🇰", platform: "fa-suitcase",
+                text: { en: "Momoko organized the perfect Izakaya evening. Professional and fun.", jp: "モモコが完璧な居酒屋の夜をセッティングしてくれました。プロフェッショナルで楽しい時間でした。" }
+            }
         ];
+
+        // --- HELPER TO GET TEXT BASED ON LANG ---
+        function getLang() {
+            return document.body.classList.contains('is-jp') ? 'jp' : 'en';
+        }
 
         const reviewTrack = document.getElementById('reviewTrack');
         
         function renderReviews() {
-            reviewsData.forEach(r => reviewTrack.appendChild(createReviewCard(r)));
-            reviewsData.forEach(r => {
-                const card = createReviewCard(r);
+            reviewTrack.innerHTML = ''; // Clear existing
+            const lang = getLang();
+            
+            // Double the data for smooth scroll
+            const displayData = [...reviewsData, ...reviewsData];
+            
+            displayData.forEach(r => {
+                const card = document.createElement('div');
+                card.className = 'review-card';
+                card.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-stars">★★★★★</div>
+                        <div class="review-flag">${r.country}</div>
+                    </div>
+                    <div class="review-text">"${r.text[lang]}"</div>
+                    <div class="review-footer">
+                        <div class="reviewer-name">${r.name}</div>
+                        <i class="fa-brands ${r.platform} platform-icon"></i>
+                    </div>
+                `;
                 reviewTrack.appendChild(card);
             });
-        }
-
-        function createReviewCard(r) {
-            const card = document.createElement('div');
-            card.className = 'review-card';
-            card.innerHTML = `
-                <div class="review-header">
-                    <div class="review-stars">★★★★★</div>
-                    <div class="review-flag">${r.country}</div>
-                </div>
-                <div class="review-text">"${r.text}"</div>
-                <div class="review-footer">
-                    <div class="reviewer-name">${r.name}</div>
-                    <i class="fa-brands ${r.platform} platform-icon"></i>
-                </div>
-            `;
-            return card;
         }
 
         // --- MODAL & JS ---
@@ -683,10 +748,12 @@
             const data = tourData[tourKey];
             if(!data) return;
 
-            document.getElementById('modal-title').innerText = data.title;
-            document.getElementById('modal-subtitle').innerText = data.subtitle;
-            document.getElementById('modal-duration').innerText = data.duration;
-            document.getElementById('modal-desc').innerHTML = data.desc;
+            const lang = getLang();
+
+            document.getElementById('modal-title').innerText = data.title[lang];
+            document.getElementById('modal-subtitle').innerText = data.subtitle[lang];
+            document.getElementById('modal-duration').innerText = data.duration[lang];
+            document.getElementById('modal-desc').innerHTML = data.desc[lang];
 
             const timeSelect = document.getElementById('modal-time-select');
             timeSelect.innerHTML = '';
@@ -696,6 +763,9 @@
                 option.innerText = time;
                 timeSelect.appendChild(option);
             });
+
+            // Update placeholder for Name based on language
+            document.querySelector('input[placeholder]').placeholder = lang === 'jp' ? '山田 太郎' : 'Your Name';
 
             const gallery = document.getElementById('modal-gallery');
             gallery.innerHTML = '';
@@ -728,28 +798,42 @@
 
         function handleBooking(e) {
             e.preventDefault();
+            const lang = getLang();
             const title = document.getElementById('modal-title').innerText;
             const date = e.target.querySelector('input[type="date"]').value;
             const time = document.getElementById('modal-time-select').value;
-            alert(`Booking Request for: ${title}\nDate: ${date} at ${time}`);
+            
+            const msg = lang === 'jp' 
+                ? `予約リクエスト:\nツアー: ${title}\n日付: ${date}\n時間: ${time}`
+                : `Booking Request for: ${title}\nDate: ${date} at ${time}`;
+            
+            alert(msg);
         }
 
+        // --- FAQ TOGGLE ---
         document.querySelectorAll('.faq-question').forEach(item => {
             item.addEventListener('click', () => {
                 item.parentElement.classList.toggle('active');
             });
         });
 
+        // --- INIT ---
         document.addEventListener('DOMContentLoaded', () => {
-            renderReviews();
             const savedLang = localStorage.getItem('preferredLang');
-            if (savedLang === 'jp') { setLang('jp'); }
+            if (savedLang === 'jp') { 
+                setLang('jp'); 
+            } else {
+                renderReviews(); // Render default EN
+            }
         });
 
         function setLang(lang) {
             const body = document.body;
             const btnEn = document.getElementById('btn-en');
             const btnJp = document.getElementById('btn-jp');
+            
+            localStorage.setItem('preferredLang', lang);
+
             if (lang === 'jp') {
                 body.classList.add('is-jp');
                 btnJp.classList.add('active');
@@ -759,11 +843,51 @@
                 btnEn.classList.add('active');
                 btnJp.classList.remove('active');
             }
+            
+            // Re-render dynamic content (Reviews)
+            renderReviews();
+            
+            // Re-render Guest Select Options using Data Attributes
+            document.querySelectorAll('option[data-en]').forEach(opt => {
+                opt.innerText = opt.getAttribute(`data-${lang}`);
+            });
+            
+            // Update Name Placeholder if modal is not open but lang switched
+            const nameInput = document.querySelector('input[placeholder]');
+            if(nameInput) {
+                nameInput.placeholder = lang === 'jp' ? '山田 太郎' : 'Your Name';
+            }
         }
         
+        // --- PARALLAX & SCROLL EFFECT LOGIC ---
         window.addEventListener('scroll', () => {
+            // 1. Navbar Effect
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+            
+            // 2. Parallax Effect
+            const scrollY = window.scrollY;
+            const heroBg = document.getElementById('hero-bg');
+            const heroText = document.getElementById('hero-text');
+            
+            if(heroBg) {
+                heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+            }
+            if(heroText) {
+                heroText.style.transform = `translateY(${scrollY * 0.2}px)`;
+            }
+
+            // 3. Scroll Reveal Effect
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150; 
+
+            reveals.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
