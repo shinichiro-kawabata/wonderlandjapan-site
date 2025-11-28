@@ -25,34 +25,7 @@
             --font-jp: 'Zen Old Mincho', serif;
         }
 
-        /* --- HOVER EFFECTS (Clean, No Custom Cursor) --- */
-        .hover-kyoto {
-            border-bottom: 1px dotted var(--w-red);
-            transition: 0.3s;
-            display: inline-block;
-            cursor: pointer;
-        }
-        .hover-kyoto:hover { color: var(--w-red); }
-
-        .hover-osaka {
-            border-bottom: 1px dotted var(--w-gold);
-            transition: 0.3s;
-            display: inline-block;
-            cursor: pointer;
-        }
-        .hover-osaka:hover { color: var(--w-gold); }
-
-        /* --- SCROLL REVEAL ANIMATION --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        /* --- GLOBAL RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
@@ -61,22 +34,32 @@
             font-family: var(--font-main); 
             line-height: 1.7; 
             overflow-x: hidden; 
-            
-            /* --- WASHI TEXTURE (Noise Layer) --- */
-            /* Using SVG data URI for a subtle grain effect */
+            /* Washi Texture */
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
         }
 
         html { scroll-behavior: smooth; }
         h1, h2, h3, h4 { font-family: var(--font-lux); line-height: 1.2; }
+        img { max-width: 100%; display: block; }
         
-        /* Japanese Font Override & Language Toggling */
+        /* Japanese Font Override */
         body.is-jp { font-family: var(--font-jp) !important; }
         body.is-jp h1, body.is-jp h2, body.is-jp h3, body.is-jp h4, body.is-jp p, body.is-jp a, body.is-jp span, body.is-jp div, body.is-jp input, body.is-jp button, body.is-jp select { font-family: var(--font-jp) !important; letter-spacing: 0.05em; }
         
         .lang-jp { display: none; }
         body.is-jp .lang-en { display: none !important; }
         body.is-jp .lang-jp { display: inline-block !important; }
+
+        /* --- HOVER EFFECTS --- */
+        .hover-kyoto { border-bottom: 1px dotted var(--w-red); transition: 0.3s; cursor: pointer; }
+        .hover-kyoto:hover { color: var(--w-red); }
+        .hover-osaka { border-bottom: 1px dotted var(--w-gold); transition: 0.3s; cursor: pointer; }
+        .hover-osaka:hover { color: var(--w-gold); }
+
+        /* --- ANIMATION --- */
+        /* Note: Modified to ensure elements don't get stuck invisible */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* --- NAVIGATION --- */
         nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s ease; }
@@ -97,57 +80,25 @@
         .lang-btn { background: transparent; border: 1px solid rgba(255,255,255,0.4); color: white; padding: 6px 14px; border-radius: 30px; font-size: 0.7rem; cursor: pointer; transition: 0.3s; }
         .lang-btn.active, .lang-btn:hover { background: var(--w-red); border-color: var(--w-red); color: white; }
 
-        /* --- HERO (Parallax) --- */
-        header { 
-            height: 100vh; 
-            position: relative; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            overflow: hidden; 
-        }
-        .hero-bg { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 120%; 
-            background-image: url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053'); 
-            background-size: cover; 
-            background-position: center; 
-            z-index: -1; 
-            filter: brightness(0.65); 
-            will-change: transform; 
-        }
-        .hero-content { 
-            text-align: center; 
-            color: white; 
-            z-index: 2; 
-            padding: 0 20px; 
-            will-change: transform;
-        }
+        /* --- HERO --- */
+        header { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 120%; background-image: url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053'); background-size: cover; background-position: center; z-index: -1; filter: brightness(0.65); will-change: transform; }
+        .hero-content { text-align: center; color: white; z-index: 2; padding: 0 20px; will-change: transform; }
         .hero-title { font-size: 4rem; margin-bottom: 15px; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .hero-subtitle { font-size: 1.3rem; margin-bottom: 40px; color: var(--w-gold); letter-spacing: 2px; }
-        
-        .hero-cta { 
-            background: var(--w-red); color: white; text-decoration: none; padding: 18px 50px; 
-            border-radius: 50px; font-size: 0.9rem; letter-spacing: 2px; font-weight: 600; 
-            transition: 0.3s; display: inline-flex; justify-content: center; align-items: center;
-            white-space: nowrap; min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
+        .hero-cta { background: var(--w-red); color: white; text-decoration: none; padding: 18px 50px; border-radius: 50px; font-size: 0.9rem; letter-spacing: 2px; font-weight: 600; transition: 0.3s; display: inline-flex; justify-content: center; align-items: center; white-space: nowrap; min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
         .hero-cta:hover { background: white; color: var(--w-red); transform: translateY(-3px); }
 
         /* --- TRUST BAR --- */
         .trust-bar { background: white; padding: 35px 5%; text-align: center; border-bottom: 1px solid #eee; display: flex; flex-direction: column; align-items: center; }
         .trust-label { font-size: 0.7rem; color: #888; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; }
         .trust-icons { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; justify-content: center; }
-        .trust-badge { display: flex; align-items: center; gap: 12px; opacity: 0.9; transition: 0.3s; }
-        .trust-badge:hover { transform: translateY(-3px); }
+        .trust-badge { display: flex; align-items: center; gap: 12px; opacity: 0.9; }
         .trust-badge i { font-size: 1.8rem; color: var(--w-black); } 
         .trust-badge span { font-size: 0.85rem; font-weight: 600; color: var(--w-black); text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- TOURS --- */
-        .tours-section { padding: 100px 5%; background: transparent; /* Changed to transparent to show body texture */ }
+        /* --- TOURS COLLECTION --- */
+        .tours-section { padding: 100px 5%; background: transparent; }
         .section-header { text-align: center; margin-bottom: 70px; }
         .section-tag { color: var(--w-red); font-size: 0.75rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 10px; }
         .section-header h2 { font-size: 3rem; color: var(--w-black); margin-bottom: 20px; }
@@ -156,7 +107,7 @@
         .tour-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.4s; cursor: pointer; position: relative; display: flex; flex-direction: column; height: 100%; }
         .tour-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .tour-badge { position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.95); color: var(--w-black); padding: 6px 14px; font-size: 0.7rem; text-transform: uppercase; font-weight: 700; z-index: 2; border-radius: 4px; }
-        .card-img-wrap { height: 260px; overflow: hidden; position: relative; }
+        .card-img-wrap { height: 260px; overflow: hidden; position: relative; background: #eee; }
         .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .tour-card:hover .card-img-wrap img { transform: scale(1.08); }
         .card-content { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
@@ -166,6 +117,7 @@
         .price-preview { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #f0f0f0; padding-top: 20px; margin-top: auto; }
         .price-val { font-size: 1.25rem; color: var(--w-red); font-weight: 700; }
         
+        .coming-soon { pointer-events: none; }
         .coming-soon .card-img-wrap { filter: grayscale(100%) blur(1px); }
         .coming-soon .card-img-wrap::after { content: 'COMING SOON'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: white; border: 1px solid white; padding: 5px 15px; letter-spacing: 2px; font-size: 0.8rem; }
         body.is-jp .coming-soon .card-img-wrap::after { content: '準備中'; }
@@ -173,7 +125,7 @@
         /* --- TEAM SECTION --- */
         .team-section { padding: 80px 5%; background: white; text-align: center; }
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 50px; }
-        .team-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 4px solid var(--w-cream); box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: 0.4s; }
+        .team-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 4px solid var(--w-cream); box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: 0.4s; background: #eee; }
         .team-img:hover { transform: scale(1.05); border-color: var(--w-gold); }
         .team-name { font-family: var(--font-lux); font-size: 1.3rem; color: var(--w-red); margin-bottom: 5px; }
         .team-role { font-size: 0.85rem; color: var(--w-gold); letter-spacing: 2px; text-transform: uppercase; }
@@ -220,17 +172,23 @@
         /* --- MODAL --- */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; backdrop-filter: blur(5px); }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { background: white; width: 95%; max-width: 1100px; height: 90vh; display: grid; grid-template-columns: 55% 45%; border-radius: 12px; overflow: hidden; }
-        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: #000; cursor: pointer; z-index: 100; background: white; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: 0.3s; }
+        
+        .modal-content { background: white; width: 95%; max-width: 1100px; height: 90vh; display: grid; grid-template-columns: 55% 45%; border-radius: 12px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
+        
+        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: #000; cursor: pointer; z-index: 100; background: white; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .modal-close:hover { background: var(--w-red); color: white; }
-        .modal-img-col { background: #000; position: relative; height: 100%; }
-        .gallery-slide { width: 100%; height: 100%; object-fit: cover; position: absolute; opacity: 0; transition: 0.5s; }
+        
+        .modal-img-col { background: #000; position: relative; height: 100%; width: 100%; overflow: hidden; }
+        .gallery-container { width: 100%; height: 100%; position: relative; }
+        .gallery-slide { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.6s ease; }
         .gallery-slide.active { opacity: 1; }
-        .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; border: none; padding: 20px 10px; cursor: pointer; z-index: 2; font-size: 1.5rem; }
+        
+        .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; border: none; padding: 20px 10px; cursor: pointer; z-index: 5; font-size: 1.5rem; transition: 0.3s; }
         .gallery-nav:hover { background: rgba(0,0,0,0.8); color: var(--w-gold); }
         .gallery-prev { left: 0; }
         .gallery-next { right: 0; }
-        .modal-scroll-area { padding: 40px; overflow-y: auto; background: white; display: flex; flex-direction: column; }
+        
+        .modal-scroll-area { padding: 40px; overflow-y: auto; background: white; display: flex; flex-direction: column; position: relative; }
         
         .modal-title { font-size: 2.2rem; margin-bottom: 5px; line-height: 1.1; }
         .modal-subtitle { color: var(--w-gold); font-size: 0.9rem; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
@@ -245,14 +203,14 @@
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
         .form-group { display: flex; flex-direction: column; gap: 5px; }
         .form-group label { font-size: 0.7rem; font-weight: 600; color: #888; text-transform: uppercase; }
-        .form-input { padding: 10px; border: 1px solid #ddd; border-radius: 4px; width: 100%; font-family: var(--font-main); }
+        .form-input { padding: 10px; border: 1px solid #ddd; border-radius: 4px; width: 100%; font-family: var(--font-main); font-size: 0.9rem; }
         .btn-modal-book { width: 100%; background: var(--w-black); color: white; border: none; padding: 15px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-radius: 4px; }
         .btn-modal-book:hover { background: var(--w-red); }
 
         @media (max-width: 768px) {
             .hero-title { font-size: 2.8rem; }
             .modal-content { grid-template-columns: 1fr; height: 100%; border-radius: 0; }
-            .modal-img-col { height: 250px; }
+            .modal-img-col { height: 280px; }
             .nav-menu { display: none; } 
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
             .trust-grid { gap: 30px; }
@@ -291,7 +249,6 @@
             <h1 class="hero-title">Wonderland</h1>
             <p class="hero-subtitle">
                 <span class="lang-en">The door to Japan opens here.</span>
-                <!-- Updated Subtitle -->
                 <span class="lang-jp">
                     日本への扉が、<span class="hover-kyoto">京都</span>と<span class="hover-osaka">大阪</span>から開く。
                 </span>
@@ -337,7 +294,7 @@
             <!-- 1. GION -->
             <div class="tour-card reveal" onclick="openBooking('gion')">
                 <div class="tour-badge"><span class="lang-en">Bestseller</span><span class="lang-jp">一番人気</span></div>
-                <div class="card-img-wrap"><img src="gion_main.jpg" alt="Gion"></div>
+                <div class="card-img-wrap"><img src="gion_main.jpg" alt="Gion" onerror="this.src='https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=2070'"></div>
                 <div class="card-content">
                     <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> <span class="lang-en"><span class="hover-kyoto">Kyoto</span></span><span class="lang-jp"><span class="hover-kyoto">京都</span></span></span><span><i class="fa-regular fa-clock"></i> <span class="lang-en">2 Hours</span><span class="lang-jp">2時間</span></span></div>
                     <h3 class="card-title"><span class="lang-en">Shadows of the Floating World</span><span class="lang-jp">花柳界の幽玄</span></h3>
@@ -349,7 +306,7 @@
             <!-- 2. ARASHIYAMA -->
             <div class="tour-card reveal" onclick="openBooking('arashiyama')" style="transition-delay: 0.1s;">
                 <div class="tour-badge"><span class="lang-en">Early Access</span><span class="lang-jp">早朝限定</span></div>
-                <div class="card-img-wrap"><img src="arashiyama_main.jpg" alt="Arashiyama"></div>
+                <div class="card-img-wrap"><img src="arashiyama_main.jpg" alt="Arashiyama" onerror="this.src='https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?q=80&w=2574'"></div>
                 <div class="card-content">
                     <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> <span class="lang-en"><span class="hover-kyoto">Kyoto</span></span><span class="lang-jp"><span class="hover-kyoto">京都</span></span></span><span><i class="fa-regular fa-clock"></i> <span class="lang-en">2 Hours</span><span class="lang-jp">2時間</span></span></div>
                     <h3 class="card-title"><span class="lang-en">Whispers of the Bamboo</span><span class="lang-jp">竹林の静寂</span></h3>
@@ -361,7 +318,7 @@
             <!-- 3. KYOTO FOOD -->
             <div class="tour-card reveal" onclick="openBooking('kyoto-food')" style="transition-delay: 0.2s;">
                 <div class="tour-badge"><span class="lang-en">Gastronomy</span><span class="lang-jp">美食ツアー</span></div>
-                <div class="card-img-wrap"><img src="kyoto_main.jpg" alt="Kyoto Food"></div>
+                <div class="card-img-wrap"><img src="kyoto_main.jpg" alt="Kyoto Food" onerror="this.src='https://images.unsplash.com/photo-1580915411954-282cb1b0d780?q=80&w=2574'"></div>
                 <div class="card-content">
                     <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> <span class="lang-en"><span class="hover-kyoto">Kyoto</span></span><span class="lang-jp"><span class="hover-kyoto">京都</span></span></span><span><i class="fa-regular fa-clock"></i> <span class="lang-en">3 Hours</span><span class="lang-jp">3時間</span></span></div>
                     <h3 class="card-title"><span class="lang-en">The Spirits of Pontocho</span><span class="lang-jp">先斗町の美酒</span></h3>
@@ -373,7 +330,7 @@
             <!-- 4. OSAKA FOOD -->
             <div class="tour-card reveal" onclick="openBooking('osaka-food')">
                 <div class="tour-badge" style="background:var(--w-red); color:white;"><span class="lang-en">Must Do</span><span class="lang-jp">必見</span></div>
-                <div class="card-img-wrap"><img src="osaka_main.jpg" alt="Osaka Food"></div>
+                <div class="card-img-wrap"><img src="osaka_main.jpg" alt="Osaka Food" onerror="this.src='https://images.unsplash.com/photo-1590559901309-a05d18a4d6f0?q=80&w=2670'"></div>
                 <div class="card-content">
                     <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> <span class="lang-en"><span class="hover-osaka">Osaka</span></span><span class="lang-jp"><span class="hover-osaka">大阪</span></span></span><span><i class="fa-regular fa-clock"></i> <span class="lang-en">3 Hours</span><span class="lang-jp">3時間</span></span></div>
                     <h3 class="card-title"><span class="lang-en">Osaka Soul Food: Kitchen of Japan</span><span class="lang-jp">天下の台所・大阪</span></h3>
@@ -385,7 +342,7 @@
             <!-- 5. OSAKA WALKING -->
              <div class="tour-card reveal" onclick="openBooking('osaka-walk')" style="transition-delay: 0.1s;">
                 <div class="tour-badge"><span class="lang-en">Walking</span><span class="lang-jp">ウォーキング</span></div>
-                <div class="card-img-wrap"><img src="osakaw_main.jpg" alt="Osaka Walking"></div>
+                <div class="card-img-wrap"><img src="osakaw_main.jpg" alt="Osaka Walking" onerror="this.src='https://images.unsplash.com/photo-1505337341632-bb9a296316ad?q=80&w=2670'"></div>
                 <div class="card-content">
                     <div class="card-meta"><span><i class="fa-solid fa-location-dot"></i> <span class="lang-en"><span class="hover-osaka">Osaka</span></span><span class="lang-jp"><span class="hover-osaka">大阪</span></span></span><span><i class="fa-regular fa-clock"></i> <span class="lang-en">2 Hours</span><span class="lang-jp">2時間</span></span></div>
                     <h3 class="card-title"><span class="lang-en">Kuidaore Culture</span><span class="lang-jp">食い倒れ文化</span></h3>
@@ -396,7 +353,7 @@
 
             <!-- 6. TEA (COMING SOON) -->
             <div class="tour-card coming-soon reveal" style="transition-delay: 0.2s;">
-                <div class="card-img-wrap"><img src="tea.jpg" alt="Tea"></div>
+                <div class="card-img-wrap"><img src="tea.jpg" alt="Tea" onerror="this.src='https://images.unsplash.com/photo-1531263060782-b024de9b9793?q=80&w=2670'"></div>
                 <div class="card-content">
                     <div class="card-meta"><span>TBA</span></div>
                     <h3 class="card-title"><span class="lang-en">Private Tea Ceremony</span><span class="lang-jp">プライベート茶道体験</span></h3>
@@ -405,7 +362,7 @@
             </div>
              <!-- 7. TAIKO (COMING SOON) -->
              <div class="tour-card coming-soon reveal">
-                <div class="card-img-wrap"><img src="taiko.jpg" alt="Taiko"></div>
+                <div class="card-img-wrap"><img src="taiko.jpg" alt="Taiko" onerror="this.src='https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=2669'"></div>
                 <div class="card-content">
                     <div class="card-meta"><span>TBA</span></div>
                     <h3 class="card-title"><span class="lang-en">Kyoto Taiko</span><span class="lang-jp">京都和太鼓体験</span></h3>
@@ -423,22 +380,22 @@
         </div>
         <div class="team-grid">
             <div class="reveal">
-                <img src="team_shin.jpg" class="team-img" alt="Shin">
+                <img src="team_shin.jpg" class="team-img" alt="Shin" onerror="this.src='https://randomuser.me/api/portraits/men/32.jpg'">
                 <div class="team-name">Shinichiro Kawabata</div>
                 <div class="team-role"><span class="lang-en">CEO & Founder</span><span class="lang-jp">代表・創業者</span></div>
             </div>
             <div class="reveal" style="transition-delay: 0.1s;">
-                <img src="team_momoko.jpg" class="team-img" alt="Momoko">
+                <img src="team_momoko.jpg" class="team-img" alt="Momoko" onerror="this.src='https://randomuser.me/api/portraits/women/44.jpg'">
                 <div class="team-name">Momoko Shimada</div>
                 <div class="team-role"><span class="lang-en">Director</span><span class="lang-jp">ディレクター</span></div>
             </div>
             <div class="reveal" style="transition-delay: 0.2s;">
-                <img src="team_ben.jpg" class="team-img" alt="Ben">
+                <img src="team_ben.jpg" class="team-img" alt="Ben" onerror="this.src='https://randomuser.me/api/portraits/men/88.jpg'">
                 <div class="team-name">Benjamin</div>
                 <div class="team-role"><span class="lang-en">Guide</span><span class="lang-jp">ガイド</span></div>
             </div>
              <div class="reveal" style="transition-delay: 0.3s;">
-                <img src="team_kaho.jpg" class="team-img" alt="Kaho">
+                <img src="team_kaho.jpg" class="team-img" alt="Kaho" onerror="this.src='https://randomuser.me/api/portraits/women/65.jpg'">
                 <div class="team-name">Kaho</div>
                 <div class="team-role"><span class="lang-en">Guide</span><span class="lang-jp">ガイド</span></div>
             </div>
@@ -592,7 +549,6 @@
                         <div class="form-grid">
                             <div class="form-group">
                                 <label><span class="lang-en">Guests</span><span class="lang-jp">人数</span></label>
-                                <!-- FIXED GUESTS SELECT: Using Data Attributes instead of nested tags -->
                                 <select class="form-input" id="guests-select">
                                     <option value="1" data-en="1 Person" data-jp="1名">1 Person</option>
                                     <option value="2" data-en="2 People" data-jp="2名">2 People</option>
@@ -613,7 +569,12 @@
     </div>
 
     <script>
-        // --- TOUR DATA (UPDATED WITH JAPANESE) ---
+        // --- TOUR DATA (UPDATED WITH CORRECT IMAGE RANGES) ---
+        // Gion: gion_main, gion2~7
+        // Arashiyama: arashiyama_main, arashiyama2~8
+        // Osaka Food: osaka_main, osaka2~6
+        // Osaka Walking: osakaw_main, osakaw_2~7
+        
         const tourData = {
             'gion': {
                 title: { en: "Shadows of the Floating World", jp: "花柳界の幽玄" },
@@ -624,7 +585,7 @@
                     en: "As dusk falls over the Shirakawa River, the lantern-lit cobblestones tell stories of a fleeting world. This is not a sightseeing trip; it is a respectful entry into the 'Karyukai' (Flower and Willow World). We decode the subtle gestures, the history of the teahouses, and the rigorous life of the Artistes (Geiko & Maiko). <br><br><strong>Select your time:</strong><br>• 10:30: Morning tranquility & culture.<br>• 13:30: The bustling energy of the ancient capital.<br>• 16:30: The romantic, lantern-lit atmosphere.",
                     jp: "白川に夕闇が迫る頃、提灯に照らされた石畳は「浮世」の物語を語り始めます。これは単なる観光ではありません。「花柳界」への敬意ある入門です。私たちは、芸舞妓の繊細な所作の意味、お茶屋の歴史、そして彼女たちの厳しくも美しい生き様を紐解きます。<br><br><strong>時間をお選びください:</strong><br>• 10:30: 朝の静寂と文化体験。<br>• 13:30: 古都の賑わいとエネルギー。<br>• 16:30: 提灯が灯る幻想的な雰囲気。"
                 },
-                images: ["gion_main.jpg", "gion2.jpg", "gion3.jpg"]
+                images: ["gion_main.jpg", "gion2.jpg", "gion3.jpg", "gion4.jpg", "gion5.jpg", "gion6.jpg", "gion7.jpg"]
             },
             'arashiyama': {
                 title: { en: "Whispers of the Bamboo", jp: "竹林の静寂" },
@@ -632,10 +593,10 @@
                 duration: { en: "2 Hours", jp: "2時間" },
                 slots: ["07:30", "10:30"],
                 desc: {
-                    en: "Silence has a sound. In the stillness of dawn, before the world wakes, the Bamboo Grove breathes. We guide you through this emerald tunnel not just to take photos, but to experience 'Shinrin-yoku' (Forest Bathing). Followed by a private moment at Tenryu-ji's borrowed landscape garden.",
-                    jp: "静寂には音があります。世界が目覚める前の夜明け、竹林は深く呼吸をしています。私たちはただ写真を撮るためではなく、「森林浴」を体験するために、この翠緑のトンネルをご案内します。その後、天龍寺の借景庭園にて静かなひとときを過ごします。"
+                    en: "Silence has a sound. At dawn, when the world is still asleep, the Bamboo Grove breathes. A Kyoto local leads you through hidden side paths untouched by crowds—routes only residents know. She reveals the perfect photo spots and the stories woven into Arashiyama’s quiet soul.",
+                    jp: "静けさには、音がある。世界がまだ眠る夜明け、竹林はそっと呼吸を始める。地元に生まれ育ったガイドが、人混みの届かない“住人だけの小径”へと導きます。彼女だけが知る撮影の名所と、嵐山に息づく物語を静かに紡ぎながら。"
                 },
-                images: ["arashiyama_main.jpg", "arashiyama2.jpg", "arashiyama3.jpg"]
+                images: ["arashiyama_main.jpg", "arashiyama2.jpg", "arashiyama3.jpg", "arashiyama4.jpg", "arashiyama5.jpg", "arashiyama6.jpg", "arashiyama7.jpg", "arashiyama8.jpg"]
             },
             'kyoto-food': {
                 title: { en: "Hidden Kyoto: The Spirits of Pontocho", jp: "隠れ家京都：先斗町の美酒" },
@@ -643,16 +604,11 @@
                 duration: { en: "3 Hours", jp: "3時間" },
                 slots: ["18:30"],
                 desc: {
-                    en: "Follow her into the dusk-lit alleys of Pontocho, where lantern light shimmers like river reflections and time seems to breathe a little slower.
-A former Kyoto chef, she leads you to doorways without signs, places that locals keep close to their hearts.
-Within these hidden rooms, seasonal obanzai, charcoal warmth, and quietly aged sake tell stories older than the alley itself.
-Tonight, Kyoto reveals not its face, but its soul.",
-                    jp: "夕暮れの先斗町、灯籠の揺らぎが鴨川の水面のように静かに揺れる小路を、彼女はそっと導きます。
-京都で腕を磨いた元料理人である彼女が案内するのは、看板もない小さな扉、地元の人だけが密かに通う味の隠れ家。
-季節のおばんざい、炭火の香り、熟成した酒の余韻が、路地よりも古い物語を語りはじめます。
-今夜、あなたが触れるのは京都の表ではなく、その奥に潜む“こころ”です。"
+                    en: "Follow her into the dusk-lit alleys of Pontocho, where lantern light shimmers like river reflections. A former Kyoto chef leads you to doorways without signs, places that locals keep close to their hearts. Within these hidden rooms, seasonal obanzai, charcoal warmth, and quietly aged sake tell stories older than the alley itself.",
+                    jp: "夕暮れの先斗町、灯籠の揺らぎが鴨川の水面のように静かに揺れる小路を、彼女はそっと導きます。京都で腕を磨いた元料理人である彼女が案内するのは、看板もない小さな扉、地元の人だけが密かに通う味の隠れ家。季節のおばんざい、炭火の香り、熟成した酒の余韻が、路地よりも古い物語を語りはじめます。"
                 },
-                images: ["kyoto_main.jpg", "kyoto2.jpg"]
+                // Assuming standard naming convention here, can be adjusted
+                images: ["kyoto_main.jpg", "kyoto2.jpg", "kyoto3.jpg", "kyoto4.jpg"]
             },
             'osaka-food': {
                 title: { en: "Osaka Soul Food: Kitchen of Japan", jp: "大阪ソウルフード：天下の台所" },
@@ -663,7 +619,7 @@ Tonight, Kyoto reveals not its face, but its soul.",
                     en: "Osaka is the rebellious younger brother of Kyoto. It’s loud, it’s messy, and it’s delicious. From the sizzling Wagyu of Dotonbori to the retro nostalgia of Shinsekai, we skip the tourist traps and dive straight into the 'Kuidaore' culture. Includes 12 local dishes and 3 drinks.",
                     jp: "大阪は、京都の反抗的な弟のような存在です。騒がしく、混沌としていて、そして最高に美味しい。道頓堀の和牛から新世界のレトロな情緒まで。観光客向けの店は避け、真の「食い倒れ」文化へ直行します。厳選された12品と3ドリンクが含まれます。"
                 },
-                images: ["osaka_main.jpg", "osaka2.jpg"]
+                images: ["osaka_main.jpg", "osaka2.jpg", "osaka3.jpg", "osaka4.jpg", "osaka5.jpg", "osaka6.jpg"]
             },
             'osaka-walk': {
                 title: { en: "The Kitchen of Japan", jp: "天下の台所" },
@@ -671,14 +627,15 @@ Tonight, Kyoto reveals not its face, but its soul.",
                 duration: { en: "2 Hours", jp: "2時間" },
                 slots: ["13:00", "16:00"],
                 desc: {
-                    en: "Osaka is not polite; it is real. This walking tour peels back the neon layers of Dotonbori to reveal the gritty, beating heart of the merchant city. We stop for the 'Holy Trinity' of soul food: Takoyaki, Gyoza, and Kushikatsu. Includes 1 street food snack.",
-                    jp: "大阪は上品ではありません。リアルな街です。このツアーでは、道頓堀のネオンの層を剥がし、商人の街のたくましい心臓部を露わにします。ソウルフードの「三種の神器」（たこ焼き、餃子、串カツ）の名店を巡ります。ストリートフード1品付き。"
+                    en: "In Osaka, flavor is a way of life. Beneath the neon glow, the sizzle of iron grills and sweet soy in the air warm the night. Follow her into the back alleys where tiny shops, guarded by local craftsmen, keep their quiet pride alive. Each bite carries laughter, warmth, and the spirit of the street.",
+                    jp: "大阪では、味は生き方そのものだ。ネオンの下、鉄板の音と甘辛い香りが夜を温める。彼女が案内する裏路地には、地元の職人だけが守り続けてきた“小さな名店”が息づいている。一口ごとに、笑い声と人情が滲む。"
                 },
-                images: ["osakaw_main.jpg", "osakaw_2.jpg"]
+                // Note: Using 'osakaw_' prefix for 2-7 as requested
+                images: ["osakaw_main.jpg", "osakaw_2.jpg", "osakaw_3.jpg", "osakaw_4.jpg", "osakaw_5.jpg", "osakaw_6.jpg", "osakaw_7.jpg"]
             }
         };
 
-        // --- AUTHENTIC REVIEWS (TRANSLATED) ---
+        // --- REVIEWS DATA ---
         const reviewsData = [
             { 
                 name: "Jessica Reynolds", country: "🇺🇸", platform: "fa-tripadvisor",
@@ -714,7 +671,7 @@ Tonight, Kyoto reveals not its face, but its soul.",
             }
         ];
 
-        // --- HELPER TO GET TEXT BASED ON LANG ---
+        // --- HELPER FUNCTIONS ---
         function getLang() {
             return document.body.classList.contains('is-jp') ? 'jp' : 'en';
         }
@@ -722,11 +679,9 @@ Tonight, Kyoto reveals not its face, but its soul.",
         const reviewTrack = document.getElementById('reviewTrack');
         
         function renderReviews() {
-            reviewTrack.innerHTML = ''; // Clear existing
+            reviewTrack.innerHTML = ''; 
             const lang = getLang();
-            
-            // Double the data for smooth scroll
-            const displayData = [...reviewsData, ...reviewsData];
+            const displayData = [...reviewsData, ...reviewsData]; // Double for marquee
             
             displayData.forEach(r => {
                 const card = document.createElement('div');
@@ -746,7 +701,7 @@ Tonight, Kyoto reveals not its face, but its soul.",
             });
         }
 
-        // --- MODAL & JS ---
+        // --- MODAL LOGIC ---
         let currentSlide = 0;
         let currentImages = [];
 
@@ -770,7 +725,7 @@ Tonight, Kyoto reveals not its face, but its soul.",
                 timeSelect.appendChild(option);
             });
 
-            // Update placeholder for Name based on language
+            // Update placeholder
             document.querySelector('input[placeholder]').placeholder = lang === 'jp' ? '山田 太郎' : 'Your Name';
 
             const gallery = document.getElementById('modal-gallery');
@@ -780,7 +735,11 @@ Tonight, Kyoto reveals not its face, but its soul.",
                 const img = document.createElement('img');
                 img.src = imgSrc;
                 img.className = index === 0 ? 'gallery-slide active' : 'gallery-slide';
-                img.onerror = function() { this.style.display = 'none'; };
+                // Important: If image fails to load (e.g. not uploaded yet), hide it so layout doesn't break
+                img.onerror = function() { 
+                    this.style.display = 'none'; 
+                    this.classList.remove('active');
+                };
                 gallery.appendChild(img);
             });
             currentSlide = 0;
@@ -796,10 +755,19 @@ Tonight, Kyoto reveals not its face, but its soul.",
 
         function moveSlide(n) {
             const slides = document.querySelectorAll('.gallery-slide');
-            if(slides.length === 0) return;
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + n + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
+            // Filter out hidden slides (ones that failed to load)
+            const validSlides = Array.from(slides).filter(s => s.style.display !== 'none');
+            
+            if(validSlides.length === 0) return;
+            
+            // Find current active index within valid slides
+            let activeIndex = validSlides.findIndex(s => s.classList.contains('active'));
+            if(activeIndex === -1) activeIndex = 0; // fallback
+
+            validSlides[activeIndex].classList.remove('active');
+            
+            let nextIndex = (activeIndex + n + validSlides.length) % validSlides.length;
+            validSlides[nextIndex].classList.add('active');
         }
 
         function handleBooking(e) {
@@ -823,14 +791,17 @@ Tonight, Kyoto reveals not its face, but its soul.",
             });
         });
 
-        // --- INIT ---
+        // --- INIT & LANG ---
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferredLang');
             if (savedLang === 'jp') { 
                 setLang('jp'); 
             } else {
-                renderReviews(); // Render default EN
+                renderReviews(); 
             }
+            
+            // FIX: Force scroll check immediately to show elements even if not scrolled
+            checkScroll();
         });
 
         function setLang(lang) {
@@ -850,43 +821,33 @@ Tonight, Kyoto reveals not its face, but its soul.",
                 btnJp.classList.remove('active');
             }
             
-            // Re-render dynamic content (Reviews)
             renderReviews();
             
-            // Re-render Guest Select Options using Data Attributes
             document.querySelectorAll('option[data-en]').forEach(opt => {
                 opt.innerText = opt.getAttribute(`data-${lang}`);
             });
             
-            // Update Name Placeholder if modal is not open but lang switched
             const nameInput = document.querySelector('input[placeholder]');
             if(nameInput) {
                 nameInput.placeholder = lang === 'jp' ? '山田 太郎' : 'Your Name';
             }
         }
         
-        // --- PARALLAX & SCROLL EFFECT LOGIC ---
-        window.addEventListener('scroll', () => {
-            // 1. Navbar Effect
+        // --- PARALLAX & SCROLL ---
+        function checkScroll() {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
             
-            // 2. Parallax Effect
             const scrollY = window.scrollY;
             const heroBg = document.getElementById('hero-bg');
             const heroText = document.getElementById('hero-text');
             
-            if(heroBg) {
-                heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
-            }
-            if(heroText) {
-                heroText.style.transform = `translateY(${scrollY * 0.2}px)`;
-            }
+            if(heroBg) heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+            if(heroText) heroText.style.transform = `translateY(${scrollY * 0.2}px)`;
 
-            // 3. Scroll Reveal Effect
             const reveals = document.querySelectorAll('.reveal');
             const windowHeight = window.innerHeight;
-            const elementVisible = 150; 
+            const elementVisible = 100; // Lowered threshold to ensure items appear sooner
 
             reveals.forEach((reveal) => {
                 const elementTop = reveal.getBoundingClientRect().top;
@@ -894,7 +855,9 @@ Tonight, Kyoto reveals not its face, but its soul.",
                     reveal.classList.add('active');
                 }
             });
-        });
+        }
+
+        window.addEventListener('scroll', checkScroll);
     </script>
 </body>
 </html>
