@@ -6,17 +6,16 @@
 
   <!-- SEO METADATA -->
   <title>Kyoto & Osaka Tours | Private Guided Tours, Small Groups & Local Experiences | Wonderland Japan</title>
+  <meta name="description" content="Wonderland Japan: Kyoto & Osaka local experiences. Small-group tours, cultural workshops, and live performances with trusted hosts." />
 
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Zen+Old+Mincho:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
+    /* --- DESIGN SYSTEM --- */
     :root{
       --w-red:#9D2A32;
       --w-gold:#C8A660;
@@ -27,13 +26,12 @@
       --font-jp:'Zen Old Mincho',serif;
 
       --shadow-soft: 0 10px 30px rgba(0,0,0,0.06);
-      --shadow-pop: 0 25px 60px rgba(0,0,0,0.28);
-      --radius-12: 12px;
-      --radius-18: 18px;
+      --shadow-hover: 0 20px 45px rgba(0,0,0,0.14);
+      --radius: 14px;
     }
 
     *{margin:0;padding:0;box-sizing:border-box;}
-
+    html{scroll-behavior:smooth;}
     body{
       background-color:var(--w-cream);
       color:var(--w-black);
@@ -42,35 +40,27 @@
       overflow-x:hidden;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
     }
-
-    html{scroll-behavior:smooth;}
-    h1,h2,h3,h4{font-family:var(--font-lux);line-height:1.15;}
+    h1,h2,h3,h4{font-family:var(--font-lux);line-height:1.2;}
     img{max-width:100%;display:block;}
 
-    /* Language */
+    /* JP language override */
     body.is-jp{font-family:var(--font-jp)!important;}
     body.is-jp h1,body.is-jp h2,body.is-jp h3,body.is-jp h4,
     body.is-jp p,body.is-jp a,body.is-jp span,body.is-jp div,
-    body.is-jp input,body.is-jp button,body.is-jp select{
+    body.is-jp input,body.is-jp button,body.is-jp select,body.is-jp label{
       font-family:var(--font-jp)!important;
-      letter-spacing:0.05em;
+      letter-spacing:0.04em;
     }
 
     .lang-jp{display:none;}
     body.is-jp .lang-en{display:none!important;}
     body.is-jp .lang-jp{display:inline-block!important;}
 
-    /* Hover */
-    .hover-kyoto{border-bottom:1px dotted var(--w-red);transition:.3s;cursor:pointer;}
-    .hover-kyoto:hover{color:var(--w-red);}
-    .hover-osaka{border-bottom:1px dotted var(--w-gold);transition:.3s;cursor:pointer;}
-    .hover-osaka:hover{color:var(--w-gold);}
-
     /* Reveal */
-    .reveal{opacity:0;transform:translateY(34px);transition:all 1s cubic-bezier(.5,0,0,1);}
+    .reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(0.5,0,0,1);}
     .reveal.active{opacity:1;transform:translateY(0);}
 
-    /* Nav */
+    /* NAV */
     nav{
       position:fixed;top:0;width:100%;
       padding:20px 5%;
@@ -81,10 +71,11 @@
       background:rgba(255,255,255,.98);
       box-shadow:0 4px 20px rgba(0,0,0,.08);
       padding:14px 5%;
+      backdrop-filter:saturate(180%) blur(10px);
     }
     .brand-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
     .logo-img{height:45px;width:45px;background:var(--w-red);border-radius:50%;object-fit:cover;}
-    .brand-text h1{font-size:1.2rem;color:#fff;margin:0;font-weight:800;letter-spacing:.5px;}
+    .brand-text h1{font-size:1.2rem;color:white;margin:0;font-weight:700;}
     .brand-text span{font-size:.65rem;color:var(--w-gold);letter-spacing:3px;display:block;}
     nav.scrolled .brand-text h1{color:var(--w-red);}
     nav.scrolled .nav-menu a{color:var(--w-black);}
@@ -93,395 +84,241 @@
     .nav-right{display:flex;align-items:center;gap:30px;}
     .nav-menu{display:flex;gap:20px;}
     .nav-menu a{
-      color:#fff;text-decoration:none;
-      font-size:.75rem;text-transform:uppercase;
-      letter-spacing:1.5px;font-weight:600;transition:.25s;
-      opacity:.95;
+      color:white;text-decoration:none;font-size:.75rem;
+      text-transform:uppercase;letter-spacing:1.5px;font-weight:500;transition:.25s;
     }
-    .nav-menu a:hover{opacity:1;transform:translateY(-1px);}
+    .nav-menu a:hover{opacity:.85;transform:translateY(-1px);}
     .lang-switcher{display:flex;gap:10px;}
     .lang-btn{
       background:transparent;border:1px solid rgba(255,255,255,.4);
-      color:#fff;padding:6px 14px;border-radius:999px;font-size:.7rem;
-      cursor:pointer;transition:.25s;
+      color:white;padding:6px 14px;border-radius:30px;
+      font-size:.7rem;cursor:pointer;transition:.25s;
     }
-    .lang-btn.active,.lang-btn:hover{
-      background:var(--w-red);border-color:var(--w-red);color:#fff;
-    }
+    .lang-btn.active,.lang-btn:hover{background:var(--w-red);border-color:var(--w-red);color:white;}
 
-    /* Hero */
-    header{
-      height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;
-    }
+    /* HERO */
+    header{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
     .hero-bg{
       position:absolute;top:0;left:0;width:100%;height:120%;
       background-image:url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053');
-      background-size:cover;background-position:center;
-      z-index:-1;filter:brightness(.65);will-change:transform;
+      background-size:cover;background-position:center;z-index:-1;
+      filter:brightness(.65);will-change:transform;
     }
-    .hero-content{text-align:center;color:#fff;z-index:2;padding:0 20px;will-change:transform;}
-    .hero-title{font-size:4rem;margin-bottom:14px;letter-spacing:2px;text-shadow:0 10px 30px rgba(0,0,0,.3);}
-    .hero-subtitle{font-size:1.2rem;margin-bottom:40px;color:var(--w-gold);letter-spacing:2px;}
+    .hero-content{text-align:center;color:white;z-index:2;padding:0 20px;will-change:transform;}
+    .hero-title{font-size:4rem;margin-bottom:15px;letter-spacing:2px;text-shadow:0 10px 30px rgba(0,0,0,.3);}
+    .hero-subtitle{font-size:1.25rem;margin-bottom:38px;color:var(--w-gold);letter-spacing:2px;}
     .hero-cta{
-      background:var(--w-red);color:#fff;text-decoration:none;
-      padding:18px 50px;border-radius:999px;font-size:.9rem;
-      letter-spacing:2px;font-weight:700;transition:.25s;
-      display:inline-flex;justify-content:center;align-items:center;
+      background:var(--w-red);color:white;text-decoration:none;
+      padding:18px 50px;border-radius:50px;font-size:.9rem;letter-spacing:2px;font-weight:600;
+      transition:.25s;display:inline-flex;justify-content:center;align-items:center;white-space:nowrap;
       min-width:220px;box-shadow:0 10px 25px rgba(0,0,0,.2);
     }
-    .hero-cta:hover{background:#fff;color:var(--w-red);transform:translateY(-2px);}
+    .hero-cta:hover{background:white;color:var(--w-red);transform:translateY(-3px);}
 
-    /* Trust bar */
+    /* TRUST BAR */
     .trust-bar{
-      background:#fff;padding:30px 5%;
+      background:white;padding:35px 5%;
       text-align:center;border-bottom:1px solid #eee;
       display:flex;flex-direction:column;align-items:center;
     }
-    .trust-label{font-size:.7rem;color:#888;letter-spacing:2px;margin-bottom:14px;text-transform:uppercase;}
+    .trust-label{font-size:.7rem;color:#888;letter-spacing:2px;margin-bottom:15px;text-transform:uppercase;}
     .trust-icons{
-      display:flex;gap:50px;align-items:center;flex-wrap:wrap;justify-content:center;
+      display:flex;gap:34px;align-items:center;flex-wrap:wrap;justify-content:center;
     }
-    .trust-badge{display:flex;align-items:center;gap:12px;opacity:.95;justify-content:center;}
-    .trust-badge i{font-size:1.8rem;color:var(--w-black);}
-    .trust-badge span{
-      font-size:.85rem;font-weight:700;color:var(--w-black);
-      text-transform:uppercase;letter-spacing:1px;
+    .trust-badge{
+      display:flex;align-items:center;gap:12px;opacity:.95;
+      padding:10px 14px;border-radius:999px;background:rgba(249,248,246,.9);
+      border:1px solid rgba(0,0,0,.06);
     }
+    .trust-badge i{font-size:1.5rem;color:var(--w-black);}
+    .trust-badge span{font-size:.82rem;font-weight:700;color:var(--w-black);text-transform:uppercase;letter-spacing:1px;}
+    /* TripAdvisor widget containers */
+    .ta-wrap{display:flex;align-items:center;justify-content:center;}
+    .ta-wrap .TA_rated{transform:scale(.95);transform-origin:center;}
+    .ta-en,.ta-jp{display:none;}
+    body:not(.is-jp) .ta-en{display:block;}
+    body.is-jp .ta-jp{display:block;}
 
-    /* TripAdvisor widget containers: DO NOT hide (TripAdvisor script injects content) */
-    .ta-wrap{
-      display:flex;align-items:center;justify-content:center;
-      padding:2px 0;
-    }
-    /* language toggle for TA */
-    .ta-en{display:flex;}
-    .ta-jp{display:none;}
-    body.is-jp .ta-en{display:none;}
-    body.is-jp .ta-jp{display:flex;}
-
-    /* Tours */
-    .tours-section{padding:95px 5%;background:transparent;}
+    /* TOURS */
+    .tours-section{padding:100px 5%;}
     .section-header{text-align:center;margin-bottom:70px;}
-    .section-tag{color:var(--w-red);font-size:.75rem;letter-spacing:3px;font-weight:800;text-transform:uppercase;display:block;margin-bottom:10px;}
-    .section-header h2{font-size:3rem;color:var(--w-black);margin-bottom:10px;}
+    .section-tag{color:var(--w-red);font-size:.75rem;letter-spacing:3px;font-weight:700;text-transform:uppercase;display:block;margin-bottom:10px;}
+    .section-header h2{font-size:3rem;color:var(--w-black);margin-bottom:18px;}
+    .section-header p{max-width:780px;margin:0 auto;color:#555;font-size:1rem;}
     .tours-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:35px;}
-
     .tour-card{
-      background:#fff;border-radius:var(--radius-12);overflow:hidden;
-      box-shadow:var(--shadow-soft);
-      transition:transform .35s, box-shadow .35s;
+      background:white;border-radius:var(--radius);overflow:hidden;
+      box-shadow:var(--shadow-soft);transition:transform .35s, box-shadow .35s;
       cursor:pointer;position:relative;display:flex;flex-direction:column;height:100%;
+      border:1px solid rgba(0,0,0,.04);
     }
-    .tour-card:hover{transform:translateY(-7px);box-shadow:0 22px 48px rgba(0,0,0,.12);}
+    .tour-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover);}
     .tour-badge{
-      position:absolute;top:18px;left:18px;background:rgba(255,255,255,.95);
-      color:var(--w-black);padding:6px 14px;font-size:.7rem;
-      text-transform:uppercase;font-weight:800;z-index:2;border-radius:999px;
-      box-shadow:0 8px 20px rgba(0,0,0,.08);
+      position:absolute;top:18px;left:18px;
+      background:rgba(255,255,255,.92);color:var(--w-black);
+      padding:6px 12px;font-size:.7rem;text-transform:uppercase;font-weight:800;z-index:2;border-radius:8px;
+      border:1px solid rgba(0,0,0,.06);
+      backdrop-filter: blur(6px);
     }
     .card-img-wrap{height:260px;overflow:hidden;position:relative;background:#eee;}
-    .card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease;}
+    .card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .65s ease;}
     .tour-card:hover .card-img-wrap img{transform:scale(1.08);}
-    .card-content{padding:28px;display:flex;flex-direction:column;flex-grow:1;}
-    .card-meta{display:flex;gap:14px;margin-bottom:10px;font-size:.75rem;color:#888;text-transform:uppercase;font-weight:700;letter-spacing:.8px;}
-    .card-title{font-size:1.35rem;margin-bottom:10px;color:var(--w-black);font-weight:800;line-height:1.25;}
-    .card-short-desc{font-size:.92rem;color:#555;margin-bottom:18px;flex-grow:1;}
-    .price-preview{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid #f0f0f0;padding-top:16px;margin-top:auto;}
-    .price-val{font-size:1.2rem;color:var(--w-red);font-weight:900;letter-spacing:.2px;}
+    .card-content{padding:30px;display:flex;flex-direction:column;flex-grow:1;}
+    .card-meta{display:flex;gap:15px;margin-bottom:12px;font-size:.75rem;color:#888;text-transform:uppercase;font-weight:700;letter-spacing:1px;}
+    .card-title{font-size:1.35rem;margin-bottom:12px;color:var(--w-black);font-weight:800;line-height:1.25;}
+    .card-short-desc{font-size:.92rem;color:#555;margin-bottom:25px;flex-grow:1;}
+    .price-preview{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid #f0f0f0;padding-top:18px;margin-top:auto;}
+    .price-val{font-size:1.2rem;color:var(--w-red);font-weight:800;}
+    .pill{
+      font-size:.72rem;font-weight:800;color:#222;background:rgba(200,166,96,.18);
+      border:1px solid rgba(200,166,96,.32);
+      padding:6px 10px;border-radius:999px;
+    }
 
     /* TEAM */
-    .team-section{padding:85px 5%;background:#fff;text-align:center;}
-    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-top:46px;}
-    .team-img{
-      width:180px;height:180px;border-radius:50%;object-fit:cover;margin:0 auto 18px auto;
-      border:4px solid var(--w-cream);
-      box-shadow:0 10px 25px rgba(0,0,0,.1);
-      transition:.35s;background:#eee;
+    .team-section{padding:90px 5%;background:white;text-align:center;border-top:1px solid #eee;}
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:40px;margin-top:45px;}
+    .team-card{
+      padding:24px;border-radius:16px;background:linear-gradient(180deg,#fff, #faf9f7);
+      border:1px solid rgba(0,0,0,.05);
+      box-shadow:0 10px 26px rgba(0,0,0,.05);
     }
-    .team-img:hover{transform:scale(1.04);border-color:var(--w-gold);}
-    .team-name{font-family:var(--font-lux);font-size:1.25rem;color:var(--w-red);margin-bottom:4px;}
-    .team-role{font-size:.85rem;color:var(--w-gold);letter-spacing:2px;text-transform:uppercase;font-weight:700;}
+    .team-img{
+      width:180px;height:180px;border-radius:50%;object-fit:cover;
+      margin:0 auto 18px auto;border:4px solid var(--w-cream);
+      box-shadow:0 10px 25px rgba(0,0,0,.12);transition:.3s;background:#eee;
+    }
+    .team-img:hover{transform:scale(1.05);border-color:var(--w-gold);}
+    .team-name{font-family:var(--font-lux);font-size:1.25rem;color:var(--w-red);margin-bottom:6px;}
+    .team-role{font-size:.82rem;color:var(--w-gold);letter-spacing:2px;text-transform:uppercase;font-weight:800;}
+    .team-bio{margin-top:12px;color:#555;font-size:.92rem;line-height:1.7;}
 
     /* FAQ */
-    .faq-section{padding:80px 5%;background:transparent;max-width:900px;margin:0 auto;}
+    .faq-section{padding:90px 5%;max-width:980px;margin:0 auto;}
     .faq-item{border-bottom:1px solid rgba(0,0,0,.1);}
     .faq-question{
       padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
-      font-weight:700;font-size:1rem;color:var(--w-black);transition:.25s;
+      font-weight:800;font-size:1rem;color:var(--w-black);transition:.25s;
     }
     .faq-question:hover{color:var(--w-red);}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease;font-size:.92rem;color:#555;line-height:1.6;}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease;font-size:.92rem;color:#555;line-height:1.7;}
     .faq-answer p{padding-bottom:18px;}
     .faq-item.active .faq-answer{max-height:260px;}
     .faq-item.active .faq-question i{transform:rotate(180deg);}
 
-    /* Contact */
-    .trust-section{padding:80px 10%;background:#fff;text-align:center;border-top:1px solid #f0f0f0;}
-    .trust-grid{display:flex;justify-content:center;gap:60px;flex-wrap:wrap;margin-top:40px;}
-    .trust-item{max-width:250px;}
-    .trust-icon-circle{
-      width:60px;height:60px;background:var(--w-cream);border-radius:50%;
-      display:flex;justify-content:center;align-items:center;margin:0 auto 18px;
-      color:var(--w-red);font-size:1.5rem;
-    }
-
-    /* Footer */
-    .concierge-footer{background:#1a1a1a;color:#999;padding:70px 5%;font-size:.9rem;}
-    .footer-grid{
-      display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;
-      gap:40px;max-width:1200px;margin:0 auto;
-    }
-    .footer-brand h2{color:#fff;margin-bottom:16px;font-size:1.8rem;}
-    .footer-links h4{
-      color:#fff;margin-bottom:16px;text-transform:uppercase;
-      font-size:.9rem;letter-spacing:1px;
-    }
+    /* FOOTER */
+    .concierge-footer{background:#141414;color:#b0b0b0;padding:70px 5%;font-size:.92rem;border-top:1px solid rgba(255,255,255,.06);}
+    .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto;}
+    .footer-brand h2{color:white;margin-bottom:14px;font-size:1.8rem;}
+    .footer-brand p{color:#b6b6b6;max-width:420px;}
+    .footer-links h4{color:white;margin-bottom:16px;text-transform:uppercase;font-size:.9rem;letter-spacing:1px;}
     .footer-links ul{list-style:none;}
     .footer-links li{margin-bottom:10px;}
-    .footer-links a{color:#999;text-decoration:none;transition:.25s;}
+    .footer-links a{color:#b0b0b0;text-decoration:none;transition:.25s;}
     .footer-links a:hover{color:var(--w-gold);}
-
-    /* Small stripe/policy block (BOTTOM only, minimal space) */
-    .stripe-mini{
-      margin-top:22px;border-top:1px solid rgba(255,255,255,.08);
-      padding-top:18px;max-width:1200px;margin-left:auto;margin-right:auto;
-      color:#8f8f8f;font-size:.86rem;line-height:1.6;
-      display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;
+    .footer-bottom{max-width:1200px;margin:30px auto 0 auto;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .ig-link{display:inline-flex;align-items:center;gap:10px;color:white;text-decoration:none;font-weight:800;}
+    .ig-link i{color:var(--w-gold);}
+    .legal-box{
+      margin-top:20px;padding:16px;border-radius:14px;
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
     }
-    .stripe-mini b{color:#d5d5d5;}
-    .stripe-mini a{color:var(--w-gold);text-decoration:none;font-weight:700;}
-    .stripe-mini a:hover{text-decoration:underline;}
+    .legal-box h5{color:#fff;font-size:.92rem;margin-bottom:10px;letter-spacing:1px;text-transform:uppercase;}
+    .legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .legal-grid div{color:#c8c8c8;font-size:.9rem;line-height:1.55;}
+    .legal-grid strong{color:#fff;}
+    .tiny{font-size:.82rem;color:#9f9f9f;margin-top:10px;line-height:1.6;}
 
-    /* ===========================
-       OTA MODAL (Top-tier)
-       =========================== */
+    /* MODAL */
     .modal-overlay{
-      position:fixed;inset:0;display:none;
-      background:rgba(0,0,0,.86);
-      z-index:3000;
-      justify-content:center;align-items:center;
-      backdrop-filter:blur(6px);
-      opacity:0;transition:opacity .25s ease;
-      padding:22px;
+      display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,.82);z-index:2000;justify-content:center;align-items:center;
+      opacity:0;transition:.25s;backdrop-filter: blur(6px);
     }
     .modal-overlay.active{display:flex;opacity:1;}
-
-    .modal-shell{
-      width:min(1180px, 100%);
-      background:#fff;border-radius:var(--radius-18);
-      overflow:hidden;
-      box-shadow:var(--shadow-pop);
-      display:grid;
-      grid-template-columns: 56% 44%;
-      min-height: min(86vh, 740px);
+    .modal-content{
+      background:white;width:95%;max-width:1120px;height:90vh;
+      display:grid;grid-template-columns:55% 45%;
+      border-radius:16px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.12);
     }
-
-    .modal-left{
-      position:relative;background:#0b0b0b;
-      display:flex;flex-direction:column;
-    }
-
-    /* Gallery: swipe-friendly horizontal strip + dots */
-    .gallery-stage{
-      position:relative;
-      height:100%;
-      display:flex;flex-direction:column;
-    }
-
-    .gallery-strip{
-      display:flex;gap:0;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;
-      height:100%;
-    }
-    .gallery-strip::-webkit-scrollbar{height:10px;}
-    .gallery-strip::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:999px;}
-    .gallery-item{
-      flex:0 0 100%;
-      scroll-snap-align:center;
-      position:relative;
-      height:100%;
-    }
-    .gallery-item img{
-      width:100%;height:100%;
-      object-fit:cover;
-      opacity:.98;
-    }
-
-    .gallery-topbar{
-      position:absolute;top:0;left:0;right:0;
-      display:flex;justify-content:space-between;align-items:center;
-      padding:16px 16px;
-      z-index:5;
-      background:linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,0));
-      pointer-events:none;
-    }
-    .gallery-pill{
-      pointer-events:auto;
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 12px;border-radius:999px;
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.18);
-      color:#fff;font-weight:800;font-size:.78rem;
-      letter-spacing:1px;text-transform:uppercase;
-    }
-
     .modal-close{
-      pointer-events:auto;
-      width:42px;height:42px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.12);
-      color:#fff;cursor:pointer;
-      display:flex;align-items:center;justify-content:center;
-      transition:.2s;
+      position:absolute;top:18px;right:18px;font-size:1.25rem;color:#000;cursor:pointer;z-index:2100;
+      background:white;width:42px;height:42px;border-radius:999px;display:flex;justify-content:center;align-items:center;
+      transition:.2s;box-shadow:0 10px 20px rgba(0,0,0,.18);
     }
-    .modal-close:hover{background:rgba(255,255,255,.2);transform:translateY(-1px);}
-
+    .modal-close:hover{background:var(--w-red);color:white;transform:scale(1.03);}
+    .modal-img-col{background:#000;position:relative;height:100%;width:100%;overflow:hidden;}
+    .gallery-container{width:100%;height:100%;position:relative;}
+    .gallery-slide{
+      width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;
+      opacity:0;transition:opacity .5s ease;
+    }
+    .gallery-slide.active{opacity:1;}
+    .gallery-nav{
+      position:absolute;top:50%;transform:translateY(-50%);
+      background:rgba(255,255,255,.18);color:white;border:none;padding:18px 10px;cursor:pointer;z-index:5;
+      font-size:1.3rem;transition:.2s;
+    }
+    .gallery-nav:hover{background:rgba(0,0,0,.75);color:var(--w-gold);}
+    .gallery-prev{left:0;}
+    .gallery-next{right:0;}
     .gallery-dots{
-      position:absolute;bottom:14px;left:0;right:0;
-      display:flex;justify-content:center;gap:8px;
-      z-index:6;
-      padding:0 16px;
+      position:absolute;left:50%;bottom:14px;transform:translateX(-50%);
+      display:flex;gap:7px;z-index:6;
+      background:rgba(0,0,0,.35);padding:8px 10px;border-radius:999px;
+      backdrop-filter: blur(6px);
     }
     .dot{
-      width:8px;height:8px;border-radius:999px;
-      background:rgba(255,255,255,.35);
-      border:1px solid rgba(255,255,255,.22);
-      transition:.2s;
+      width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5);
+      border:1px solid rgba(255,255,255,.25);cursor:pointer;transition:.2s;
     }
-    .dot.active{background:#fff;transform:scale(1.15);}
+    .dot.active{background:var(--w-gold);transform:scale(1.1);}
 
-    /* Right panel OTA */
-    .modal-right{
-      padding:30px 30px;
-      overflow:auto;
-      background:linear-gradient(180deg, #ffffff, #fbfbfb);
-    }
-    .modal-right::-webkit-scrollbar{width:10px;}
-    .modal-right::-webkit-scrollbar-thumb{background:#e7e7e7;border-radius:999px;}
+    .modal-scroll-area{padding:34px;overflow-y:auto;background:white;display:flex;flex-direction:column;position:relative;}
+    .modal-title{font-size:2.05rem;margin-bottom:6px;line-height:1.1;}
+    .modal-subtitle{color:var(--w-gold);font-size:.92rem;margin-bottom:18px;text-transform:uppercase;letter-spacing:2px;font-weight:800;}
+    .feature-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 18px;}
+    .feature-item{font-size:.9rem;color:#555;display:flex;align-items:flex-start;gap:10px;line-height:1.45;}
+    .feature-item i{color:var(--w-red);margin-top:2px;}
+    .modal-desc{font-size:1rem;color:#444;margin-bottom:18px;line-height:1.85;}
 
-    .ota-header{
-      display:flex;flex-direction:column;gap:10px;
-      padding-bottom:18px;border-bottom:1px solid #eee;
-      margin-bottom:18px;
+    .booking-widget{
+      background:#fafafa;padding:18px;border-radius:14px;border:1px solid #eee;margin-top:auto;
+      box-shadow:0 10px 22px rgba(0,0,0,.05);
     }
-    .ota-title{
-      font-size:2.05rem;line-height:1.05;
-      letter-spacing:.2px;
-    }
-    .ota-sub{
-      display:flex;gap:10px;flex-wrap:wrap;align-items:center;
-      color:#666;font-size:.92rem;
-    }
-    .chip{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:6px 10px;border-radius:999px;
-      background:#fff;border:1px solid #efefef;
-      box-shadow:0 8px 18px rgba(0,0,0,.04);
-      font-weight:700;
-    }
-    .chip i{color:var(--w-red);}
-
-    .ota-desc{
-      color:#444;font-size:1rem;line-height:1.75;
-      margin:12px 0 18px;
-    }
-
-    .ota-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin:10px 0 18px;
-    }
-    .ota-box{
-      background:#fff;border:1px solid #efefef;border-radius:14px;
-      padding:12px 12px;
-      box-shadow:0 12px 26px rgba(0,0,0,.04);
-    }
-    .ota-box h4{
-      font-family:var(--font-main);
-      font-size:.75rem;text-transform:uppercase;
-      letter-spacing:1.4px;
-      color:#777;font-weight:900;margin-bottom:6px;
-    }
-    .ota-box p{color:#333;font-weight:800;font-size:.95rem;line-height:1.35;}
-    .ota-box small{display:block;color:#666;font-weight:600;margin-top:4px;line-height:1.35;}
-
-    .booking-panel{
-      margin-top:10px;
-      background:#fff;border:1px solid #eee;border-radius:16px;
-      padding:16px 16px;
-      box-shadow:0 18px 38px rgba(0,0,0,.06);
-    }
-    .booking-top{
-      display:flex;justify-content:space-between;align-items:flex-start;gap:10px;
-      margin-bottom:10px;
-    }
-    .booking-top .price{
-      font-size:1.45rem;font-weight:1000;color:var(--w-red);
-      letter-spacing:.2px;
-    }
-    .booking-top .note{
-      color:#666;font-weight:700;font-size:.85rem;line-height:1.4;
-      text-align:right;
-    }
-
-    .form-grid{
-      display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;
-    }
+    .widget-title{font-size:.92rem;font-weight:900;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
     .form-group{display:flex;flex-direction:column;gap:6px;}
-    .form-group label{
-      font-size:.7rem;font-weight:900;color:#888;text-transform:uppercase;letter-spacing:1.2px;
+    .form-group label{font-size:.7rem;font-weight:900;color:#888;text-transform:uppercase;letter-spacing:1px;}
+    .form-input{
+      padding:11px 12px;border:1px solid #ddd;border-radius:10px;width:100%;
+      font-family:var(--font-main);font-size:.92rem;background:white;
     }
-    .form-input, .form-select{
-      padding:11px 12px;border:1px solid #ddd;border-radius:12px;
-      font-family:var(--font-main);font-size:.92rem;background:#fff;
-      outline:none;transition:.2s;
+    .btn-row{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px;}
+    .btn-modal-book{
+      width:100%;background:var(--w-black);color:white;border:none;padding:14px;font-weight:900;
+      letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:.2s;border-radius:12px;
     }
-    .form-input:focus, .form-select:focus{
-      border-color:rgba(157,42,50,.35);
-      box-shadow:0 0 0 4px rgba(157,42,50,.08);
+    .btn-modal-book:hover{background:var(--w-red);transform:translateY(-1px);}
+    .btn-pay{
+      width:100%;background:var(--w-red);color:white;border:none;padding:14px;font-weight:900;
+      letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:.2s;border-radius:12px;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
     }
+    .btn-pay:hover{filter:brightness(1.05);transform:translateY(-1px);}
+    .note{font-size:.85rem;color:#666;margin-top:10px;line-height:1.6;}
 
-    .cta-row{
-      display:flex;gap:10px;margin-top:12px;
-    }
-    .btn{
-      border:none;cursor:pointer;border-radius:14px;
-      padding:13px 14px;font-weight:900;letter-spacing:1px;text-transform:uppercase;
-      transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      width:100%;
-    }
-    .btn-secondary{
-      background:#fff;border:1px solid #e6e6e6;color:#222;
-    }
-    .btn-secondary:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(0,0,0,.08);}
-    .btn-primary{
-      background:var(--w-black);color:#fff;
-      box-shadow:0 16px 32px rgba(0,0,0,.18);
-    }
-    .btn-primary:hover{background:var(--w-red);transform:translateY(-1px);}
-
-    .fineprint{
-      margin-top:10px;color:#777;font-size:.82rem;line-height:1.55;
-    }
-    .fineprint a{color:var(--w-red);text-decoration:none;font-weight:900;}
-    .fineprint a:hover{text-decoration:underline;}
-
+    /* Responsive */
     @media (max-width: 900px){
-      .modal-shell{grid-template-columns:1fr;min-height:auto;}
-      .modal-left{height:320px;}
-      .gallery-item{height:320px;}
-      .modal-right{max-height:calc(86vh - 320px);}
+      .hero-title{font-size:2.9rem;}
+      .modal-content{grid-template-columns:1fr;height:100%;border-radius:0;}
+      .modal-img-col{height:310px;}
     }
-
     @media (max-width: 768px){
-      .hero-title{font-size:2.7rem;}
       .nav-menu{display:none;}
-      .footer-grid{grid-template-columns:1fr;gap:28px;}
-      .trust-grid{gap:26px;}
-      .ota-grid{grid-template-columns:1fr;}
+      .footer-grid{grid-template-columns:1fr;gap:26px;}
+      .legal-grid{grid-template-columns:1fr;}
       .form-grid{grid-template-columns:1fr;}
     }
   </style>
@@ -490,8 +327,8 @@
 <body>
   <!-- NAVIGATION -->
   <nav id="navbar">
-    <a href="#" class="brand-logo">
-      <img src="logo.png" alt="" class="logo-img" onerror="this.style.display='none'" />
+    <a href="#" class="brand-logo" aria-label="Wonderland Japan">
+      <img src="logo.png" alt="" class="logo-img" onerror="this.style.display='none'">
       <div class="brand-text">
         <h1>Wonderland</h1>
         <span>JAPAN</span>
@@ -507,20 +344,20 @@
       </div>
 
       <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLang('en')" id="btn-en">🇺🇸 EN</button>
-        <button class="lang-btn" onclick="setLang('jp')" id="btn-jp">🇯🇵 JP</button>
+        <button class="lang-btn active" onclick="setLang('en')" id="btn-en" type="button">🇺🇸 EN</button>
+        <button class="lang-btn" onclick="setLang('jp')" id="btn-jp" type="button">🇯🇵 JP</button>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO SECTION -->
   <header>
     <div class="hero-bg" id="hero-bg"></div>
     <div class="hero-content" id="hero-text">
       <h1 class="hero-title">Wonderland</h1>
       <p class="hero-subtitle">
         <span class="lang-en">The door to Japan opens here.</span>
-        <span class="lang-jp">日本への扉が、<span class="hover-kyoto">京都</span>と<span class="hover-osaka">大阪</span>から開く。</span>
+        <span class="lang-jp">日本への扉が、京都と大阪から開く。</span>
       </p>
       <a href="#tours" class="hero-cta">
         <span class="lang-en">VIEW JOURNEYS</span>
@@ -529,12 +366,39 @@
     </div>
   </header>
 
-  <!-- TRUST BAR -->
+  <!-- TRUST BAR (NO "TRIPADVISOR" TEXT, CENTERED) -->
   <section class="trust-bar reveal">
     <span class="trust-label"><span class="lang-en">OFFICIAL PARTNER</span><span class="lang-jp">公式パートナー</span></span>
 
     <div class="trust-icons">
-      <!-- No "TRIPADVISOR" text on the left (as requested) -->
+      <!-- TripAdvisor widget (EN/JP switch with language) -->
+      <div class="trust-badge ta-wrap" aria-label="TripAdvisor rating badge">
+        <div class="ta-en">
+          <div id="TA_rated669" class="TA_rated">
+            <ul id="KRFHWRE" class="TA_links fOu4lJ3s">
+              <li id="KLo0GxY4" class="DVeqYtB6Zdpj">
+                <a target="_blank" rel="noopener" href="https://www.tripadvisor.com/Attraction_Review-g298564-d33984848-Reviews-WonderlandJapan-Kyoto_Kyoto_Prefecture_Kinki.html">
+                  <img src="https://www.tripadvisor.com/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=669&amp;locationId=33984848&amp;lang=en_US&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
+        </div>
+
+        <div class="ta-jp">
+          <div id="TA_rated954" class="TA_rated">
+            <ul id="711UDggQ" class="TA_links 4akec0UKlk3">
+              <li id="zfsclEMon9F" class="6xuy9UVwWh6">
+                <a target="_blank" rel="noopener" href="https://www.tripadvisor.jp/Attraction_Review-g298564-d33984848-Reviews-WonderlandJapan-Kyoto_Kyoto_Prefecture_Kinki.html">
+                  <img src="https://www.tripadvisor.jp/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=954&amp;locationId=33984848&amp;lang=ja&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
+        </div>
+      </div>
 
       <div class="trust-badge">
         <i class="fa-solid fa-users"></i>
@@ -545,843 +409,676 @@
         <i class="fa-solid fa-star"></i>
         <span><span class="lang-en">5-Star Hosts</span><span class="lang-jp">五つ星ガイド</span></span>
       </div>
-
-      <!-- TripAdvisor Widget EN (exact embed) -->
-      <div class="ta-wrap ta-en">
-        <div id="TA_rated669" class="TA_rated">
-          <ul id="KRFHWRE" class="TA_links fOu4lJ3s">
-            <li id="KLo0GxY4" class="DVeqYtB6Zdpj">
-              <a target="_blank" href="https://www.tripadvisor.com/Attraction_Review-g298564-d33984848-Reviews-WonderlandJapan-Kyoto_Kyoto_Prefecture_Kinki.html">
-                <img src="https://www.tripadvisor.com/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor" />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- TripAdvisor Widget JP (exact embed) -->
-      <div class="ta-wrap ta-jp">
-        <div id="TA_rated954" class="TA_rated">
-          <ul id="711UDggQ" class="TA_links 4akec0UKlk3">
-            <li id="zfsclEMon9F" class="6xuy9UVwWh6">
-              <a target="_blank" href="https://www.tripadvisor.jp/Attraction_Review-g298564-d33984848-Reviews-WonderlandJapan-Kyoto_Kyoto_Prefecture_Kinki.html">
-                <img src="https://www.tripadvisor.jp/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor" />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- TOURS -->
-  <section class="tours-section" id="tours">
+  <section id="tours" class="tours-section">
     <div class="section-header reveal">
-      <span class="section-tag"><span class="lang-en">CURATED EXPERIENCES</span><span class="lang-jp">厳選体験</span></span>
-      <h2><span class="lang-en">Kyoto & Osaka Journeys</span><span class="lang-jp">京都・大阪の旅</span></h2>
+      <span class="section-tag"><span class="lang-en">Our Experiences</span><span class="lang-jp">体験一覧</span></span>
+      <h2><span class="lang-en">Book a Kyoto Moment</span><span class="lang-jp">京都の「今」を予約する</span></h2>
+      <p>
+        <span class="lang-en">Tap any experience to view the gallery, details, and request a booking—built like an OTA, but with local care.</span>
+        <span class="lang-jp">各体験をタップすると、写真・詳細・カレンダー付きの予約リクエストができます（OTAのように直感的）。</span>
+      </p>
     </div>
 
-    <div class="tours-grid">
-      <!-- IMPORTANT:
-           Replace image paths below with your ORIGINAL photo paths.
-           Each tour supports 6 images in the modal gallery (configured in JS).
-      -->
-
-      <div class="tour-card reveal" data-tour="arashiyama" role="button" tabindex="0" aria-label="Open Arashiyama tour">
-        <div class="tour-badge"><span class="lang-en">POPULAR</span><span class="lang-jp">人気</span></div>
-        <div class="card-img-wrap">
-          <img src="images/arashiyama.jpg" onerror="this.src='https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=2064';" alt="Arashiyama" />
-        </div>
-        <div class="card-content">
-          <div class="card-meta"><span>Kyoto</span><span>Walking</span></div>
-          <div class="card-title">
-            <span class="lang-en">Arashiyama Bamboo Grove & Local Secrets</span>
-            <span class="lang-jp">嵐山 竹林とローカルの隠れスポット</span>
-          </div>
-          <div class="card-short-desc">
-            <span class="lang-en">Beat the crowds and discover quiet backstreets with a local guide.</span>
-            <span class="lang-jp">混雑を避けて、地元目線の静かな道へ。</span>
-          </div>
-          <div class="price-preview"><span style="color:#888;font-size:.85rem">From</span><span class="price-val">¥6,600</span></div>
-        </div>
-      </div>
-
-      <div class="tour-card reveal" data-tour="gion" role="button" tabindex="0" aria-label="Open Gion tour">
-        <div class="tour-badge"><span class="lang-en">CLASSIC</span><span class="lang-jp">定番</span></div>
-        <div class="card-img-wrap">
-          <img src="images/gion.jpg" onerror="this.src='https://images.unsplash.com/photo-1549693578-d683be217e58?q=80&w=2064';" alt="Gion" />
-        </div>
-        <div class="card-content">
-          <div class="card-meta"><span>Kyoto</span><span>Culture</span></div>
-          <div class="card-title">
-            <span class="lang-en">Gion & Higashiyama: Stories Behind the Streets</span>
-            <span class="lang-jp">祇園・東山：路地に隠れた物語</span>
-          </div>
-          <div class="card-short-desc">
-            <span class="lang-en">A graceful walk through historic lanes, shrines, and iconic viewpoints.</span>
-            <span class="lang-jp">歴史ある路地、神社、絶景ポイントを巡ります。</span>
-          </div>
-          <div class="price-preview"><span style="color:#888;font-size:.85rem">From</span><span class="price-val">¥6,500</span></div>
-        </div>
-      </div>
-
-      <div class="tour-card reveal" data-tour="food" role="button" tabindex="0" aria-label="Open Kyoto Food Tour">
-        <div class="tour-badge"><span class="lang-en">BESTSELLER</span><span class="lang-jp">人気</span></div>
-        <div class="card-img-wrap">
-          <img src="images/kyoto-food-tour.jpg" onerror="this.src='https://images.unsplash.com/photo-1542528180-a1208c5169a5?q=80&w=2064';" alt="Kyoto Food Tour" />
-        </div>
-        <div class="card-content">
-          <div class="card-meta"><span>Kyoto</span><span>Food</span></div>
-          <div class="card-title">
-            <span class="lang-en">Kyoto Local Night Food Tour</span>
-            <span class="lang-jp">京都ナイトフードツアー</span>
-          </div>
-          <div class="card-short-desc">
-            <span class="lang-en">Hidden izakayas, local dishes, and stories you won’t find on maps.</span>
-            <span class="lang-jp">地元の居酒屋と料理、ガイドだけが知る物語。</span>
-          </div>
-          <div class="price-preview"><span style="color:#888;font-size:.85rem">From</span><span class="price-val">¥—</span></div>
-        </div>
-      </div>
-
-      <div class="tour-card reveal" data-tour="taiko" role="button" tabindex="0" aria-label="Open Taiko Drum Experience">
-        <div class="tour-badge"><span class="lang-en">LIVE</span><span class="lang-jp">公演</span></div>
-        <div class="card-img-wrap">
-          <img src="images/taiko-drum.jpg" onerror="this.src='https://images.unsplash.com/photo-1520975958225-3f61d1d64b5a?q=80&w=2064';" alt="Taiko Drum" />
-        </div>
-        <div class="card-content">
-          <div class="card-meta"><span>Kyoto</span><span>Show</span></div>
-          <div class="card-title">
-            <span class="lang-en">Kyoto Taiko Drum Performance</span>
-            <span class="lang-jp">京都 和太鼓パフォーマンス</span>
-          </div>
-          <div class="card-short-desc">
-            <span class="lang-en">A powerful, immersive taiko experience—rhythm, culture, and energy.</span>
-            <span class="lang-jp">鼓動が響く没入体験。文化とエネルギーを体感。</span>
-          </div>
-          <div class="price-preview"><span style="color:#888;font-size:.85rem">From</span><span class="price-val">¥—</span></div>
-        </div>
-      </div>
-
-      <div class="tour-card reveal" data-tour="tea" role="button" tabindex="0" aria-label="Open Tea Ceremony">
-        <div class="tour-badge"><span class="lang-en">CULTURE</span><span class="lang-jp">文化</span></div>
-        <div class="card-img-wrap">
-          <img src="images/tea-ceremony.jpg" onerror="this.src='https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2064';" alt="Tea Ceremony" />
-        </div>
-        <div class="card-content">
-          <div class="card-meta"><span>Kyoto</span><span>Tea</span></div>
-          <div class="card-title">
-            <span class="lang-en">Tea Ceremony Experience</span>
-            <span class="lang-jp">茶道体験</span>
-          </div>
-          <div class="card-short-desc">
-            <span class="lang-en">Learn the meaning behind each movement, and enjoy matcha the right way.</span>
-            <span class="lang-jp">所作の意味を学び、丁寧に点てる抹茶を味わう。</span>
-          </div>
-          <div class="price-preview"><span style="color:#888;font-size:.85rem">From</span><span class="price-val">¥—</span></div>
-        </div>
-      </div>
+    <div class="tours-grid" id="toursGrid">
+      <!-- Cards injected by JS to ensure modal/gallery/stripe links stay consistent -->
     </div>
   </section>
 
-  <!-- TEAM (Kaho -> Nana, CEO Shinichiro + Momoko restored) -->
-  <section class="team-section" id="team">
+  <!-- TEAM -->
+  <section id="team" class="team-section">
     <div class="section-header reveal">
-      <span class="section-tag"><span class="lang-en">YOUR LOCAL HOSTS</span><span class="lang-jp">ローカルガイド</span></span>
-      <h2><span class="lang-en">Meet the Team</span><span class="lang-jp">チーム紹介</span></h2>
+      <span class="section-tag"><span class="lang-en">Meet the Team</span><span class="lang-jp">チーム紹介</span></span>
+      <h2><span class="lang-en">Hosts You Can Trust</span><span class="lang-jp">信頼できるホスト</span></h2>
+      <p>
+        <span class="lang-en">A small crew, big standards. Clear communication, warm hospitality, and memorable storytelling.</span>
+        <span class="lang-jp">少数精鋭で、品質は妥協なし。丁寧な案内と心に残るストーリーをお届けします。</span>
+      </p>
     </div>
 
     <div class="team-grid">
-      <div class="reveal">
-        <img class="team-img" src="images/shinichiro.jpg" alt="Shinichiro" onerror="this.style.opacity='0.95';" />
+      <!-- CEO Shinichiro -->
+      <div class="team-card reveal">
+        <img class="team-img" src="images/team/shinichiro.jpg" alt="Shinichiro" onerror="this.style.opacity=.4">
         <div class="team-name">Shinichiro</div>
-        <div class="team-role"><span class="lang-en">CEO</span><span class="lang-jp">代表</span></div>
+        <div class="team-role"><span class="lang-en">CEO</span><span class="lang-jp">CEO</span></div>
+        <div class="team-bio">
+          <span class="lang-en">Operations-minded, guest-first. Focused on building experiences that feel effortless—yet deeply local.</span>
+          <span class="lang-jp">運営の精度とお客様第一を両立。気軽さの奥に「本物」を感じる体験づくりに注力。</span>
+        </div>
       </div>
 
-      <div class="reveal">
-        <img class="team-img" src="images/momoko.jpg" alt="Momoko" onerror="this.style.opacity='0.95';" />
+      <!-- Momoko -->
+      <div class="team-card reveal">
+        <img class="team-img" src="images/team/momoko.jpg" alt="Momoko" onerror="this.style.opacity=.4">
         <div class="team-name">Momoko</div>
-        <div class="team-role"><span class="lang-en">Operations</span><span class="lang-jp">運営</span></div>
+        <div class="team-role"><span class="lang-en">Director</span><span class="lang-jp">ディレクター</span></div>
+        <div class="team-bio">
+          <span class="lang-en">Culture & detail specialist. Makes every route smoother, every moment more meaningful.</span>
+          <span class="lang-jp">文化とディテールのプロ。導線はスムーズに、内容は濃く。</span>
+        </div>
       </div>
 
-      <div class="reveal">
-        <img class="team-img" src="images/nana.jpg" alt="Nana" onerror="this.style.opacity='0.95';" />
+      <!-- Nana (you requested rename from Kaho -> Nana) -->
+      <div class="team-card reveal">
+        <img class="team-img" src="images/team/nana.jpg" alt="Nana" onerror="this.style.opacity=.4">
         <div class="team-name">Nana</div>
         <div class="team-role"><span class="lang-en">Guide</span><span class="lang-jp">ガイド</span></div>
+        <div class="team-bio">
+          <span class="lang-en">Warm, bilingual storytelling with great pacing—perfect for first-timers and food lovers.</span>
+          <span class="lang-jp">テンポの良い案内と温かい語り。初めての方にも食好きにもおすすめ。</span>
+        </div>
       </div>
 
-      <div class="reveal">
-        <img class="team-img" src="images/ben.jpg" alt="Ben" onerror="this.style.opacity='0.95';" />
-        <div class="team-name">Ben</div>
-        <div class="team-role"><span class="lang-en">Host</span><span class="lang-jp">ホスト</span></div>
-      </div>
+      <!-- You can add more -->
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="faq-section" id="faq">
-    <div class="section-header reveal" style="margin-bottom:40px;">
-      <span class="section-tag"><span class="lang-en">FAQ</span><span class="lang-jp">よくある質問</span></span>
-      <h2><span class="lang-en">Questions, Answered</span><span class="lang-jp">よくある質問</span></h2>
+  <section id="faq" class="faq-section">
+    <div class="section-header reveal">
+      <span class="section-tag"><span class="lang-en">FAQ</span><span class="lang-jp">FAQ</span></span>
+      <h2><span class="lang-en">Simple Answers</span><span class="lang-jp">よくある質問</span></h2>
     </div>
 
     <div class="faq-item reveal">
       <div class="faq-question">
-        <span><span class="lang-en">Do you offer private tours?</span><span class="lang-jp">プライベートツアーはありますか？</span></span>
+        <span><span class="lang-en">Is this an instant booking?</span><span class="lang-jp">即時予約ですか？</span></span>
         <i class="fa-solid fa-chevron-down"></i>
       </div>
       <div class="faq-answer">
         <p>
-          <span class="lang-en">Yes. Many tours can be arranged as private experiences—message us your date and group size.</span>
-          <span class="lang-jp">はい。多くのツアーはプライベート手配が可能です。日程と人数をお知らせください。</span>
+          <span class="lang-en">This page sends a booking request. Once confirmed, you can pay online via Stripe (secure checkout).</span>
+          <span class="lang-jp">このページは「予約リクエスト」です。確定後、Stripe（安全な決済）でお支払いいただけます。</span>
         </p>
       </div>
     </div>
 
     <div class="faq-item reveal">
       <div class="faq-question">
-        <span><span class="lang-en">Which language do guides speak?</span><span class="lang-jp">ガイドは何語を話しますか？</span></span>
+        <span><span class="lang-en">Can I cancel?</span><span class="lang-jp">キャンセルできますか？</span></span>
         <i class="fa-solid fa-chevron-down"></i>
       </div>
       <div class="faq-answer">
         <p>
-          <span class="lang-en">English is available by default. Japanese support is available depending on the guide and date.</span>
-          <span class="lang-jp">基本は英語対応です。日程により日本語サポートも可能です。</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal">
-      <div class="faq-question">
-        <span><span class="lang-en">How do I book?</span><span class="lang-jp">予約方法は？</span></span>
-        <i class="fa-solid fa-chevron-down"></i>
-      </div>
-      <div class="faq-answer">
-        <p>
-          <span class="lang-en">Choose a tour, pick a date/time, and submit your request—then proceed to secure online payment.</span>
-          <span class="lang-jp">ツアーを選び、日時を選択して予約リクエスト送信 → オンライン決済へ。</span>
+          <span class="lang-en">Cancellation terms vary by experience. You’ll see them in the modal before submitting.</span>
+          <span class="lang-jp">キャンセル規定は体験ごとに異なります。送信前に詳細をご確認いただけます。</span>
         </p>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="trust-section" id="contact">
-    <div class="section-header reveal" style="margin-bottom:30px;">
-      <span class="section-tag"><span class="lang-en">CONTACT</span><span class="lang-jp">お問い合わせ</span></span>
-      <h2><span class="lang-en">Plan Your Day in Kyoto</span><span class="lang-jp">京都の一日を一緒に</span></h2>
-      <p style="max-width:820px;margin:0 auto;color:#555;">
-        <span class="lang-en">Tell us your dates, interests, and group size. We’ll suggest the best route.</span>
-        <span class="lang-jp">日程・興味・人数を教えてください。最適なルートをご提案します。</span>
-      </p>
-    </div>
-
-    <div class="trust-grid">
-      <div class="trust-item reveal">
-        <div class="trust-icon-circle"><i class="fa-solid fa-envelope"></i></div>
-        <h3 style="margin-bottom:10px;"><span class="lang-en">Email</span><span class="lang-jp">メール</span></h3>
-        <p><a href="mailto:info@wonderlandjapan.net" style="color:var(--w-red);text-decoration:none;font-weight:800;">info@wonderlandjapan.net</a></p>
-      </div>
-
-      <div class="trust-item reveal">
-        <div class="trust-icon-circle"><i class="fa-brands fa-instagram"></i></div>
-        <h3 style="margin-bottom:10px;">Instagram</h3>
-        <p style="color:#666;"><span class="lang-en">DM us for quick questions.</span><span class="lang-jp">DMでお気軽にどうぞ。</span></p>
-      </div>
-
-      <div class="trust-item reveal">
-        <div class="trust-icon-circle"><i class="fa-solid fa-location-dot"></i></div>
-        <h3 style="margin-bottom:10px;"><span class="lang-en">Kyoto</span><span class="lang-jp">京都</span></h3>
-        <p style="color:#666;"><span class="lang-en">Based in Kyoto, guiding across Kansai.</span><span class="lang-jp">京都拠点、関西全域対応。</span></p>
-      </div>
-    </div>
-  </section>
+  <!-- CONTACT ANCHOR -->
+  <div id="contact"></div>
 
   <!-- FOOTER -->
   <footer class="concierge-footer">
     <div class="footer-grid">
       <div class="footer-brand">
         <h2>Wonderland Japan</h2>
-        <p><span class="lang-en">Private guided tours & cultural experiences in Kyoto and Osaka.</span><span class="lang-jp">京都・大阪のプライベートガイド＆文化体験。</span></p>
+        <p>
+          <span class="lang-en">Kyoto & Osaka experiences crafted with local care—small group, high quality, and a smooth booking flow.</span>
+          <span class="lang-jp">京都・大阪の体験を、少人数で丁寧に。スムーズな予約導線で安心してご参加いただけます。</span>
+        </p>
+
+        <div style="margin-top:14px;">
+          <a class="ig-link" target="_blank" rel="noopener" href="https://www.instagram.com/_localtour_osaka.kyoto/">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+        </div>
+
+        <!-- Stripe-friendly disclosure (EN/JP) -->
+        <div class="legal-box">
+          <h5><span class="lang-en">Payment & Payout Transparency</span><span class="lang-jp">決済・返金に関する表示</span></h5>
+
+          <div class="legal-grid">
+            <div>
+              <strong><span class="lang-en">Legal name</span><span class="lang-jp">法定名称</span>:</strong>
+              <div>Wonderland Japan Co., Ltd. / ワンダーランドジャパン株式会社</div>
+            </div>
+
+            <div>
+              <strong><span class="lang-en">Business address</span><span class="lang-jp">住所</span>:</strong>
+              <div>Nara-shi Oshikuma-cho 2365, Nara, Japan / 奈良市押熊町2365番地</div>
+            </div>
+
+            <div>
+              <strong><span class="lang-en">Phone</span><span class="lang-jp">電話</span>:</strong>
+              <div>+81 70-1748-2960 <span class="lang-en">(10:00–18:00 JST)</span><span class="lang-jp">（10:00–18:00）</span></div>
+            </div>
+
+            <div>
+              <strong><span class="lang-en">Email</span><span class="lang-jp">メール</span>:</strong>
+              <div><a href="mailto:info@wonderlandjapan.net" style="color:#fff;text-decoration:none;">info@wonderlandjapan.net</a></div>
+            </div>
+
+            <div>
+              <strong><span class="lang-en">Representative</span><span class="lang-jp">運営責任者</span>:</strong>
+              <div><span class="lang-en">Shigeji Kawabata (Representative Director)</span><span class="lang-jp">川畑 繁二（代表取締役）</span></div>
+            </div>
+
+            <div>
+              <strong><span class="lang-en">Accepted payments</span><span class="lang-jp">お支払い方法</span>:</strong>
+              <div><span class="lang-en">Credit cards (Stripe)</span><span class="lang-jp">クレジットカード（Stripe）</span></div>
+            </div>
+          </div>
+
+          <div class="tiny">
+            <div>
+              <strong><span class="lang-en">Service delivery</span><span class="lang-jp">提供時期</span>:</strong>
+              <span class="lang-en">Tours/experiences are delivered on the selected date and time after confirmation.</span>
+              <span class="lang-jp">体験は確定後、ご選択いただいた日時に提供されます。</span>
+            </div>
+            <div style="margin-top:6px;">
+              <strong><span class="lang-en">Refund policy</span><span class="lang-jp">返金規定</span>:</strong>
+              <span class="lang-en">Refund/cancellation terms are shown per experience inside the booking modal before you submit.</span>
+              <span class="lang-jp">返金・キャンセル規定は体験ごとに異なり、送信前にモーダル内で表示されます。</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="footer-links">
         <h4><span class="lang-en">Explore</span><span class="lang-jp">メニュー</span></h4>
         <ul>
-          <li><a href="#tours"><span class="lang-en">Experiences</span><span class="lang-jp">ツアー</span></a></li>
+          <li><a href="#tours"><span class="lang-en">Experiences</span><span class="lang-jp">体験一覧</span></a></li>
           <li><a href="#team"><span class="lang-en">Team</span><span class="lang-jp">チーム</span></a></li>
           <li><a href="#faq"><span class="lang-en">FAQ</span><span class="lang-jp">FAQ</span></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4><span class="lang-en">Support</span><span class="lang-jp">サポート</span></h4>
+        <ul>
+          <li><a href="mailto:info@wonderlandjapan.net"><span class="lang-en">Email us</span><span class="lang-jp">メール</span></a></li>
+          <li><a href="tel:+817017482960"><span class="lang-en">Call</span><span class="lang-jp">電話</span></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4><span class="lang-en">Legal</span><span class="lang-jp">法務</span></h4>
+        <ul>
           <li><a href="#contact"><span class="lang-en">Contact</span><span class="lang-jp">お問い合わせ</span></a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links">
-        <h4><span class="lang-en">Contact</span><span class="lang-jp">連絡先</span></h4>
-        <ul>
-          <li><a href="mailto:info@wonderlandjapan.net">info@wonderlandjapan.net</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links">
-        <h4><span class="lang-en">Legal</span><span class="lang-jp">規約</span></h4>
-        <ul>
-          <!-- Create these pages later; links help Stripe reviewers -->
-          <li><a href="/privacy.html"><span class="lang-en">Privacy</span><span class="lang-jp">プライバシー</span></a></li>
-          <li><a href="/terms.html"><span class="lang-en">Terms</span><span class="lang-jp">利用規約</span></a></li>
-          <li><a href="/refund.html"><span class="lang-en">Refund Policy</span><span class="lang-jp">返金規定</span></a></li>
+          <li><a href="#faq"><span class="lang-en">Cancellation</span><span class="lang-jp">キャンセル</span></a></li>
         </ul>
       </div>
     </div>
 
-    <!-- Minimal Stripe/policy section (BOTTOM ONLY) -->
-    <div class="stripe-mini">
+    <div class="footer-bottom">
+      <div>© <span id="year"></span> Wonderland Japan</div>
       <div>
-        <b><span class="lang-en">Payment & Payout Transparency:</span><span class="lang-jp">決済の透明性：</span></b>
-        <span class="lang-en">Clear pricing, delivery details, cancellation/refund policy, support contact, and legal pages are published.</span>
-        <span class="lang-jp">料金、提供方法、キャンセル/返金、連絡先、規約ページを明確に掲載しています。</span>
-      </div>
-      <div>
-        <b><span class="lang-en">Support:</span><span class="lang-jp">連絡先：</span></b>
-        <a href="mailto:info@wonderlandjapan.net">info@wonderlandjapan.net</a>
+        <span class="lang-en">Made for smooth bookings.</span>
+        <span class="lang-jp">予約をスムーズに。</span>
       </div>
     </div>
-
-    <div style="text-align:center;margin-top:22px;color:#666;">© <span id="year"></span> Wonderland Japan</div>
   </footer>
 
-  <!-- OTA MODAL -->
-  <div class="modal-overlay" id="tourModal" aria-hidden="true">
-    <div class="modal-shell" role="dialog" aria-modal="true" aria-label="Tour details">
-      <div class="modal-left">
-        <div class="gallery-stage">
-          <div class="gallery-topbar">
-            <div class="gallery-pill" id="modalPill"><i class="fa-solid fa-location-dot"></i><span>KYOTO</span></div>
-            <button class="modal-close" id="modalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-          </div>
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal-close" id="modalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></div>
 
-          <div class="gallery-strip" id="galleryStrip">
-            <!-- injected -->
-          </div>
-
-          <div class="gallery-dots" id="galleryDots" aria-hidden="true">
-            <!-- injected -->
-          </div>
-        </div>
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Experience detail">
+      <div class="modal-img-col">
+        <div class="gallery-container" id="galleryContainer"></div>
+        <button class="gallery-nav gallery-prev" id="galleryPrev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="gallery-nav gallery-next" id="galleryNext" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="gallery-dots" id="galleryDots"></div>
       </div>
 
-      <div class="modal-right">
-        <div class="ota-header">
-          <div class="ota-title" id="modalTitle">Tour Title</div>
-          <div class="ota-sub" id="modalChips"></div>
+      <div class="modal-scroll-area">
+        <div>
+          <div class="modal-title" id="modalTitle"></div>
+          <div class="modal-subtitle" id="modalSubtitle"></div>
+
+          <div class="feature-list" id="modalFeatures"></div>
+          <div class="modal-desc" id="modalDesc"></div>
         </div>
 
-        <div class="ota-desc" id="modalDesc"></div>
-
-        <div class="ota-grid" id="modalFacts"></div>
-
-        <div class="booking-panel">
-          <div class="booking-top">
-            <div class="price" id="modalPrice">¥—</div>
-            <div class="note">
-              <span class="lang-en">Secure online payment<br/>via Stripe</span>
-              <span class="lang-jp">Stripeで安全に<br/>オンライン決済</span>
-            </div>
+        <div class="booking-widget">
+          <div class="widget-title">
+            <span class="lang-en">Request booking</span><span class="lang-jp">予約リクエスト</span>
           </div>
 
-          <div class="form-grid">
-            <div class="form-group">
-              <label><span class="lang-en">Date</span><span class="lang-jp">日付</span></label>
-              <input class="form-input" type="date" id="bookDate" />
+          <form id="bookingForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label><span class="lang-en">Date</span><span class="lang-jp">日付</span></label>
+                <input class="form-input" type="date" name="date" required />
+              </div>
+
+              <div class="form-group">
+                <label><span class="lang-en">Time</span><span class="lang-jp">時間</span></label>
+                <select class="form-input" name="time" required>
+                  <option value="" selected disabled>—</option>
+                  <option value="09:00">09:00</option>
+                  <option value="10:00">10:00</option>
+                  <option value="11:00">11:00</option>
+                  <option value="13:00">13:00</option>
+                  <option value="14:00">14:00</option>
+                  <option value="15:00">15:00</option>
+                  <option value="16:00">16:00</option>
+                  <option value="18:00">18:00</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label><span class="lang-en">Guests</span><span class="lang-jp">人数</span></label>
+                <input class="form-input" type="number" name="guests" min="1" max="50" value="2" required />
+              </div>
+
+              <div class="form-group">
+                <label><span class="lang-en">Name</span><span class="lang-jp">お名前</span></label>
+                <input class="form-input" type="text" name="name" placeholder="Full name" required />
+              </div>
+
+              <div class="form-group" style="grid-column:1/-1;">
+                <label>Email</label>
+                <input class="form-input" type="email" name="email" placeholder="you@example.com" required />
+              </div>
+
+              <div class="form-group" style="grid-column:1/-1;">
+                <label><span class="lang-en">Notes</span><span class="lang-jp">備考</span></label>
+                <input class="form-input" type="text" name="notes" placeholder="Allergies / special requests" />
+              </div>
             </div>
 
-            <div class="form-group">
-              <label><span class="lang-en">Time</span><span class="lang-jp">時間</span></label>
-              <select class="form-select" id="bookTime">
-                <option value="">Select</option>
-                <option>09:00</option>
-                <option>10:00</option>
-                <option>13:00</option>
-                <option>16:00</option>
-                <option>18:00</option>
-              </select>
+            <div class="btn-row">
+              <button class="btn-modal-book" type="submit">
+                <span class="lang-en">Send booking request</span>
+                <span class="lang-jp">予約リクエストを送信</span>
+              </button>
+
+              <button class="btn-pay" id="payBtn" type="button">
+                <i class="fa-solid fa-lock"></i>
+                <span class="lang-en">Pay online (Stripe)</span>
+                <span class="lang-jp">オンライン決済（Stripe）</span>
+              </button>
             </div>
 
-            <div class="form-group">
-              <label><span class="lang-en">Guests</span><span class="lang-jp">人数</span></label>
-              <select class="form-select" id="bookGuests">
-                <option value="1">1</option>
-                <option value="2" selected>2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-              </select>
+            <div class="note" id="bookingNote">
+              <span class="lang-en">After you submit, we’ll confirm availability by email. If ready, you can pay securely via Stripe.</span>
+              <span class="lang-jp">送信後、空き状況をメールで確認します。確定後、Stripeで安全にお支払いいただけます。</span>
             </div>
-
-            <div class="form-group">
-              <label><span class="lang-en">Email</span><span class="lang-jp">メール</span></label>
-              <input class="form-input" type="email" id="bookEmail" placeholder="you@example.com" />
-            </div>
-          </div>
-
-          <div class="cta-row">
-            <button class="btn btn-secondary" id="btnRequest">
-              <i class="fa-solid fa-paper-plane"></i>
-              <span class="lang-en">Send Request</span><span class="lang-jp">予約リクエスト</span>
-            </button>
-            <button class="btn btn-primary" id="btnPay">
-              <i class="fa-solid fa-lock"></i>
-              <span class="lang-en">Reserve & Pay</span><span class="lang-jp">予約して支払う</span>
-            </button>
-          </div>
-
-          <div class="fineprint">
-            <span class="lang-en">
-              By continuing, you agree to our <a href="/terms.html">Terms</a> and <a href="/refund.html">Refund Policy</a>.
-            </span>
-            <span class="lang-jp">
-              続行することで、<a href="/terms.html">利用規約</a> と <a href="/refund.html">返金規定</a> に同意したものとみなされます。
-            </span>
-          </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    /* ========= DATA (EDIT THESE TO YOUR REAL IMAGE PATHS + STRIPE LINKS) ========= */
+    const PRODUCTS = [
+      {
+        id: "kyoto-food-tour",
+        badge: { en: "Kyoto", jp: "京都" },
+        meta: { en: ["Food", "Night"], jp: ["食", "夜"] },
+        title: { en: "Kyoto Local Night Food Tour – 13 Dishes & 3 Drinks", jp: "京都ナイトフードツアー（13品＋3ドリンク）" },
+        short: {
+          en: "Hidden izakayas, local stories, and a curated tasting journey—built for food lovers.",
+          jp: "隠れた居酒屋で、京都らしい味と物語を。食好きのためのテイスティング体験。"
+        },
+        price: { en: "From ¥6,500", jp: "¥6,500〜" },
+        subtitle: { en: "Small group • English/Japanese", jp: "少人数 • 英語/日本語" },
+        features: {
+          en: ["13 dishes + 3 drinks", "Hidden local spots", "Guide-led storytelling", "Photo-friendly route"],
+          jp: ["13品＋3ドリンク", "地元の隠れ店", "ガイドの解説", "写真も撮りやすい導線"]
+        },
+        desc: {
+          en: "A premium, local-style tasting route through Kyoto’s night scene. We balance iconic flavors with places you’d never find alone.",
+          jp: "京都の夜の雰囲気を味わいながら、定番と“知る人ぞ知る店”をバランス良く巡ります。"
+        },
+        /* Put your REAL image paths here (6 images) */
+        images: [
+          "images/kyoto-food/1.jpg",
+          "images/kyoto-food/2.jpg",
+          "images/kyoto-food/3.jpg",
+          "images/kyoto-food/4.jpg",
+          "images/kyoto-food/5.jpg",
+          "images/kyoto-food/6.jpg"
+        ],
+        /* Replace with your Stripe Payment Link */
+        stripeUrl: "https://buy.stripe.com/REPLACE_WITH_YOUR_LINK"
+      },
 
-    // Navbar + reveal + parallax
-    const navbar = document.getElementById("navbar");
-    const heroBg = document.getElementById("hero-bg");
-    const heroText = document.getElementById("hero-text");
+      {
+        id: "taiko-drum",
+        badge: { en: "Kyoto", jp: "京都" },
+        meta: { en: ["Show", "Culture"], jp: ["ショー", "文化"] },
+        title: { en: "Kyoto Traditional Taiko Drum Live Performance", jp: "京都・和太鼓ライブパフォーマンス" },
+        short: {
+          en: "Feel the heartbeat of Japan—powerful taiko in an intimate venue.",
+          jp: "日本の鼓動を体感。迫力の和太鼓を臨場感たっぷりに。"
+        },
+        price: { en: "From ¥3,500", jp: "¥3,500〜" },
+        subtitle: { en: "Ticketed show • Great for families", jp: "チケット制 • ファミリーにもおすすめ" },
+        features: {
+          en: ["High-energy performance", "Indoor venue", "Easy access", "Photo time (if available)"],
+          jp: ["迫力の演奏", "屋内会場", "アクセス便利", "写真タイム（状況により）"]
+        },
+        desc: {
+          en: "A compact, high-impact taiko show designed for travelers who want a memorable cultural hit without the hassle.",
+          jp: "短時間でしっかり“文化を浴びる”和太鼓ショー。旅のハイライトに。"
+        },
+        images: [
+          "images/taiko/1.jpg",
+          "images/taiko/2.jpg",
+          "images/taiko/3.jpg",
+          "images/taiko/4.jpg",
+          "images/taiko/5.jpg",
+          "images/taiko/6.jpg"
+        ],
+        stripeUrl: "https://buy.stripe.com/REPLACE_WITH_YOUR_LINK"
+      },
 
-    function checkScroll(){
-      if (!navbar) return;
-      if (window.scrollY > 30) navbar.classList.add("scrolled");
-      else navbar.classList.remove("scrolled");
-    }
-
-    function reveal(){
-      const els = document.querySelectorAll(".reveal");
-      const trigger = window.innerHeight * 0.88;
-      els.forEach(el=>{
-        const top = el.getBoundingClientRect().top;
-        if (top < trigger) el.classList.add("active");
-      });
-    }
-
-    function parallaxHero(){
-      if (!heroBg || !heroText) return;
-      const y = window.scrollY;
-      heroBg.style.transform = `translateY(${y * 0.18}px)`;
-      heroText.style.transform = `translateY(${y * 0.08}px)`;
-    }
-
-    window.addEventListener("scroll", ()=>{
-      checkScroll(); reveal(); parallaxHero();
-    });
-
-    window.addEventListener("load", ()=>{
-      checkScroll(); reveal(); initLangFromStorage();
-    });
-
-    // Language switch
-    function setLang(lang){
-      const body = document.body;
-      const btnEn = document.getElementById("btn-en");
-      const btnJp = document.getElementById("btn-jp");
-
-      if (lang === "jp"){
-        body.classList.add("is-jp");
-        btnJp && btnJp.classList.add("active");
-        btnEn && btnEn.classList.remove("active");
-      }else{
-        body.classList.remove("is-jp");
-        btnEn && btnEn.classList.add("active");
-        btnJp && btnJp.classList.remove("active");
+      {
+        id: "tea-ceremony",
+        badge: { en: "Kyoto", jp: "京都" },
+        meta: { en: ["Tea", "Tradition"], jp: ["茶", "伝統"] },
+        title: { en: "Kyoto Tea Ceremony Experience (Matcha & Etiquette)", jp: "京都・茶道体験（抹茶と作法）" },
+        short: {
+          en: "A calm, elegant moment—learn matcha etiquette with a welcoming instructor.",
+          jp: "静かで上質なひととき。抹茶の作法をやさしく学べます。"
+        },
+        price: { en: "From ¥4,700", jp: "¥4,700〜" },
+        subtitle: { en: "Cultural workshop • Beginner-friendly", jp: "体験型 • 初心者歓迎" },
+        features: {
+          en: ["Intro to tea etiquette", "Matcha tasting", "Seasonal sweets", "Photo-friendly space"],
+          jp: ["作法の入門", "抹茶体験", "季節の和菓子", "写真も撮りやすい空間"]
+        },
+        desc: {
+          en: "We keep it approachable but authentic. A beautiful cultural reset between sightseeing.",
+          jp: "本格を“わかりやすく”。観光の合間に、心が整う文化体験を。"
+        },
+        images: [
+          "images/tea/1.jpg",
+          "images/tea/2.jpg",
+          "images/tea/3.jpg",
+          "images/tea/4.jpg",
+          "images/tea/5.jpg",
+          "images/tea/6.jpg"
+        ],
+        stripeUrl: "https://buy.stripe.com/REPLACE_WITH_YOUR_LINK"
       }
-      try{ localStorage.setItem("wj_lang", lang); }catch(e){}
-    }
+    ];
 
-    function initLangFromStorage(){
-      try{
-        const saved = localStorage.getItem("wj_lang");
-        if (saved === "jp") setLang("jp");
-        else setLang("en");
-      }catch(e){ setLang("en"); }
-    }
+    /* ========= RENDER TOURS ========= */
+    const toursGrid = document.getElementById('toursGrid');
 
-    // FAQ accordion
-    document.querySelectorAll(".faq-item .faq-question").forEach(q=>{
-      q.addEventListener("click", ()=>{
-        const item = q.parentElement;
-        if (!item) return;
-        item.classList.toggle("active");
-      });
-    });
+    function renderTours(){
+      toursGrid.innerHTML = "";
+      PRODUCTS.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'tour-card reveal';
+        card.setAttribute('data-id', p.id);
+        card.addEventListener('click', () => openModal(p.id));
 
-    /* ===========================
-       OTA DATA (EDIT THESE)
-       - Replace images[] with your ORIGINAL photo paths (6 each)
-       - Replace stripePayUrl with your REAL Stripe Payment Link URL per tour
-       =========================== */
-    const TOURS = {
-      arashiyama: {
-        region: "KYOTO",
-        title_en: "Arashiyama Bamboo Grove & Local Secrets",
-        title_jp: "嵐山 竹林とローカルの隠れスポット",
-        desc_en: "Beat the crowds and explore Arashiyama’s iconic bamboo + quiet backstreets with a local guide. Balanced pace, best photo spots, and real neighborhood stories.",
-        desc_jp: "混雑を避けて嵐山の竹林と静かな裏道へ。写真スポットとローカルの物語を、心地よいペースでご案内します。",
-        chips: [
-          { icon: "fa-users", en: "Small Group", jp: "少人数" },
-          { icon: "fa-clock", en: "2.5–3 hrs", jp: "約2.5〜3時間" },
-          { icon: "fa-camera", en: "Photo Spots", jp: "撮影スポット" }
-        ],
-        facts: [
-          { k_en:"Meeting", k_jp:"集合", v_en:"Arashiyama area (details after booking)", v_jp:"嵐山エリア（予約後に詳細）", s_en:"Easy access by train", s_jp:"電車でアクセス良好" },
-          { k_en:"Includes", k_jp:"含む", v_en:"Guide + local insights", v_jp:"ガイド＋解説", s_en:"Optional add-ons on request", s_jp:"要望で追加可" },
-          { k_en:"Pace", k_jp:"ペース", v_en:"Relaxed, photo-friendly", v_jp:"写真に優しい", s_en:"Comfortable walking route", s_jp:"歩きやすいルート" },
-          { k_en:"Language", k_jp:"言語", v_en:"English (JP support upon request)", v_jp:"英語（状況により日本語可）", s_en:"Ask for preference", s_jp:"希望をお知らせください" }
-        ],
-        price: "¥6,600",
-        images: [
-          "images/arashiyama.jpg",
-          "images/arashiyama_02.jpg",
-          "images/arashiyama_03.jpg",
-          "images/arashiyama_04.jpg",
-          "images/arashiyama_05.jpg",
-          "images/arashiyama_06.jpg"
-        ],
-        stripePayUrl: "https://buy.stripe.com/REPLACE_WITH_YOUR_ARASHIYAMA_PAYMENT_LINK"
-      },
+        card.innerHTML = `
+          <div class="tour-badge">
+            <span class="lang-en">${p.badge.en}</span><span class="lang-jp">${p.badge.jp}</span>
+          </div>
+          <div class="card-img-wrap">
+            <img src="${p.images[0]}" alt="${p.title.en}" onerror="this.style.opacity=.35;this.style.filter='grayscale(1)';">
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span>${p.meta.en[0]}</span>
+              <span>${p.meta.en[1]}</span>
+              <span class="pill"><span class="lang-en">Details</span><span class="lang-jp">詳細</span></span>
+            </div>
 
-      gion: {
-        region: "KYOTO",
-        title_en: "Gion & Higashiyama: Stories Behind the Streets",
-        title_jp: "祇園・東山：路地に隠れた物語",
-        desc_en: "A graceful walk through historic lanes and viewpoints—crafted for culture lovers. Learn the stories behind Kyoto’s most photogenic streets without the touristy fluff.",
-        desc_jp: "歴史ある路地と絶景ポイントを巡る上質な散策。京都の美しい街並みの“背景”を、分かりやすくご紹介します。",
-        chips: [
-          { icon: "fa-users", en: "Small Group", jp: "少人数" },
-          { icon: "fa-clock", en: "2.5–3 hrs", jp: "約2.5〜3時間" },
-          { icon: "fa-landmark", en: "Heritage", jp: "歴史文化" }
-        ],
-        facts: [
-          { k_en:"Meeting", k_jp:"集合", v_en:"Gion area (details after booking)", v_jp:"祇園エリア（予約後に詳細）", s_en:"Central Kyoto", s_jp:"京都中心部" },
-          { k_en:"Includes", k_jp:"含む", v_en:"Guide + cultural context", v_jp:"ガイド＋文化解説", s_en:"Photo time built-in", s_jp:"撮影時間あり" },
-          { k_en:"Route", k_jp:"ルート", v_en:"Best viewpoints + hidden lanes", v_jp:"絶景＋路地", s_en:"Crowd-aware pacing", s_jp:"混雑を見ながら調整" },
-          { k_en:"Language", k_jp:"言語", v_en:"English (JP support upon request)", v_jp:"英語（状況により日本語可）", s_en:"Ask for preference", s_jp:"希望をお知らせください" }
-        ],
-        price: "¥6,500",
-        images: [
-          "images/gion.jpg",
-          "images/gion_02.jpg",
-          "images/gion_03.jpg",
-          "images/gion_04.jpg",
-          "images/gion_05.jpg",
-          "images/gion_06.jpg"
-        ],
-        stripePayUrl: "https://buy.stripe.com/REPLACE_WITH_YOUR_GION_PAYMENT_LINK"
-      },
+            <div class="card-title">
+              <span class="lang-en">${p.title.en}</span>
+              <span class="lang-jp">${p.title.jp}</span>
+            </div>
 
-      food: {
-        region: "KYOTO",
-        title_en: "Kyoto Local Night Food Tour",
-        title_jp: "京都ナイトフードツアー",
-        desc_en: "Hidden izakayas, seasonal dishes, and the kind of local places you’d never walk into alone. Taste Kyoto at night—warm, fun, and genuinely local.",
-        desc_jp: "地元の居酒屋、旬の料理、ひとりでは入りにくい名店へ。京都の夜を“ローカルに”味わうツアーです。",
-        chips: [
-          { icon: "fa-utensils", en: "Food Focus", jp: "グルメ" },
-          { icon: "fa-clock", en: "2.5–3 hrs", jp: "約2.5〜3時間" },
-          { icon: "fa-location-dot", en: "Downtown", jp: "街中" }
-        ],
-        facts: [
-          { k_en:"Meeting", k_jp:"集合", v_en:"Downtown Kyoto (details after booking)", v_jp:"京都中心部（予約後に詳細）", s_en:"Easy to reach", s_jp:"アクセス良好" },
-          { k_en:"Includes", k_jp:"含む", v_en:"Guide (food/drinks depend on plan)", v_jp:"ガイド（飲食はプランによる）", s_en:"Tell us dietary needs", s_jp:"食の制限は事前相談" },
-          { k_en:"Style", k_jp:"スタイル", v_en:"Small group, local vibe", v_jp:"少人数でローカル", s_en:"No tourist traps", s_jp:"観光客向け店を回避" },
-          { k_en:"Language", k_jp:"言語", v_en:"English", v_jp:"英語", s_en:"JP support upon request", s_jp:"状況により日本語可" }
-        ],
-        price: "¥—",
-        images: [
-          "images/kyoto-food-tour.jpg",
-          "images/food_02.jpg",
-          "images/food_03.jpg",
-          "images/food_04.jpg",
-          "images/food_05.jpg",
-          "images/food_06.jpg"
-        ],
-        stripePayUrl: "https://buy.stripe.com/REPLACE_WITH_YOUR_FOOD_PAYMENT_LINK"
-      },
+            <div class="card-short-desc">
+              <span class="lang-en">${p.short.en}</span>
+              <span class="lang-jp">${p.short.jp}</span>
+            </div>
 
-      taiko: {
-        region: "KYOTO",
-        title_en: "Kyoto Taiko Drum Performance",
-        title_jp: "京都 和太鼓パフォーマンス",
-        desc_en: "A high-energy taiko performance in Kyoto—powerful rhythms, precision, and tradition. Perfect for families, couples, and culture lovers.",
-        desc_jp: "京都で体感する和太鼓の迫力。リズム、精度、伝統が響くステージです。",
-        chips: [
-          { icon: "fa-music", en: "Live Performance", jp: "ライブ公演" },
-          { icon: "fa-clock", en: "Show time varies", jp: "時間は公演による" },
-          { icon: "fa-star", en: "Top Rated", jp: "高評価" }
-        ],
-        facts: [
-          { k_en:"Venue", k_jp:"会場", v_en:"Kyoto (details after booking)", v_jp:"京都（予約後に詳細）", s_en:"Arrive 10 mins early", s_jp:"10分前集合推奨" },
-          { k_en:"Includes", k_jp:"含む", v_en:"Admission + seating", v_jp:"入場＋座席", s_en:"Groups welcome", s_jp:"団体歓迎" },
-          { k_en:"Best for", k_jp:"おすすめ", v_en:"Culture & entertainment", v_jp:"文化＋エンタメ", s_en:"Great rainy-day option", s_jp:"雨の日にも最適" },
-          { k_en:"Language", k_jp:"言語", v_en:"Mostly non-verbal; English guidance", v_jp:"言語依存少・英語案内あり", s_en:"All audiences", s_jp:"どなたでも" }
-        ],
-        price: "¥—",
-        images: [
-          "images/taiko-drum.jpg",
-          "images/taiko_02.jpg",
-          "images/taiko_03.jpg",
-          "images/taiko_04.jpg",
-          "images/taiko_05.jpg",
-          "images/taiko_06.jpg"
-        ],
-        stripePayUrl: "https://buy.stripe.com/REPLACE_WITH_YOUR_TAIKO_PAYMENT_LINK"
-      },
-
-      tea: {
-        region: "KYOTO",
-        title_en: "Tea Ceremony Experience",
-        title_jp: "茶道体験",
-        desc_en: "A calm and authentic tea ceremony—learn the meaning behind each movement, then enjoy matcha made properly. Elegant, intimate, and unforgettable.",
-        desc_jp: "所作の意味を学び、丁寧に点てる抹茶を味わう。静かで上質な体験です。",
-        chips: [
-          { icon: "fa-mug-hot", en: "Matcha", jp: "抹茶" },
-          { icon: "fa-clock", en: "About 60–90 mins", jp: "約60〜90分" },
-          { icon: "fa-heart", en: "Calm & Elegant", jp: "静かで上質" }
-        ],
-        facts: [
-          { k_en:"Location", k_jp:"場所", v_en:"Kyoto (details after booking)", v_jp:"京都（予約後に詳細）", s_en:"Easy access", s_jp:"アクセス良好" },
-          { k_en:"Includes", k_jp:"含む", v_en:"Tea + guidance", v_jp:"お茶＋解説", s_en:"Photos allowed (confirm on site)", s_jp:"撮影可（現地確認）" },
-          { k_en:"Dress", k_jp:"服装", v_en:"Comfortable attire", v_jp:"動きやすい服装", s_en:"Kimono optional", s_jp:"着物はオプション" },
-          { k_en:"Language", k_jp:"言語", v_en:"English (JP possible)", v_jp:"英語（日本語可）", s_en:"Ask for preference", s_jp:"希望をお知らせください" }
-        ],
-        price: "¥—",
-        images: [
-          "images/tea-ceremony.jpg",
-          "images/tea_02.jpg",
-          "images/tea_03.jpg",
-          "images/tea_04.jpg",
-          "images/tea_05.jpg",
-          "images/tea_06.jpg"
-        ],
-        stripePayUrl: "https://buy.stripe.com/REPLACE_WITH_YOUR_TEA_PAYMENT_LINK"
-      }
-    };
-
-    // Modal references
-    const modal = document.getElementById("tourModal");
-    const modalClose = document.getElementById("modalClose");
-    const galleryStrip = document.getElementById("galleryStrip");
-    const galleryDots = document.getElementById("galleryDots");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalDesc = document.getElementById("modalDesc");
-    const modalPrice = document.getElementById("modalPrice");
-    const modalFacts = document.getElementById("modalFacts");
-    const modalChips = document.getElementById("modalChips");
-    const modalPill = document.getElementById("modalPill");
-
-    const bookDate = document.getElementById("bookDate");
-    const bookTime = document.getElementById("bookTime");
-    const bookGuests = document.getElementById("bookGuests");
-    const bookEmail = document.getElementById("bookEmail");
-    const btnRequest = document.getElementById("btnRequest");
-    const btnPay = document.getElementById("btnPay");
-
-    let activeTourKey = null;
-
-    function isJP(){ return document.body.classList.contains("is-jp"); }
-
-    function escHtml(s){
-      return String(s).replace(/[&<>"']/g, m => ({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-      }[m]));
-    }
-
-    function buildChips(t){
-      modalChips.innerHTML = "";
-      t.chips.forEach(c=>{
-        const div = document.createElement("div");
-        div.className = "chip";
-        div.innerHTML = `<i class="fa-solid ${escHtml(c.icon)}"></i><span>${isJP()? escHtml(c.jp) : escHtml(c.en)}</span>`;
-        modalChips.appendChild(div);
-      });
-    }
-
-    function buildFacts(t){
-      modalFacts.innerHTML = "";
-      t.facts.forEach(f=>{
-        const box = document.createElement("div");
-        box.className = "ota-box";
-        box.innerHTML = `
-          <h4>${isJP()? escHtml(f.k_jp) : escHtml(f.k_en)}</h4>
-          <p>${isJP()? escHtml(f.v_jp) : escHtml(f.v_en)}</p>
-          <small>${isJP()? escHtml(f.s_jp) : escHtml(f.s_en)}</small>
+            <div class="price-preview">
+              <div class="price-val">
+                <span class="lang-en">${p.price.en}</span>
+                <span class="lang-jp">${p.price.jp}</span>
+              </div>
+              <div style="color:#777;font-weight:800;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;">
+                <span class="lang-en">${p.subtitle.en}</span>
+                <span class="lang-jp">${p.subtitle.jp}</span>
+              </div>
+            </div>
+          </div>
         `;
-        modalFacts.appendChild(box);
+        toursGrid.appendChild(card);
       });
+
+      // Trigger reveal observer on newly created nodes
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }
 
-    function buildGallery(images){
-      galleryStrip.innerHTML = "";
-      galleryDots.innerHTML = "";
-      images.slice(0,6).forEach((src, idx)=>{
-        const item = document.createElement("div");
-        item.className = "gallery-item";
-        const img = document.createElement("img");
-        img.src = src;
-        img.alt = "Gallery image " + (idx+1);
-        img.onerror = function(){
-          // fallback (only if your path missing)
-          this.src = "https://images.unsplash.com/photo-1549693578-d683be217e58?q=80&w=2064";
-        };
-        item.appendChild(img);
-        galleryStrip.appendChild(item);
+    /* ========= MODAL / GALLERY ========= */
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalClose = document.getElementById('modalClose');
+    const galleryContainer = document.getElementById('galleryContainer');
+    const galleryDots = document.getElementById('galleryDots');
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
 
-        const dot = document.createElement("div");
-        dot.className = "dot" + (idx===0 ? " active":"");
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const modalFeatures = document.getElementById('modalFeatures');
+    const modalDesc = document.getElementById('modalDesc');
+
+    const bookingForm = document.getElementById('bookingForm');
+    const payBtn = document.getElementById('payBtn');
+
+    let currentProduct = null;
+    let currentIndex = 0;
+
+    function openModal(productId){
+      currentProduct = PRODUCTS.find(x => x.id === productId);
+      if(!currentProduct) return;
+
+      // Title/subtitle/desc
+      modalTitle.innerHTML = `
+        <span class="lang-en">${currentProduct.title.en}</span>
+        <span class="lang-jp">${currentProduct.title.jp}</span>
+      `;
+      modalSubtitle.innerHTML = `
+        <span class="lang-en">${currentProduct.subtitle.en}</span>
+        <span class="lang-jp">${currentProduct.subtitle.jp}</span>
+      `;
+      modalDesc.innerHTML = `
+        <span class="lang-en">${currentProduct.desc.en}</span>
+        <span class="lang-jp">${currentProduct.desc.jp}</span>
+      `;
+
+      // Features
+      modalFeatures.innerHTML = "";
+      const featsEn = currentProduct.features.en;
+      const featsJp = currentProduct.features.jp;
+      for(let i=0;i<Math.max(featsEn.length,featsJp.length);i++){
+        const item = document.createElement('div');
+        item.className = 'feature-item';
+        item.innerHTML = `
+          <i class="fa-solid fa-check"></i>
+          <div>
+            <span class="lang-en">${featsEn[i] || ""}</span>
+            <span class="lang-jp">${featsJp[i] || ""}</span>
+          </div>
+        `;
+        modalFeatures.appendChild(item);
+      }
+
+      // Gallery build
+      galleryContainer.innerHTML = "";
+      galleryDots.innerHTML = "";
+      currentIndex = 0;
+
+      currentProduct.images.slice(0,6).forEach((src, idx) => {
+        const img = document.createElement('img');
+        img.className = 'gallery-slide' + (idx === 0 ? ' active' : '');
+        img.src = src;
+        img.alt = currentProduct.title.en + " photo " + (idx+1);
+        img.onerror = function(){
+          this.style.opacity = .35;
+          this.style.filter = 'grayscale(1)';
+        };
+        galleryContainer.appendChild(img);
+
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (idx === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goToSlide(idx));
         galleryDots.appendChild(dot);
       });
 
-      // Scroll to first
-      galleryStrip.scrollLeft = 0;
+      // Open modal
+      modalOverlay.classList.add('active');
+      modalOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
 
-      // Update dots on scroll
-      const dots = Array.from(galleryDots.children);
-      function setActiveDot(){
-        const x = galleryStrip.scrollLeft;
-        const w = galleryStrip.clientWidth || 1;
-        const i = Math.round(x / w);
-        dots.forEach((d,idx)=>d.classList.toggle("active", idx===i));
-      }
-      galleryStrip.onscroll = () => { window.requestAnimationFrame(setActiveDot); };
-      setActiveDot();
+      // ensure language visibility is correct
+      applyLangVisibility();
     }
 
-    function openTour(key){
-      const t = TOURS[key];
-      if (!t) return;
-
-      activeTourKey = key;
-
-      modalPill.innerHTML = `<i class="fa-solid fa-location-dot"></i><span>${escHtml(t.region)}</span>`;
-      modalTitle.textContent = isJP() ? t.title_jp : t.title_en;
-      modalDesc.textContent = isJP() ? t.desc_jp : t.desc_en;
-      modalPrice.textContent = t.price;
-
-      buildChips(t);
-      buildFacts(t);
-      buildGallery(t.images);
-
-      // Reset booking fields
-      bookDate.value = "";
-      bookTime.value = "";
-      bookGuests.value = "2";
-      bookEmail.value = "";
-
-      modal.classList.add("active");
-      modal.setAttribute("aria-hidden", "false");
-
-      // lock background scroll
-      document.body.style.overflow = "hidden";
+    function closeModal(){
+      modalOverlay.classList.remove('active');
+      modalOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
     }
 
-    function closeTour(){
-      modal.classList.remove("active");
-      modal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-      activeTourKey = null;
+    function goToSlide(idx){
+      const slides = [...galleryContainer.querySelectorAll('.gallery-slide')];
+      const dots = [...galleryDots.querySelectorAll('.dot')];
+      if(idx < 0) idx = slides.length - 1;
+      if(idx >= slides.length) idx = 0;
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+      slides[idx].classList.add('active');
+      dots[idx].classList.add('active');
+      currentIndex = idx;
     }
 
-    modalClose.addEventListener("click", closeTour);
-    modal.addEventListener("click", (e)=>{
-      if (e.target === modal) closeTour();
-    });
-    document.addEventListener("keydown", (e)=>{
-      if (e.key === "Escape" && modal.classList.contains("active")) closeTour();
-    });
+    galleryPrev.addEventListener('click', () => goToSlide(currentIndex - 1));
+    galleryNext.addEventListener('click', () => goToSlide(currentIndex + 1));
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) closeModal(); });
+    window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
 
-    // Open modal on card click + keyboard
-    document.querySelectorAll(".tour-card").forEach(card=>{
-      const key = card.getAttribute("data-tour");
-      card.addEventListener("click", ()=>openTour(key));
-      card.addEventListener("keydown", (e)=>{
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openTour(key); }
-      });
-    });
+    /* Booking request: You can wire to your backend or email.
+       For now we generate a mailto draft. */
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if(!currentProduct) return;
 
-    // Re-render modal text on language switch if modal open
-    const _origSetLang = window.setLang;
-    window.setLang = function(lang){
-      _origSetLang(lang);
-      // if modal open, refresh content
-      if (modal.classList.contains("active") && activeTourKey){
-        openTour(activeTourKey);
-      }
-    };
+      const fd = new FormData(bookingForm);
+      const date = fd.get('date');
+      const time = fd.get('time');
+      const guests = fd.get('guests');
+      const name = fd.get('name');
+      const email = fd.get('email');
+      const notes = fd.get('notes') || "";
 
-    function validateBooking(){
-      if (!activeTourKey) return { ok:false, msg:"No tour selected." };
-      if (!bookDate.value) return { ok:false, msg: isJP() ? "日付を選択してください。" : "Please select a date." };
-      if (!bookTime.value) return { ok:false, msg: isJP() ? "時間を選択してください。" : "Please select a time." };
-      if (!bookEmail.value || !/^\S+@\S+\.\S+$/.test(bookEmail.value)) return { ok:false, msg: isJP() ? "有効なメールを入力してください。" : "Please enter a valid email." };
-      return { ok:true };
-    }
-
-    // "Send Request" (OTA-style) — opens a prefilled email draft (works without backend)
-    btnRequest.addEventListener("click", ()=>{
-      const v = validateBooking();
-      if (!v.ok){ alert(v.msg); return; }
-
-      const t = TOURS[activeTourKey];
-      const subject = encodeURIComponent(`[Booking Request] ${isJP()? t.title_jp : t.title_en} (${bookDate.value} ${bookTime.value})`);
+      const subject = encodeURIComponent(`[Booking Request] ${currentProduct.title.en} | ${date} ${time}`);
       const body = encodeURIComponent(
-        `Tour: ${isJP()? t.title_jp : t.title_en}\n` +
-        `Date: ${bookDate.value}\n` +
-        `Time: ${bookTime.value}\n` +
-        `Guests: ${bookGuests.value}\n` +
-        `Email: ${bookEmail.value}\n\n` +
-        `Notes:\n`
+`Experience: ${currentProduct.title.en}
+Date/Time: ${date} ${time}
+Guests: ${guests}
+
+Name: ${name}
+Email: ${email}
+Notes: ${notes}
+
+(Generated from wonderlandjapan.net booking modal)`
       );
+
       window.location.href = `mailto:info@wonderlandjapan.net?subject=${subject}&body=${body}`;
     });
 
-    // "Reserve & Pay" — redirects to Stripe Payment Link (no backend needed)
-    // IMPORTANT: Replace each tour's stripePayUrl with a real Stripe Payment Link.
-    btnPay.addEventListener("click", ()=>{
-      const v = validateBooking();
-      if (!v.ok){ alert(v.msg); return; }
-
-      const t = TOURS[activeTourKey];
-      if (!t.stripePayUrl || t.stripePayUrl.includes("REPLACE_WITH_YOUR")){
-        alert(isJP()
-          ? "Stripe支払いリンクが未設定です。tourのstripePayUrlを設定してください。"
-          : "Stripe payment link is not set. Please set stripePayUrl for this tour."
-        );
+    // Pay button: go to Stripe payment link (set per product)
+    payBtn.addEventListener('click', () => {
+      if(!currentProduct) return;
+      const url = currentProduct.stripeUrl || "";
+      if(!url || url.includes("REPLACE_WITH_YOUR_LINK")){
+        alert("Stripe payment link is not set yet. Please replace stripeUrl in the PRODUCTS data.");
         return;
       }
-
-      // Append booking details as query params (Stripe may ignore; still useful for your analytics/logs)
-      const url = new URL(t.stripePayUrl);
-      url.searchParams.set("tour", isJP()? t.title_jp : t.title_en);
-      url.searchParams.set("date", bookDate.value);
-      url.searchParams.set("time", bookTime.value);
-      url.searchParams.set("guests", bookGuests.value);
-      url.searchParams.set("email", bookEmail.value);
-
-      window.location.href = url.toString();
+      window.open(url, "_blank", "noopener");
     });
-  </script>
 
-  <!-- TripAdvisor Widgets (EN + JP) -->
-  <script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=669&amp;locationId=33984848&amp;lang=en_US&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
-  <script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=954&amp;locationId=33984848&amp;lang=ja&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
+    /* ========= LANGUAGE SWITCH ========= */
+    function setLang(lang){
+      if(lang === 'jp'){
+        document.body.classList.add('is-jp');
+        document.getElementById('btn-jp').classList.add('active');
+        document.getElementById('btn-en').classList.remove('active');
+        localStorage.setItem('wj_lang', 'jp');
+      }else{
+        document.body.classList.remove('is-jp');
+        document.getElementById('btn-en').classList.add('active');
+        document.getElementById('btn-jp').classList.remove('active');
+        localStorage.setItem('wj_lang', 'en');
+      }
+      applyLangVisibility();
+    }
+
+    function applyLangVisibility(){
+      // Nothing to do: CSS handles .lang-en/.lang-jp and .ta-en/.ta-jp
+      // But we can force reflow if TripAdvisor badge appears delayed:
+      // (Keeping minimal to avoid breaking widget)
+    }
+
+    // init language from storage
+    (function initLang(){
+      const saved = localStorage.getItem('wj_lang');
+      if(saved === 'jp') setLang('jp');
+      else setLang('en');
+    })();
+
+    /* ========= NAV SCROLL + PARALLAX ========= */
+    const navbar = document.getElementById('navbar');
+    const heroBg = document.getElementById('hero-bg');
+    const heroText = document.getElementById('hero-text');
+
+    function checkScroll(){
+      const y = window.scrollY || 0;
+      if(y > 30) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+
+      // subtle parallax
+      const bgMove = Math.min(y * 0.18, 120);
+      heroBg.style.transform = `translateY(${bgMove}px)`;
+      heroText.style.transform = `translateY(${Math.min(y * 0.08, 36)}px)`;
+    }
+    window.addEventListener('scroll', checkScroll);
+
+    /* ========= REVEAL OBSERVER ========= */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ========= FAQ ========= */
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+
+    /* ========= YEAR ========= */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ========= FIRST RENDER ========= */
+    renderTours();
+    checkScroll();
+  </script>
 </body>
 </html>
