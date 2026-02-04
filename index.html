@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO METADATA -->
+    <title>Kyoto & Osaka Tours | Private Guided Tours, Small Groups & Local Experiences | Wonderland Japan</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- DESIGN SYSTEM --- */
+        :root {
+            --w-red: #9D2A32;     
+            --w-gold: #C8A660;    
+            --w-black: #1a1a1a;
+            --w-cream: #F9F8F6;   
+            --font-main: 'Montserrat', sans-serif;
+            --font-lux: 'Playfair Display', serif;
+            --font-jp: 'Zen Old Mincho', serif;
+        }
+
+        /* --- GLOBAL RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { 
+            background-color: var(--w-cream); 
+            color: var(--w-black); 
+            font-family: var(--font-main); 
+            line-height: 1.7; 
+            overflow-x: hidden; 
+            /* Washi Texture */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+
+        html { scroll-behavior: smooth; }
+        h1, h2, h3, h4 { font-family: var(--font-lux); line-height: 1.2; }
+        img { max-width: 100%; display: block; }
+
+        /* Japanese Font Override */
+        body.is-jp { font-family: var(--font-jp) !important; }
+        body.is-jp h1, body.is-jp h2, body.is-jp h3, body.is-jp h4, body.is-jp p, body.is-jp a, body.is-jp span, body.is-jp div, body.is-jp input, body.is-jp button, body.is-jp select { font-family: var(--font-jp) !important; letter-spacing: 0.05em; }
+
+        .lang-jp { display: none; }
+        body.is-jp .lang-en { display: none !important; }
+        body.is-jp .lang-jp { display: inline-block !important; }
+
+        /* --- HOVER EFFECTS --- */
+        .hover-kyoto { border-bottom: 1px dotted var(--w-red); transition: 0.3s; cursor: pointer; }
+        .hover-kyoto:hover { color: var(--w-red); }
+        .hover-osaka { border-bottom: 1px dotted var(--w-gold); transition: 0.3s; cursor: pointer; }
+        .hover-osaka:hover { color: var(--w-gold); }
+
+        /* --- ANIMATION --- */
+        /* Note: Modified to ensure elements don't get stuck invisible */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- NAVIGATION --- */
+        nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s ease; }
+        nav.scrolled { background: rgba(255, 255, 255, 0.98); box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 15px 5%; }
+
+        .brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 45px; width: 45px; background: var(--w-red); border-radius: 50%; object-fit: cover; }
+        .brand-text h1 { font-size: 1.2rem; color: white; margin: 0; font-weight: 700; }
+        .brand-text span { font-size: 0.65rem; color: var(--w-gold); letter-spacing: 3px; display: block; }
+        nav.scrolled .brand-text h1 { color: var(--w-red); }
+        nav.scrolled .nav-menu a { color: var(--w-black); }
+        nav.scrolled .lang-btn { color: var(--w-black); border-color: #333; }
+
+        .nav-right { display: flex; align-items: center; gap: 30px; }
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-menu a { color: white; text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; transition: 0.3s; }
+        .lang-switcher { display: flex; gap: 10px; }
+        .lang-btn { background: transparent; border: 1px solid rgba(255,255,255,0.4); color: white; padding: 6px 14px; border-radius: 30px; font-size: 0.7rem; cursor: pointer; transition: 0.3s; }
+        .lang-btn.active, .lang-btn:hover { background: var(--w-red); border-color: var(--w-red); color: white; }
+
+        /* --- HERO --- */
+        header { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 120%; background-image: url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053'); background-size: cover; background-position: center; z-index: -1; filter: brightness(0.65); will-change: transform; }
+        .hero-content { text-align: center; color: white; z-index: 2; padding: 0 20px; will-change: transform; }
+        .hero-title { font-size: 4rem; margin-bottom: 15px; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .hero-subtitle { font-size: 1.3rem; margin-bottom: 40px; color: var(--w-gold); letter-spacing: 2px; }
+        .hero-cta { background: var(--w-red); color: white; text-decoration: none; padding: 18px 50px; border-radius: 50px; font-size: 0.9rem; letter-spacing: 2px; font-weight: 600; transition: 0.3s; display: inline-flex; justify-content: center; align-items: center; white-space: nowrap; min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .hero-cta:hover { background: white; color: var(--w-red); transform: translateY(-3px); }
+
+        /* --- TRUST BAR --- */
+        .trust-bar { background: white; padding: 35px 5%; text-align: center; border-bottom: 1px solid #eee; display: flex; flex-direction: column; align-items: center; }
+        .trust-label { font-size: 0.7rem; color: #888; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; }
+        .trust-icons { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; justify-content: center; }
+        .trust-badge { display: flex; align-items: center; gap: 12px; opacity: 0.9; }
+        .trust-badge i { font-size: 1.8rem; color: var(--w-black); } 
+        .trust-badge span { font-size: 0.85rem; font-weight: 600; color: var(--w-black); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- TOURS COLLECTION --- */
+        .tours-section { padding: 100px 5%; background: transparent; }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-tag { color: var(--w-red); font-size: 0.75rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .section-header h2 { font-size: 3rem; color: var(--w-black); margin-bottom: 20px; }
+        .tours-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 35px; }
+
+        .tour-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.4s; cursor: pointer; position: relative; display: flex; flex-direction: column; height: 100%; }
+        .tour-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .tour-badge { position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.95); color: var(--w-black); padding: 6px 14px; font-size: 0.7rem; text-transform: uppercase; font-weight: 700; z-index: 2; border-radius: 4px; }
+        .card-img-wrap { height: 260px; overflow: hidden; position: relative; background: #eee; }
+        .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .tour-card:hover .card-img-wrap img { transform: scale(1.08); }
+        .card-content { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
+        .card-meta { display: flex; gap: 15px; margin-bottom: 12px; font-size: 0.75rem; color: #888; text-transform: uppercase; font-weight: 600; }
+        .card-title { font-size: 1.4rem; margin-bottom: 12px; color: var(--w-black); font-weight: 700; line-height: 1.3; }
+        .card-short-desc { font-size: 0.9rem; color: #555; margin-bottom: 25px; flex-grow: 1; }
+        .price-preview { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #f0f0f0; padding-top: 20px; margin-top: auto; }
+        .price-val { font-size: 1.25rem; color: var(--w-red); font-weight: 700; }
+
+        .coming-soon { pointer-events: none; }
+        .coming-soon .card-img-wrap { filter: grayscale(100%) blur(1px); }
+        .coming-soon .card-img-wrap::after { content: 'COMING SOON'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: white; border: 1px solid white; padding: 5px 15px; letter-spacing: 2px; font-size: 0.8rem; }
+        body.is-jp .coming-soon .card-img-wrap::after { content: '準備中'; }
+
+        /* --- TEAM SECTION --- */
+        .team-section { padding: 80px 5%; background: white; text-align: center; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 50px; }
+
+        /* Updated: Added margin: 0 auto to center the block-level images */
+        .team-img { 
+            width: 180px; 
+            height: 180px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin: 0 auto 20px auto; /* Centered with bottom margin */
+            border: 4px solid var(--w-cream); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            transition: 0.4s; 
+            background: #eee; 
+        }
+
+        .team-img:hover { transform: scale(1.05); border-color: var(--w-gold); }
+        .team-name { font-family: var(--font-lux); font-size: 1.3rem; color: var(--w-red); margin-bottom: 5px; }
+        .team-role { font-size: 0.85rem; color: var(--w-gold); letter-spacing: 2px; text-transform: uppercase; }
+
+        /* --- REVIEWS (Marquee) --- */
+        .reviews-section { padding: 100px 0; background: #fff; overflow: hidden; border-top: 1px solid #eee; position: relative; }
+        .reviews-track { display: flex; gap: 30px; width: max-content; padding: 40px 0; animation: scroll 80s linear infinite; }
+        .reviews-track:hover { animation-play-state: paused; }
+        .review-card { width: 350px; background: white; border: 1px solid #f0f0f0; padding: 35px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.03); flex-shrink: 0; display: flex; flex-direction: column; }
+        .review-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+        .review-stars { color: var(--w-gold); }
+        .review-text { font-style: italic; color: #555; margin-bottom: 20px; flex-grow: 1; font-size: 0.9rem; line-height: 1.6; }
+        .review-footer { margin-top: auto; border-top: 1px solid #f9f9f9; padding-top: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .reviewer-name { font-weight: bold; font-size: 0.85rem; }
+        .platform-icon { color: #ccc; font-size: 1.2rem; }
+        @keyframes scroll { to { transform: translateX(calc(-50% - 15px)); } }
+
+        /* --- FAQ SECTION --- */
+        .faq-section { padding: 80px 5%; background: transparent; max-width: 900px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .faq-question { padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1rem; color: var(--w-black); transition: 0.3s; }
+        .faq-question:hover { color: var(--w-red); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; font-size: 0.9rem; color: #555; line-height: 1.6; }
+        .faq-answer p { padding-bottom: 20px; }
+        .faq-item.active .faq-answer { max-height: 200px; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+
+        /* --- TRUST SECTION --- */
+        .trust-section { padding: 80px 10%; background: white; text-align: center; border-top: 1px solid #f0f0f0; }
+        .trust-grid { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; margin-top: 40px; }
+        .trust-item { max-width: 250px; }
+        .trust-icon-circle { width: 60px; height: 60px; background: var(--w-cream); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px; color: var(--w-red); font-size: 1.5rem; }
+
+        /* --- FOOTER --- */
+        .concierge-footer { background: #1a1a1a; color: #999; padding: 80px 5%; font-size: 0.9rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .footer-brand h2 { color: white; margin-bottom: 20px; font-size: 1.8rem; }
+        .footer-links h4 { color: white; margin-bottom: 20px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #999; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: var(--w-gold); }
+
+        /* --- MODAL --- */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; backdrop-filter: blur(5px); }
+        .modal-overlay.active { display: flex; opacity: 1; }
+
+        .modal-content { background: white; width: 95%; max-width: 1100px; height: 90vh; display: grid; grid-template-columns: 55% 45%; border-radius: 12px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
+
+        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: #000; cursor: pointer; z-index: 100; background: white; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .modal-close:hover { background: var(--w-red); color: white; }
+
+        .modal-img-col { background: #000; position: relative; height: 100%; width: 100%; overflow: hidden; }
+        .gallery-container { width: 100%; height: 100%; position: relative; }
+        .gallery-slide { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.6s ease; }
+        .gallery-slide.active { opacity: 1; }
+
+        .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; border: none; padding: 20px 10px; cursor: pointer; z-index: 5; font-size: 1.5rem; transition: 0.3s; }
+        .gallery-nav:hover { background: rgba(0,0,0,0.8); color: var(--w-gold); }
+        .gallery-prev { left: 0; }
+        .gallery-next { right: 0; }
+
+        .modal-scroll-area { padding: 40px; overflow-y: auto; background: white; display: flex; flex-direction: column; position: relative; }
+
+        .modal-title { font-size: 2.2rem; margin-bottom: 5px; line-height: 1.1; }
+        .modal-subtitle { color: var(--w-gold); font-size: 0.9rem; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+        .feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        .feature-item { font-size: 0.85rem; color: #555; display: flex; align-items: center; gap: 8px; }
+        .feature-item i { color: var(--w-red); }
+        .modal-desc { font-size: 1rem; color: #444; margin-bottom: 30px; line-height: 1.8; }
+
+        /* --- FORM --- */
+        .booking-widget { background: #f9f9f9; padding: 30px; border-radius: 8px; border: 1px solid #eee; margin-top: auto; }
+        .widget-title { font-size: 1rem; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+        .form-group { display: flex; flex-direction: column; gap: 5px; }
+        .form-group label { font-size: 0.7rem; font-weight: 600; color: #888; text-transform: uppercase; }
+        .form-input { padding: 10px; border: 1px solid #ddd; border-radius: 4px; width: 100%; font-family: var(--font-main); font-size: 0.9rem; }
+        .btn-modal-book { width: 100%; background: var(--w-black); color: white; border: none; padding: 15px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-radius: 4px; }
+        .btn-modal-book:hover { background: var(--w-red); }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.8rem; }
+            .modal-content { grid-template-columns: 1fr; height: 100%; border-radius: 0; }
+            .modal-img-col { height: 280px; }
+            .nav-menu { display: none; } 
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .trust-grid { gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <a href="#" class="brand-logo">
+            <img src="logo.png" alt="" class="logo-img" onerror="this.style.display='none'">
+            <div class="brand-text">
+                <h1>Wonderland</h1>
+                <span>JAPAN</span>
+            </div>
+        </a>
+        <div class="nav-right">
+            <div class="nav-menu">
+                <a href="#tours"><span class="lang-en">Experiences</span><span class="lang-jp">ツアー体験</span></a>
+                <a href="#team"><span class="lang-en">Team</span><span class="lang-jp">チーム</span></a>
+                <a href="#faq"><span class="lang-en">FAQ</span><span class="lang-jp">よくある質問</span></a>
+                <a href="#contact"><span class="lang-en">Contact</span><span class="lang-jp">お問い合わせ</span></a>
+            </div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="setLang('en')" id="btn-en">🇺🇸 EN</button>
+                <button class="lang-btn" onclick="setLang('jp')" id="btn-jp">🇯🇵 JP</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header>
+        <div class="hero-bg" id="hero-bg"></div>
+        <div class="hero-content" id="hero-text">
+            <h1 class="hero-title">Wonderland</h1>
+            <p class="hero-subtitle">
+                <span class="lang-en">The door to Japan opens here.</span>
+                <span class="lang-jp">
+                    日本への扉が、<span class="hover-kyoto">京都</span>と<span class="hover-osaka">大阪</span>から開く。
+                </span>
+            </p>
+            <a href="#tours" class="hero-cta">
+                <span class="lang-en">VIEW JOURNEYS</span>
+                <span class="lang-jp">ツアー一覧を見る</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- TRUST BAR -->
+    <section class="trust-bar reveal">
+        <span class="trust-label"><span class="lang-en">OFFICIAL PARTNER</span><span class="lang-jp">公式パートナー</span></span>
+        <div class="trust-icons">
+            <div class="trust-badge">
+                <i class="fa-brands fa-tripadvisor"></i> 
+                <span><span class="lang-en">TripAdvisor</span><span class="lang-jp">トリップアドバイザー</span></span>
+            </div>
+            <div class="trust-badge">
+                <i class="fa-solid fa-users"></i> 
+                <span><span class="lang-en">Small Group</span><span class="lang-jp">少人数制</span></span>
+            </div>
+            <div class="trust-badge">
+                <i class="fa-solid fa-star"></i> 
+                <span><span class="lang-en">5-Star Hosts</span><span class="lang-jp">五つ星ガイド</span></span>
+            </div>
+<div class="trust-badge">
+  <div id="TA_rated530" class="TA_rated">
+    <ul id="wibO7k" class="TA_links SVjLKpd5CM">
+      <li id="N7rhimF8" class="7a0cydNzb">
+        <a target="_blank" href="https://www.tripadvisor.com.tw/Attraction_Review-g298564-d33984848-Reviews-WonderlandJapan-Kyoto_Kyoto_Prefecture_Kinki.html">
+          <img src="https://www.tripadvisor.com.tw/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+        </div>
+    </section>
+
+@@ -872,5 +879,6 @@
+
+        window.addEventListener('scroll', checkScroll);
+    </script>
+<script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=530&amp;locationId=33984848&amp;lang=zh_TW&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
+</body>
+</html>
