@@ -21,7 +21,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
-    /* --- DESIGN SYSTEM --- */
     :root{
       --w-red:#9D2A32;
       --w-gold:#C8A660;
@@ -31,8 +30,6 @@
       --font-lux:'Playfair Display',serif;
       --font-jp:'Zen Old Mincho',serif;
     }
-
-    /* --- GLOBAL RESET --- */
     *{margin:0;padding:0;box-sizing:border-box;}
     body{
       background-color:var(--w-cream);
@@ -46,27 +43,23 @@
     h1,h2,h3,h4{font-family:var(--font-lux);line-height:1.2;}
     img{max-width:100%;display:block;}
 
-    /* Japanese Font Override */
+    /* Language */
     body.is-jp{font-family:var(--font-jp)!important;}
     body.is-jp h1,body.is-jp h2,body.is-jp h3,body.is-jp h4,
     body.is-jp p,body.is-jp a,body.is-jp span,body.is-jp div,
     body.is-jp input,body.is-jp button,body.is-jp select{font-family:var(--font-jp)!important;letter-spacing:.05em;}
-
     .lang-jp{display:none;}
     body.is-jp .lang-en{display:none!important;}
     body.is-jp .lang-jp{display:inline-block!important;}
 
-    /* --- HOVER EFFECTS --- */
     .hover-kyoto{border-bottom:1px dotted var(--w-red);transition:.3s;cursor:pointer;}
     .hover-kyoto:hover{color:var(--w-red);}
     .hover-osaka{border-bottom:1px dotted var(--w-gold);transition:.3s;cursor:pointer;}
     .hover-osaka:hover{color:var(--w-gold);}
 
-    /* --- ANIMATION --- */
     .reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(.5,0,0,1);}
     .reveal.active{opacity:1;transform:translateY(0);}
 
-    /* --- NAVIGATION --- */
     nav{position:fixed;top:0;width:100%;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:.4s ease;}
     nav.scrolled{background:rgba(255,255,255,.98);box-shadow:0 4px 20px rgba(0,0,0,.08);padding:15px 5%;}
     .brand-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
@@ -84,7 +77,6 @@
     .lang-btn{background:transparent;border:1px solid rgba(255,255,255,.4);color:white;padding:6px 14px;border-radius:30px;font-size:.7rem;cursor:pointer;transition:.3s;}
     .lang-btn.active,.lang-btn:hover{background:var(--w-red);border-color:var(--w-red);color:white;}
 
-    /* --- HERO --- */
     header{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
     .hero-bg{position:absolute;top:0;left:0;width:100%;height:120%;
       background-image:url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053');
@@ -95,7 +87,6 @@
     .hero-cta{background:var(--w-red);color:white;text-decoration:none;padding:18px 50px;border-radius:50px;font-size:.9rem;letter-spacing:2px;font-weight:600;transition:.3s;display:inline-flex;justify-content:center;align-items:center;white-space:nowrap;min-width:220px;box-shadow:0 10px 25px rgba(0,0,0,.2);}
     .hero-cta:hover{background:white;color:var(--w-red);transform:translateY(-3px);}
 
-    /* --- TRUST BAR --- */
     .trust-bar{background:white;padding:35px 5%;text-align:center;border-bottom:1px solid #eee;display:flex;flex-direction:column;align-items:center;}
     .trust-label{font-size:.7rem;color:#888;letter-spacing:2px;margin-bottom:15px;text-transform:uppercase;}
     .trust-icons{display:flex;gap:50px;align-items:center;flex-wrap:wrap;justify-content:center;}
@@ -106,13 +97,11 @@
     body:not(.is-jp) .ta-widget.ta-en{display:block;}
     body.is-jp .ta-widget.ta-jp{display:block;}
 
-    /* --- TOURS COLLECTION --- */
     .tours-section{padding:100px 5%;background:transparent;}
     .section-header{text-align:center;margin-bottom:70px;}
     .section-tag{color:var(--w-red);font-size:.75rem;letter-spacing:3px;font-weight:700;text-transform:uppercase;display:block;margin-bottom:10px;}
     .section-header h2{font-size:3rem;color:var(--w-black);margin-bottom:20px;}
     .tours-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:35px;}
-
     .tour-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.03);transition:transform .4s;cursor:pointer;position:relative;display:flex;flex-direction:column;height:100%;}
     .tour-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,.1);}
     .tour-badge{position:absolute;top:20px;left:20px;background:rgba(255,255,255,.95);color:var(--w-black);padding:6px 14px;font-size:.7rem;text-transform:uppercase;font-weight:700;z-index:2;border-radius:4px;}
@@ -127,7 +116,6 @@
     .price-val{font-size:1.25rem;color:var(--w-red);font-weight:700;}
     .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid #eee;background:#fafafa;font-size:.8rem;color:#444;}
 
-    /* --- TEAM SECTION --- */
     .team-section{padding:80px 5%;background:white;text-align:center;}
     .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-top:50px;}
     .team-img{width:180px;height:180px;border-radius:50%;object-fit:cover;margin:0 auto 20px auto;border:4px solid var(--w-cream);box-shadow:0 10px 25px rgba(0,0,0,.1);transition:.4s;background:#eee;}
@@ -138,7 +126,6 @@
     .team-note{margin-top:22px;color:#666;font-size:.9rem;max-width:900px;margin-left:auto;margin-right:auto;}
     .team-note strong{color:#222;}
 
-    /* --- FAQ SECTION --- */
     .faq-section{padding:80px 5%;background:transparent;max-width:900px;margin:0 auto;}
     .faq-item{border-bottom:1px solid rgba(0,0,0,.1);}
     .faq-question{padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:1rem;color:var(--w-black);transition:.3s;}
@@ -148,7 +135,6 @@
     .faq-item.active .faq-answer{max-height:220px;}
     .faq-item.active .faq-question i{transform:rotate(180deg);}
 
-    /* --- FOOTER --- */
     .concierge-footer{background:#1a1a1a;color:#999;padding:80px 5%;font-size:.9rem;}
     .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto;}
     .footer-brand h2{color:white;margin-bottom:20px;font-size:1.8rem;}
@@ -165,7 +151,6 @@
     .legal-grid .v{color:#cfcfcf;font-size:.9rem;}
     .legal-small{margin-top:14px;color:#bdbdbd;font-size:.85rem;}
 
-    /* --- MODAL --- */
     .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);z-index:2000;justify-content:center;align-items:center;opacity:0;transition:.3s;backdrop-filter:blur(5px);}
     .modal-overlay.active{display:flex;opacity:1;}
     .modal-content{background:white;width:95%;max-width:1100px;height:90vh;display:grid;grid-template-columns:55% 45%;border-radius:12px;overflow:hidden;box-shadow:0 25px 50px rgba(0,0,0,.5);}
@@ -192,7 +177,6 @@
     .feature-item i{color:var(--w-red);}
     .modal-desc{font-size:1rem;color:#444;margin-bottom:30px;line-height:1.85;}
 
-    /* --- FORM --- */
     .booking-widget{background:#f9f9f9;padding:28px;border-radius:12px;border:1px solid #eee;margin-top:auto;}
     .widget-title{font-size:1rem;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;}
     .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px;}
@@ -220,7 +204,6 @@
 
 <body>
 
-  <!-- NAVIGATION -->
   <nav id="navbar">
     <a href="#" class="brand-logo" aria-label="Wonderland Japan Home">
       <img src="logo.png" alt="Wonderland Japan" class="logo-img" onerror="this.style.display='none'">
@@ -245,7 +228,6 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
   <header>
     <div class="hero-bg" id="hero-bg"></div>
     <div class="hero-content" id="hero-text">
@@ -261,12 +243,9 @@
     </div>
   </header>
 
-  <!-- TRUST BAR -->
   <section class="trust-bar reveal">
     <span class="trust-label"><span class="lang-en">OFFICIAL PARTNER</span><span class="lang-jp">公式パートナー</span></span>
 
-    <!-- Removed the left "TRIPADVISOR" text badge.
-         Kept: Small Group / 5-Star Hosts / TripAdvisor widget, and centered them. -->
     <div class="trust-icons">
       <div class="trust-badge">
         <i class="fa-solid fa-users"></i>
@@ -278,7 +257,6 @@
         <span><span class="lang-en">5-Star Hosts</span><span class="lang-jp">高評価ホスト</span></span>
       </div>
 
-      <!-- TripAdvisor widget (EN / JP) -->
       <div class="trust-badge" aria-label="TripAdvisor rating badge">
         <div class="ta-widget ta-en">
           <div id="TA_rated669" class="TA_rated">
@@ -308,7 +286,6 @@
     </div>
   </section>
 
-  <!-- TOURS -->
   <section id="tours" class="tours-section">
     <div class="section-header reveal">
       <span class="section-tag"><span class="lang-en">Curated Experiences</span><span class="lang-jp">厳選体験</span></span>
@@ -323,7 +300,6 @@
     <div class="tours-grid" id="toursGrid"></div>
   </section>
 
-  <!-- MODAL -->
   <div class="modal-overlay" id="modal">
     <div class="modal-close" id="modalClose" title="Close" aria-label="Close"><i class="fa-solid fa-xmark"></i></div>
 
@@ -411,7 +387,6 @@
     </div>
   </div>
 
-  <!-- TEAM -->
   <section id="team" class="team-section">
     <div class="section-header reveal">
       <span class="section-tag"><span class="lang-en">Our Team</span><span class="lang-jp">チーム</span></span>
@@ -459,7 +434,6 @@
     </div>
   </section>
 
-  <!-- FAQ -->
   <section id="faq" class="faq-section">
     <div class="section-header reveal">
       <span class="section-tag"><span class="lang-en">FAQ</span><span class="lang-jp">よくある質問</span></span>
@@ -493,7 +467,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="concierge-footer" id="contact">
     <div class="footer-grid">
       <div class="footer-brand">
@@ -536,7 +509,6 @@
       </div>
     </div>
 
-    <!-- Stripe-friendly transparency section (kept at the very bottom, not taking space) -->
     <div class="legal-box" id="legal">
       <div class="legal-title">
         <span class="lang-en">Merchant & Policy Information</span>
@@ -588,28 +560,19 @@
     </div>
   </footer>
 
-  <!-- TripAdvisor widget scripts (EN + JP). Keeping both loaded is fine; we show/hide containers by language. -->
   <script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=669&amp;locationId=33984848&amp;lang=en_US&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
   <script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=954&amp;locationId=33984848&amp;lang=ja&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
 
   <script>
-    /* ---------------------------
-       Language
-    --------------------------- */
     function setLang(lang){
       const isJP = (lang === 'jp');
       document.body.classList.toggle('is-jp', isJP);
       document.getElementById('btn-en').classList.toggle('active', !isJP);
       document.getElementById('btn-jp').classList.toggle('active', isJP);
-
-      // Also re-render tours for correct language snippets if modal is open.
       renderTours();
       if (modalState.isOpen) openModal(modalState.tourId);
     }
 
-    /* ---------------------------
-       Navbar scroll style
-    --------------------------- */
     const navbar = document.getElementById('navbar');
     function checkScroll(){
       if(window.scrollY > 40) navbar.classList.add('scrolled');
@@ -618,9 +581,6 @@
     window.addEventListener('scroll', checkScroll);
     checkScroll();
 
-    /* ---------------------------
-       Reveal on scroll
-    --------------------------- */
     const revealEls = Array.from(document.querySelectorAll('.reveal'));
     function onReveal(){
       const h = window.innerHeight;
@@ -632,17 +592,11 @@
     window.addEventListener('scroll', onReveal);
     onReveal();
 
-    /* ---------------------------
-       FAQ accordion
-    --------------------------- */
     document.querySelectorAll('.faq-item').forEach(item=>{
       const q = item.querySelector('.faq-question');
       q.addEventListener('click', ()=> item.classList.toggle('active'));
     });
 
-    /* ---------------------------
-       Policies quick modal (lightweight)
-    --------------------------- */
     function openPolicy(type){
       const en = {
         refund:
@@ -660,193 +614,115 @@
       alert(msg);
     }
 
-    /* ---------------------------
-       Image loading strategy (IMPORTANT)
-       Static sites cannot auto-list a folder.
-       Best practice: put a manifest.json in each folder:
-         /Taiko/manifest.json
-         /Gion/manifest.json
-         /Kyoto/manifest.json
-         /Bamboo/manifest.json
-       Example content:
-         { "images": ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"] }
-       Then this page will load them automatically.
-    --------------------------- */
-    async function loadFolderImages(folderPath, fallbackList){
-      try{
-        const res = await fetch(folderPath.replace(/\/$/,'') + '/manifest.json', { cache: 'no-store' });
-        if(!res.ok) throw new Error('No manifest');
-        const data = await res.json();
-        if(!data || !Array.isArray(data.images) || data.images.length === 0) throw new Error('Bad manifest');
-        return data.images.map(name => folderPath.replace(/\/$/,'') + '/' + name);
-      }catch(e){
-        // Fallback list (edit if you prefer hardcoding)
-        return fallbackList.map(name => folderPath.replace(/\/$/,'') + '/' + name);
-      }
+    function fmtJPY(n){
+      return new Intl.NumberFormat('ja-JP').format(n);
+    }
+    function tText(obj){
+      return document.body.classList.contains('is-jp') ? obj.jp : obj.en;
     }
 
-    /* ---------------------------
-       Tours data (EN/JP, SEO-forward, no Chinese)
-       Update Stripe links below to your real Stripe Checkout URLs.
-    --------------------------- */
+    /* ============================
+       FIXED ALBUMS + FIXED TIMES
+       (as you requested)
+    ============================ */
     const tours = [
       {
         id: "taiko",
         badge: { en: "Kyoto", jp: "京都" },
-        title: {
-          en: "Kyoto Taiko Drum Live Performance",
-          jp: "京都 和太鼓ライブパフォーマンス"
-        },
-        meta: {
-          en: ["45 min", "Live performance"],
-          jp: ["45分", "ライブ公演"]
-        },
+        title: { en: "Kyoto Taiko Drum Live Performance", jp: "京都 和太鼓ライブパフォーマンス" },
+        meta: { en: ["45 min", "Live performance"], jp: ["45分", "ライブ公演"] },
         priceJPY: 7000,
         shortDesc: {
           en: "Feel the heartbeat of Japan — a powerful, intimate taiko performance crafted for travelers who want something real, not staged.",
           jp: "旅のために整えられた“本物”の鼓動。迫力と余韻が残る、濃密な和太鼓ライブ体験。"
         },
         desc: {
-          en:
-            "A taiko performance is more than rhythm — it is discipline, breath, and communal energy. In this live show, you’ll experience dynamic pieces rooted in tradition and refined for modern audiences, without losing authenticity. Expect precision, intensity, and moments of quiet that make the impact land even deeper.",
-          jp:
-            "和太鼓は“リズム”以上のもの。鍛錬、呼吸、そして場をひとつにするエネルギーです。本公演では、伝統に根ざしつつ現代の感性で磨かれた演目を、芯を失わずにお届けします。緊張感、迫力、そして静けさが、体験をより深くします。"
+          en: "A taiko performance is more than rhythm — it is discipline, breath, and communal energy. In this live show, you’ll experience dynamic pieces rooted in tradition and refined for modern audiences, without losing authenticity.",
+          jp: "和太鼓は“リズム”以上のもの。鍛錬、呼吸、そして場をひとつにするエネルギーです。本公演では、伝統に根ざしつつ現代の感性で磨かれた演目を、芯を失わずにお届けします。"
         },
         features: {
-          en: ["Ticketed live show", "45-minute program", "Central Kyoto access", "Clear policies & support"],
-          jp: ["チケット制ライブ", "45分プログラム", "京都中心部アクセス", "明確な規約・サポート"]
+          en: ["Ticketed live show", "45-minute program", "Central access", "Clear policies & support"],
+          jp: ["チケット制ライブ", "45分プログラム", "アクセス良好", "明確な規約・サポート"]
         },
-        folder: "Taiko",
-        // Replace with your Stripe Checkout URL (one per product)
+        images: ["Taiko1.jpg","Taiko2.jpg","Taiko3.jpg","Taiko4.jpg","Taiko5.jpg","Taiko6.jpg"],
+        times: ["14:30","15:30","16:30","18:00","19:00","20:00"],
         stripeUrl: "https://buy.stripe.com/REPLACE_TAIKO"
       },
-
       {
         id: "gion",
         badge: { en: "Kyoto", jp: "京都" },
-        title: {
-          en: "Gion & Higashiyama Cultural Walk",
-          jp: "祇園・東山 文化散策ウォーク"
-        },
-        meta: {
-          en: ["2 hours", "Old town streets"],
-          jp: ["2時間", "街歩き"]
-        },
+        title: { en: "Gion & Higashiyama Cultural Walk", jp: "祇園・東山 文化散策ウォーク" },
+        meta: { en: ["2 hours", "Old town streets"], jp: ["2時間", "街歩き"] },
         priceJPY: 4500,
         shortDesc: {
           en: "Walk the lanes where Kyoto’s aesthetics were born — tea houses, shrines, and stories that bring the city into focus.",
           jp: "京都の美意識が育った路地へ。茶屋、神社、物語が、街を鮮明にします。"
         },
         desc: {
-          en:
-            "This is Kyoto at human scale: stone-paved alleys, soft lantern light, and the quiet geometry of old-town life. Your guide threads the cultural context — etiquette, seasonal traditions, and the meaning behind details most visitors pass by — so you don’t just see Kyoto, you understand it.",
-          jp:
-            "石畳の小径、行灯の光、旧市街の静かな秩序。ガイドが礼儀作法や季節の行事、見落とされがちな意匠の意味まで丁寧につなぎ、ただ“見る”のではなく“理解する”京都へ導きます。"
+          en: "This is Kyoto at human scale: stone-paved alleys, soft lantern light, and the quiet geometry of old-town life. Your guide threads the cultural context so you don’t just see Kyoto, you understand it.",
+          jp: "石畳の小径、行灯の光、旧市街の静かな秩序。ガイドが背景を丁寧につなぎ、ただ“見る”のではなく“理解する”京都へ導きます。"
         },
         features: {
           en: ["Local storytelling", "Photo-friendly pace", "Small-group comfort", "2-hour route"],
           jp: ["丁寧な解説", "撮影しやすいペース", "少人数で快適", "2時間ルート"]
         },
-        folder: "Gion",
+        images: ["gion1.jpg","gion2.jpg","gion3.jpg","gion4.jpg","gion5.jpg","gion6.jpg","gion7.jpg"],
+        times: ["10:30","13:30","16:30"],
         stripeUrl: "https://buy.stripe.com/REPLACE_GION"
       },
-
       {
         id: "food",
         badge: { en: "Kyoto", jp: "京都" },
-        title: {
-          en: "Kyoto Local Night Food Tour",
-          jp: "京都 ローカル夜グルメツアー"
-        },
-        meta: {
-          en: ["3 hours", "Izakaya-style tasting"],
-          jp: ["3時間", "居酒屋テイスティング"]
-        },
+        title: { en: "Kyoto Local Night Food Tour", jp: "京都 ローカル夜グルメツアー" },
+        meta: { en: ["3 hours", "Night tasting"], jp: ["3時間", "夜の食べ歩き"] },
         priceJPY: 16000,
         shortDesc: {
           en: "Kyoto after dark — hidden counters, trusted kitchens, and a curated flow that tastes like the city, not a checklist.",
           jp: "夜の京都へ。隠れた名店と信頼できる一皿を、チェックリストではなく“街の味”として巡ります。"
         },
         desc: {
-          en:
-            "Kyoto cuisine is subtle — built on craftsmanship, temperature, timing, and restraint. This night tour is designed like a menu: we move with intention, balancing flavors and atmospheres while keeping the pace comfortable. Expect local favorites, seasonal highlights, and context that makes each bite make sense.",
-          jp:
-            "京都の味は繊細で、技術と温度、タイミング、引き算で成立します。この夜ツアーは“献立”のように設計。味と空気感のバランスを整え、心地よいテンポで巡ります。定番から旬の一皿まで、背景を添えて一口の理解を深めます。"
+          en: "Kyoto cuisine is subtle — built on craftsmanship, temperature, timing, and restraint. This night tour is designed like a menu: we move with intention, balancing flavors and atmospheres while keeping the pace comfortable.",
+          jp: "京都の味は繊細で、技術と温度、タイミング、引き算で成立します。この夜ツアーは“献立”のように設計。味と空気感のバランスを整え、心地よいテンポで巡ります。"
         },
         features: {
-          en: ["Curated progression", "Local venues", "3-hour experience", "Support for dietary notes (advance)"],
+          en: ["Curated progression", "Local venues", "3-hour experience", "Dietary notes welcome (advance)"],
           jp: ["流れを設計", "ローカル店", "3時間", "食事制限は事前相談可"]
         },
-        folder: "Kyoto",
+        images: ["kyoto1.jpg","kyoto2.jpg","kyoto3.jpg","kyoto4.jpg","kyoto5.jpg"],
+        times: ["18:00"],
         stripeUrl: "https://buy.stripe.com/REPLACE_FOOD"
       },
-
       {
         id: "bamboo",
         badge: { en: "Arashiyama", jp: "嵐山" },
-        title: {
-          en: "Arashiyama Bamboo Zen & Matcha Morning Walk",
-          jp: "嵐山 竹林禅と抹茶の朝散歩"
-        },
-        meta: {
-          en: ["2.5 hours", "Weekdays 07:30"],
-          jp: ["2.5時間", "平日 7:30"]
-        },
+        title: { en: "Arashiyama Bamboo Zen & Matcha Morning Walk", jp: "嵐山 竹林禅と抹茶の朝散歩" },
+        meta: { en: ["2.5 hours", "Weekdays 07:30"], jp: ["2.5時間", "平日 7:30"] },
         priceJPY: 9800,
         shortDesc: {
           en: "Start before the crowds: bamboo hush, clean morning air, and a matcha moment that slows time (30-minute matcha experience included).",
           jp: "混雑前の朝へ。竹林の静けさ、澄んだ空気、時間がほどける抹茶のひととき（抹茶体験30分込み）。"
         },
         desc: {
-          en:
-            "Arashiyama at 7:30 is a different world — the light is soft, footsteps are few, and the bamboo feels like a living cathedral. We walk with a calm rhythm, then settle into a 30-minute matcha experience to complete the morning with intention. Designed for travelers who value atmosphere, authenticity, and quiet excellence.",
-          jp:
-            "7:30の嵐山は別世界。光は柔らかく、人影はまばらで、竹林は“生きた聖堂”のように感じられます。静かなリズムで歩き、最後に30分の抹茶体験で朝を整えます。空気感と本物志向、そして静かな上質を求める方へ。"
+          en: "Arashiyama at 7:30 is a different world — the light is soft, footsteps are few, and the bamboo feels like a living cathedral. We walk with a calm rhythm, then settle into a 30-minute matcha experience to complete the morning with intention.",
+          jp: "7:30の嵐山は別世界。光は柔らかく、人影はまばらで、竹林は“生きた聖堂”のように感じられます。静かなリズムで歩き、最後に30分の抹茶体験で朝を整えます。"
         },
         features: {
           en: ["Weekdays only", "Fixed start 07:30", "2.5-hour route", "Matcha experience (30 min) included"],
           jp: ["平日のみ", "開始 7:30 固定", "2.5時間ルート", "抹茶体験（30分）込み"]
         },
-        folder: "Bamboo",
-        stripeUrl: "https://buy.stripe.com/REPLACE_BAMBOO",
+        images: ["arashiyama1.jpg","arashiyama2.jpg","arashiyama3.jpg","arashiyama4.jpg","arashiyama5.jpg","arashiyama6.jpg","arashiyama7.jpg","arashiyama8.jpg"],
         weekdayOnly: true,
-        fixedTime: "07:30"
+        fixedTime: "07:30",
+        times: ["07:30"],
+        stripeUrl: "https://buy.stripe.com/REPLACE_BAMBOO"
       }
     ];
 
-    // Default fallback filenames if no manifest.json exists (edit if needed)
-    const fallbackFiles = {
-      Taiko: ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"],
-      Gion: ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"],
-      Kyoto: ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"],
-      Bamboo: ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"]
-    };
-
-    // Modal state
     const modalState = { isOpen:false, tourId:null, images:[], idx:0 };
-
-    /* ---------------------------
-       Render tours grid
-    --------------------------- */
-    async function hydrateImages(){
-      for(const t of tours){
-        const folderPath = `./${t.folder}`;
-        t.images = await loadFolderImages(folderPath, fallbackFiles[t.folder] || []);
-      }
-    }
-
-    function fmtJPY(n){
-      return new Intl.NumberFormat('ja-JP').format(n);
-    }
-
-    function tText(obj){
-      return document.body.classList.contains('is-jp') ? obj.jp : obj.en;
-    }
 
     function renderTours(){
       const grid = document.getElementById('toursGrid');
       grid.innerHTML = "";
-
       tours.forEach(t=>{
         const card = document.createElement('div');
         card.className = "tour-card reveal active";
@@ -888,9 +764,6 @@
       });
     }
 
-    /* ---------------------------
-       Modal open / close
-    --------------------------- */
     const modal = document.getElementById('modal');
     const modalClose = document.getElementById('modalClose');
     modalClose.addEventListener('click', closeModal);
@@ -911,7 +784,7 @@
 
       modalState.isOpen = true;
       modalState.tourId = tourId;
-      modalState.images = (t.images || []).slice(0, 12); // allow many, swipeable
+      modalState.images = (t.images || []).slice(0, 24); // plenty
       modalState.idx = 0;
 
       document.getElementById('modalTitle').textContent = tText(t.title);
@@ -928,34 +801,23 @@
 
       document.getElementById('modalDesc').textContent = tText(t.desc);
 
-      // Build gallery
       buildGallery();
-
-      // Build time options
       buildTimeOptions(t);
-
-      // Apply weekday-only rule if needed
       applyDateRules(t);
 
-      // Wire buttons
       document.getElementById('btnSendRequest').onclick = ()=> sendRequest(t);
       document.getElementById('btnPayStripe').onclick = ()=> payStripe(t);
 
-      // Open
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
 
-    /* ---------------------------
-       Gallery
-    --------------------------- */
     const gallery = document.getElementById('gallery');
     const dots = document.getElementById('galleryDots');
 
     function buildGallery(){
       gallery.innerHTML = "";
       dots.innerHTML = "";
-
       const imgs = modalState.images.length ? modalState.images : [""];
       imgs.forEach((src, i)=>{
         const img = document.createElement('img');
@@ -983,41 +845,30 @@
       modalState.idx = i;
     }
 
-    /* ---------------------------
-       Booking UI rules
-    --------------------------- */
     function buildTimeOptions(t){
       const sel = document.getElementById('bkTime');
       sel.innerHTML = "";
-
-      // Default time options (feel free to adjust)
-      const defaultTimes = ["09:00","10:00","11:00","13:00","15:00","17:00","19:00"];
-
-      const times = t.fixedTime ? [t.fixedTime] : defaultTimes;
+      const times = (t.times && t.times.length) ? t.times : ["10:00","13:00","15:00"];
       times.forEach(tm=>{
         const opt = document.createElement('option');
         opt.value = tm;
         opt.textContent = tm;
         sel.appendChild(opt);
       });
-
-      sel.disabled = !!t.fixedTime;
+      sel.disabled = (t.fixedTime && t.times && t.times.length === 1);
     }
 
     function applyDateRules(t){
       const dateEl = document.getElementById('bkDate');
-
-      // min date = tomorrow (simple safeguard)
       const d = new Date();
       d.setDate(d.getDate() + 1);
       dateEl.min = d.toISOString().slice(0,10);
-
       dateEl.onchange = null;
 
       if(t.weekdayOnly){
         dateEl.onchange = ()=>{
           const chosen = new Date(dateEl.value + "T00:00:00");
-          const day = chosen.getDay(); // 0 Sun .. 6 Sat
+          const day = chosen.getDay();
           const isWeekend = (day === 0 || day === 6);
           if(isWeekend){
             alert(document.body.classList.contains('is-jp')
@@ -1046,8 +897,6 @@ Notes: ${payload.notes || '-'}
 
 Please confirm availability and next steps.`
       );
-
-      // Opens user's email client (OTA-style “request”)
       window.location.href = `mailto:info@wonderlandjapan.net?subject=${subject}&body=${body}`;
     }
 
@@ -1055,8 +904,6 @@ Please confirm availability and next steps.`
       const payload = collectForm();
       if(!payload) return;
 
-      // Add minimal query params so you can read them on a landing page if you want.
-      // Stripe Checkout itself won’t process these unless your Stripe product is configured to do so.
       const url = new URL(t.stripeUrl);
       url.searchParams.set("prefill_date", payload.date);
       url.searchParams.set("prefill_time", payload.time);
@@ -1078,22 +925,14 @@ Please confirm availability and next steps.`
       const notes = document.getElementById('bkNotes').value.trim();
 
       if(!date || !time || !guests || !phone || !name || !email){
-        alert(document.body.classList.contains('is-jp')
-          ? "必須項目を入力してください。"
-          : "Please fill in all required fields."
-        );
+        alert(document.body.classList.contains('is-jp') ? "必須項目を入力してください。" : "Please fill in all required fields.");
         return null;
       }
       return { date, time, guests, phone, name, email, notes };
     }
 
-    /* ---------------------------
-       Boot
-    --------------------------- */
-    (async function init(){
-      await hydrateImages();
+    (function init(){
       renderTours();
-      // default EN
       setLang('en');
     })();
   </script>
