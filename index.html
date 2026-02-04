@@ -16,10 +16,10 @@
     <style>
         /* --- DESIGN SYSTEM --- */
         :root {
-            --w-red: #9D2A32;     
-            --w-gold: #C8A660;    
+            --w-red: #9D2A32;
+            --w-gold: #C8A660;
             --w-black: #1a1a1a;
-            --w-cream: #F9F8F6;   
+            --w-cream: #F9F8F6;
             --font-main: 'Montserrat', sans-serif;
             --font-lux: 'Playfair Display', serif;
             --font-jp: 'Zen Old Mincho', serif;
@@ -28,12 +28,12 @@
         /* --- GLOBAL RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body { 
-            background-color: var(--w-cream); 
-            color: var(--w-black); 
-            font-family: var(--font-main); 
-            line-height: 1.7; 
-            overflow-x: hidden; 
+        body {
+            background-color: var(--w-cream);
+            color: var(--w-black);
+            font-family: var(--font-main);
+            line-height: 1.7;
+            overflow-x: hidden;
             /* Washi Texture */
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
         }
@@ -44,7 +44,12 @@
 
         /* Japanese Font Override */
         body.is-jp { font-family: var(--font-jp) !important; }
-        body.is-jp h1, body.is-jp h2, body.is-jp h3, body.is-jp h4, body.is-jp p, body.is-jp a, body.is-jp span, body.is-jp div, body.is-jp input, body.is-jp button, body.is-jp select { font-family: var(--font-jp) !important; letter-spacing: 0.05em; }
+        body.is-jp h1, body.is-jp h2, body.is-jp h3, body.is-jp h4,
+        body.is-jp p, body.is-jp a, body.is-jp span, body.is-jp div,
+        body.is-jp input, body.is-jp button, body.is-jp select {
+            font-family: var(--font-jp) !important;
+            letter-spacing: 0.05em;
+        }
 
         .lang-jp { display: none; }
         body.is-jp .lang-en { display: none !important; }
@@ -57,13 +62,26 @@
         .hover-osaka:hover { color: var(--w-gold); }
 
         /* --- ANIMATION --- */
-        /* Note: Modified to ensure elements don't get stuck invisible */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* --- NAVIGATION --- */
-        nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s ease; }
-        nav.scrolled { background: rgba(255, 255, 255, 0.98); box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 15px 5%; }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 15px 5%;
+        }
 
         .brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .logo-img { height: 45px; width: 45px; background: var(--w-red); border-radius: 50%; object-fit: cover; }
@@ -82,20 +100,44 @@
 
         /* --- HERO --- */
         header { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 120%; background-image: url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053'); background-size: cover; background-position: center; z-index: -1; filter: brightness(0.65); will-change: transform; }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 120%;
+            background-image: url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053');
+            background-size: cover; background-position: center;
+            z-index: -1; filter: brightness(0.65); will-change: transform;
+        }
         .hero-content { text-align: center; color: white; z-index: 2; padding: 0 20px; will-change: transform; }
         .hero-title { font-size: 4rem; margin-bottom: 15px; letter-spacing: 2px; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .hero-subtitle { font-size: 1.3rem; margin-bottom: 40px; color: var(--w-gold); letter-spacing: 2px; }
-        .hero-cta { background: var(--w-red); color: white; text-decoration: none; padding: 18px 50px; border-radius: 50px; font-size: 0.9rem; letter-spacing: 2px; font-weight: 600; transition: 0.3s; display: inline-flex; justify-content: center; align-items: center; white-space: nowrap; min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .hero-cta {
+            background: var(--w-red); color: white; text-decoration: none;
+            padding: 18px 50px; border-radius: 50px; font-size: 0.9rem;
+            letter-spacing: 2px; font-weight: 600;
+            transition: 0.3s; display: inline-flex; justify-content: center; align-items: center;
+            white-space: nowrap; min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
         .hero-cta:hover { background: white; color: var(--w-red); transform: translateY(-3px); }
 
         /* --- TRUST BAR --- */
-        .trust-bar { background: white; padding: 35px 5%; text-align: center; border-bottom: 1px solid #eee; display: flex; flex-direction: column; align-items: center; }
+        .trust-bar {
+            background: white;
+            padding: 35px 5%;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         .trust-label { font-size: 0.7rem; color: #888; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; }
         .trust-icons { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; justify-content: center; }
         .trust-badge { display: flex; align-items: center; gap: 12px; opacity: 0.9; }
-        .trust-badge i { font-size: 1.8rem; color: var(--w-black); } 
+        .trust-badge i { font-size: 1.8rem; color: var(--w-black); }
         .trust-badge span { font-size: 0.85rem; font-weight: 600; color: var(--w-black); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- TripAdvisor language widgets --- */
+        .ta-widget { display: none; }
+        body:not(.is-jp) .ta-en { display: flex; }
+        body.is-jp .ta-jp { display: flex; }
 
         /* --- TOURS COLLECTION --- */
         .tours-section { padding: 100px 5%; background: transparent; }
@@ -104,7 +146,12 @@
         .section-header h2 { font-size: 3rem; color: var(--w-black); margin-bottom: 20px; }
         .tours-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 35px; }
 
-        .tour-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.4s; cursor: pointer; position: relative; display: flex; flex-direction: column; height: 100%; }
+        .tour-card {
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: transform 0.4s; cursor: pointer; position: relative;
+            display: flex; flex-direction: column; height: 100%;
+        }
         .tour-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .tour-badge { position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.95); color: var(--w-black); padding: 6px 14px; font-size: 0.7rem; text-transform: uppercase; font-weight: 700; z-index: 2; border-radius: 4px; }
         .card-img-wrap { height: 260px; overflow: hidden; position: relative; background: #eee; }
@@ -119,26 +166,22 @@
 
         .coming-soon { pointer-events: none; }
         .coming-soon .card-img-wrap { filter: grayscale(100%) blur(1px); }
-        .coming-soon .card-img-wrap::after { content: 'COMING SOON'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: white; border: 1px solid white; padding: 5px 15px; letter-spacing: 2px; font-size: 0.8rem; }
+        .coming-soon .card-img-wrap::after {
+            content: 'COMING SOON'; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%,-50%); color: white; border: 1px solid white;
+            padding: 5px 15px; letter-spacing: 2px; font-size: 0.8rem;
+        }
         body.is-jp .coming-soon .card-img-wrap::after { content: '準備中'; }
 
         /* --- TEAM SECTION --- */
         .team-section { padding: 80px 5%; background: white; text-align: center; }
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 50px; }
-
-        /* Updated: Added margin: 0 auto to center the block-level images */
-        .team-img { 
-            width: 180px; 
-            height: 180px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            margin: 0 auto 20px auto; /* Centered with bottom margin */
-            border: 4px solid var(--w-cream); 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-            transition: 0.4s; 
-            background: #eee; 
+        .team-img {
+            width: 180px; height: 180px; border-radius: 50%;
+            object-fit: cover; margin: 0 auto 20px auto;
+            border: 4px solid var(--w-cream); box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: 0.4s; background: #eee;
         }
-
         .team-img:hover { transform: scale(1.05); border-color: var(--w-gold); }
         .team-name { font-family: var(--font-lux); font-size: 1.3rem; color: var(--w-red); margin-bottom: 5px; }
         .team-role { font-size: 0.85rem; color: var(--w-gold); letter-spacing: 2px; text-transform: uppercase; }
@@ -147,7 +190,11 @@
         .reviews-section { padding: 100px 0; background: #fff; overflow: hidden; border-top: 1px solid #eee; position: relative; }
         .reviews-track { display: flex; gap: 30px; width: max-content; padding: 40px 0; animation: scroll 80s linear infinite; }
         .reviews-track:hover { animation-play-state: paused; }
-        .review-card { width: 350px; background: white; border: 1px solid #f0f0f0; padding: 35px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.03); flex-shrink: 0; display: flex; flex-direction: column; }
+        .review-card {
+            width: 350px; background: white; border: 1px solid #f0f0f0;
+            padding: 35px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            flex-shrink: 0; display: flex; flex-direction: column;
+        }
         .review-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
         .review-stars { color: var(--w-gold); }
         .review-text { font-style: italic; color: #555; margin-bottom: 20px; flex-grow: 1; font-size: 0.9rem; line-height: 1.6; }
@@ -163,7 +210,7 @@
         .faq-question:hover { color: var(--w-red); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; font-size: 0.9rem; color: #555; line-height: 1.6; }
         .faq-answer p { padding-bottom: 20px; }
-        .faq-item.active .faq-answer { max-height: 200px; }
+        .faq-item.active .faq-answer { max-height: 240px; }
         .faq-item.active .faq-question i { transform: rotate(180deg); }
 
         /* --- TRUST SECTION --- */
@@ -183,25 +230,52 @@
         .footer-links a:hover { color: var(--w-gold); }
 
         /* --- MODAL --- */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; backdrop-filter: blur(5px); }
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 2000;
+            justify-content: center; align-items: center; opacity: 0;
+            transition: 0.3s; backdrop-filter: blur(5px);
+        }
         .modal-overlay.active { display: flex; opacity: 1; }
 
-        .modal-content { background: white; width: 95%; max-width: 1100px; height: 90vh; display: grid; grid-template-columns: 55% 45%; border-radius: 12px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
+        .modal-content {
+            background: white; width: 95%; max-width: 1100px; height: 90vh;
+            display: grid; grid-template-columns: 55% 45%;
+            border-radius: 12px; overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
 
-        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: #000; cursor: pointer; z-index: 100; background: white; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .modal-close {
+            position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: #000;
+            cursor: pointer; z-index: 2100; background: white; width: 40px; height: 40px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
         .modal-close:hover { background: var(--w-red); color: white; }
 
         .modal-img-col { background: #000; position: relative; height: 100%; width: 100%; overflow: hidden; }
         .gallery-container { width: 100%; height: 100%; position: relative; }
-        .gallery-slide { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.6s ease; }
+        .gallery-slide {
+            width: 100%; height: 100%; object-fit: cover;
+            position: absolute; top: 0; left: 0;
+            opacity: 0; transition: opacity 0.6s ease;
+        }
         .gallery-slide.active { opacity: 1; }
 
-        .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; border: none; padding: 20px 10px; cursor: pointer; z-index: 5; font-size: 1.5rem; transition: 0.3s; }
+        .gallery-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.2); color: white; border: none;
+            padding: 20px 10px; cursor: pointer; z-index: 5; font-size: 1.5rem;
+            transition: 0.3s;
+        }
         .gallery-nav:hover { background: rgba(0,0,0,0.8); color: var(--w-gold); }
         .gallery-prev { left: 0; }
         .gallery-next { right: 0; }
 
-        .modal-scroll-area { padding: 40px; overflow-y: auto; background: white; display: flex; flex-direction: column; position: relative; }
+        .modal-scroll-area {
+            padding: 40px; overflow-y: auto; background: white;
+            display: flex; flex-direction: column; position: relative;
+        }
 
         .modal-title { font-size: 2.2rem; margin-bottom: 5px; line-height: 1.1; }
         .modal-subtitle { color: var(--w-gold); font-size: 0.9rem; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
@@ -224,12 +298,13 @@
             .hero-title { font-size: 2.8rem; }
             .modal-content { grid-template-columns: 1fr; height: 100%; border-radius: 0; }
             .modal-img-col { height: 280px; }
-            .nav-menu { display: none; } 
+            .nav-menu { display: none; }
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
             .trust-grid { gap: 30px; }
         }
     </style>
 </head>
+
 <body>
 
     <!-- NAVIGATION -->
@@ -278,35 +353,554 @@
         <span class="trust-label"><span class="lang-en">OFFICIAL PARTNER</span><span class="lang-jp">公式パートナー</span></span>
         <div class="trust-icons">
             <div class="trust-badge">
-                <i class="fa-brands fa-tripadvisor"></i> 
+                <i class="fa-brands fa-tripadvisor"></i>
                 <span><span class="lang-en">TripAdvisor</span><span class="lang-jp">トリップアドバイザー</span></span>
             </div>
             <div class="trust-badge">
-                <i class="fa-solid fa-users"></i> 
+                <i class="fa-solid fa-users"></i>
                 <span><span class="lang-en">Small Group</span><span class="lang-jp">少人数制</span></span>
             </div>
             <div class="trust-badge">
-                <i class="fa-solid fa-star"></i> 
+                <i class="fa-solid fa-star"></i>
                 <span><span class="lang-en">5-Star Hosts</span><span class="lang-jp">五つ星ガイド</span></span>
             </div>
-<div class="trust-badge">
-  <div id="TA_rated530" class="TA_rated">
-    <ul id="wibO7k" class="TA_links SVjLKpd5CM">
-      <li id="N7rhimF8" class="7a0cydNzb">
-        <a target="_blank" href="https://www.tripadvisor.com.tw/Attraction_Review-g298564-d33984848-Reviews-WonderlandJapan-Kyoto_Kyoto_Prefecture_Kinki.html">
-          <img src="https://www.tripadvisor.com.tw/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
+
+            <!-- TripAdvisor Badge (EN) -->
+            <div class="trust-badge ta-widget ta-en">
+                <div id="TA_rated669" class="TA_rated">
+                    <ul id="KRFHWRE" class="TA_links fOu4lJ3s">
+                        <li id="KLo0GxY4" class="DVeqYtB6Zdpj">
+                            <a target="_blank" href="https://www.tripadvisor.com/Attraction_Review-g298564-d33984848-Reviews-WonderlandJapan-Kyoto_Kyoto_Prefecture_Kinki.html">
+                                <img src="https://www.tripadvisor.com/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TripAdvisor Badge (JP) -->
+            <div class="trust-badge ta-widget ta-jp">
+                <div id="TA_rated954" class="TA_rated">
+                    <ul id="711UDggQ" class="TA_links 4akec0UKlk3">
+                        <li id="zfsclEMon9F" class="6xuy9UVwWh6">
+                            <a target="_blank" href="https://www.tripadvisor.jp/Attraction_Review-g298564-d33984848-Reviews-WonderlandJapan-Kyoto_Kyoto_Prefecture_Kinki.html">
+                                <img src="https://www.tripadvisor.jp/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
-@@ -872,5 +879,6 @@
+    <!-- TOURS -->
+    <section class="tours-section" id="tours">
+        <div class="section-header reveal">
+            <span class="section-tag"><span class="lang-en">CURATED EXPERIENCES</span><span class="lang-jp">厳選体験</span></span>
+            <h2><span class="lang-en">Kyoto & Osaka Journeys</span><span class="lang-jp">京都・大阪の旅</span></h2>
+            <p style="max-width: 850px; margin: 0 auto; color:#555;">
+                <span class="lang-en">Private tours, small groups, and local experiences designed by guides who live here.</span>
+                <span class="lang-jp">地元に暮らすガイドが作る、プライベート＆少人数の体験。</span>
+            </p>
+        </div>
 
-        window.addEventListener('scroll', checkScroll);
+        <div class="tours-grid">
+            <div class="tour-card reveal" data-tour="arashiyama">
+                <div class="tour-badge"><span class="lang-en">POPULAR</span><span class="lang-jp">人気</span></div>
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=2064" alt="Arashiyama"/>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span><span class="lang-en">Kyoto</span><span class="lang-jp">京都</span></span>
+                        <span><span class="lang-en">Walking</span><span class="lang-jp">散策</span></span>
+                    </div>
+                    <div class="card-title">
+                        <span class="lang-en">Arashiyama Bamboo Grove & Local Secrets</span>
+                        <span class="lang-jp">嵐山 竹林とローカルの隠れスポット</span>
+                    </div>
+                    <div class="card-short-desc">
+                        <span class="lang-en">Beat the crowds and discover quiet backstreets with a local guide.</span>
+                        <span class="lang-jp">混雑を避けて、地元目線の静かな道へ。</span>
+                    </div>
+                    <div class="price-preview">
+                        <span style="color:#888; font-size:0.85rem;"><span class="lang-en">From</span><span class="lang-jp">目安</span></span>
+                        <span class="price-val">¥6,600</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card reveal" data-tour="gion">
+                <div class="tour-badge"><span class="lang-en">CLASSIC</span><span class="lang-jp">定番</span></div>
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1549693578-d683be217e58?q=80&w=2064" alt="Gion"/>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span><span class="lang-en">Kyoto</span><span class="lang-jp">京都</span></span>
+                        <span><span class="lang-en">Culture</span><span class="lang-jp">文化</span></span>
+                    </div>
+                    <div class="card-title">
+                        <span class="lang-en">Gion & Higashiyama: Stories Behind the Streets</span>
+                        <span class="lang-jp">祇園・東山：路地に隠れた物語</span>
+                    </div>
+                    <div class="card-short-desc">
+                        <span class="lang-en">A graceful walk through historic lanes, shrines, and iconic viewpoints.</span>
+                        <span class="lang-jp">歴史ある路地、神社、絶景ポイントを巡ります。</span>
+                    </div>
+                    <div class="price-preview">
+                        <span style="color:#888; font-size:0.85rem;"><span class="lang-en">From</span><span class="lang-jp">目安</span></span>
+                        <span class="price-val">¥6,500</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card reveal coming-soon">
+                <div class="tour-badge"><span class="lang-en">NEW</span><span class="lang-jp">新着</span></div>
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1526481280695-3c687fd5432c?q=80&w=2064" alt="Osaka"/>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span><span class="lang-en">Osaka</span><span class="lang-jp">大阪</span></span>
+                        <span><span class="lang-en">Food</span><span class="lang-jp">グルメ</span></span>
+                    </div>
+                    <div class="card-title">
+                        <span class="lang-en">Osaka Night Food Tour</span>
+                        <span class="lang-jp">大阪ナイトフードツアー</span>
+                    </div>
+                    <div class="card-short-desc">
+                        <span class="lang-en">Street food, hidden spots, and local bars—coming soon.</span>
+                        <span class="lang-jp">食べ歩き＆隠れ名店—準備中。</span>
+                    </div>
+                    <div class="price-preview">
+                        <span style="color:#888; font-size:0.85rem;"><span class="lang-en">From</span><span class="lang-jp">目安</span></span>
+                        <span class="price-val">—</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team-section" id="team">
+        <div class="section-header reveal">
+            <span class="section-tag"><span class="lang-en">YOUR LOCAL HOSTS</span><span class="lang-jp">ローカルガイド</span></span>
+            <h2><span class="lang-en">Meet the Team</span><span class="lang-jp">チーム紹介</span></h2>
+        </div>
+
+        <div class="team-grid">
+            <div class="reveal">
+                <img class="team-img" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800" alt="Nana">
+                <div class="team-name">Nana</div>
+                <div class="team-role"><span class="lang-en">Guide</span><span class="lang-jp">ガイド</span></div>
+            </div>
+            <div class="reveal">
+                <img class="team-img" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=800" alt="Ben">
+                <div class="team-name">Ben</div>
+                <div class="team-role"><span class="lang-en">Host</span><span class="lang-jp">ホスト</span></div>
+            </div>
+            <div class="reveal">
+                <img class="team-img" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800" alt="Local Team">
+                <div class="team-name"><span class="lang-en">Local Crew</span><span class="lang-jp">ローカルクルー</span></div>
+                <div class="team-role"><span class="lang-en">Support</span><span class="lang-jp">サポート</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews-section">
+        <div class="reviews-track" aria-label="Reviews">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="platform-icon"><i class="fa-brands fa-tripadvisor"></i></div>
+                </div>
+                <div class="review-text">
+                    <span class="lang-en">“The most memorable walk in Kyoto. We avoided crowds and got amazing photos!”</span>
+                    <span class="lang-jp">「混雑を避けて最高の景色へ。写真も素晴らしかった！」</span>
+                </div>
+                <div class="review-footer">
+                    <div class="reviewer-name">Sophie</div>
+                    <div style="color:#aaa; font-size:0.8rem;"><span class="lang-en">Kyoto</span><span class="lang-jp">京都</span></div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="platform-icon"><i class="fa-brands fa-tripadvisor"></i></div>
+                </div>
+                <div class="review-text">
+                    <span class="lang-en">“Warm, professional, and very local. Highly recommended.”</span>
+                    <span class="lang-jp">「温かくてプロフェッショナル。本当にローカルでした！」</span>
+                </div>
+                <div class="review-footer">
+                    <div class="reviewer-name">Daniel</div>
+                    <div style="color:#aaa; font-size:0.8rem;"><span class="lang-en">Gion</span><span class="lang-jp">祇園</span></div>
+                </div>
+            </div>
+
+            <!-- duplicate some for smooth marquee -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="platform-icon"><i class="fa-brands fa-tripadvisor"></i></div>
+                </div>
+                <div class="review-text">
+                    <span class="lang-en">“The most memorable walk in Kyoto. We avoided crowds and got amazing photos!”</span>
+                    <span class="lang-jp">「混雑を避けて最高の景色へ。写真も素晴らしかった！」</span>
+                </div>
+                <div class="review-footer">
+                    <div class="reviewer-name">Sophie</div>
+                    <div style="color:#aaa; font-size:0.8rem;"><span class="lang-en">Kyoto</span><span class="lang-jp">京都</span></div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="platform-icon"><i class="fa-brands fa-tripadvisor"></i></div>
+                </div>
+                <div class="review-text">
+                    <span class="lang-en">“Warm, professional, and very local. Highly recommended.”</span>
+                    <span class="lang-jp">「温かくてプロフェッショナル。本当にローカルでした！」</span>
+                </div>
+                <div class="review-footer">
+                    <div class="reviewer-name">Daniel</div>
+                    <div style="color:#aaa; font-size:0.8rem;"><span class="lang-en">Gion</span><span class="lang-jp">祇園</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+        <div class="section-header reveal" style="margin-bottom: 40px;">
+            <span class="section-tag"><span class="lang-en">FAQ</span><span class="lang-jp">よくある質問</span></span>
+            <h2><span class="lang-en">Questions, Answered</span><span class="lang-jp">よくある質問</span></h2>
+        </div>
+
+        <div class="faq-item reveal">
+            <div class="faq-question">
+                <span><span class="lang-en">Do you offer private tours?</span><span class="lang-jp">プライベートツアーはありますか？</span></span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    <span class="lang-en">Yes. Many tours can be arranged as private experiences—just message us with your date and group size.</span>
+                    <span class="lang-jp">はい。多くのツアーはプライベート手配が可能です。日程と人数をお知らせください。</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <div class="faq-question">
+                <span><span class="lang-en">Which language do guides speak?</span><span class="lang-jp">ガイドは何語を話しますか？</span></span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    <span class="lang-en">English is available by default. Japanese support is available depending on the guide and date.</span>
+                    <span class="lang-jp">基本は英語対応です。日程により日本語サポートも可能です。</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <div class="faq-question">
+                <span><span class="lang-en">How do I book?</span><span class="lang-jp">予約方法は？</span></span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    <span class="lang-en">Click a tour card to open details and send a request. We’ll confirm availability quickly.</span>
+                    <span class="lang-jp">ツアーカードをクリックして詳細を開き、リクエストを送信してください。すぐに空き状況を確認します。</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / TRUST -->
+    <section class="trust-section" id="contact">
+        <div class="section-header reveal" style="margin-bottom: 30px;">
+            <span class="section-tag"><span class="lang-en">CONTACT</span><span class="lang-jp">お問い合わせ</span></span>
+            <h2><span class="lang-en">Plan Your Day in Kyoto</span><span class="lang-jp">京都の一日を一緒に</span></h2>
+            <p style="max-width: 820px; margin: 0 auto; color:#555;">
+                <span class="lang-en">Tell us your dates, interests, and group size. We’ll suggest the best route.</span>
+                <span class="lang-jp">日程・興味・人数を教えてください。最適なルートをご提案します。</span>
+            </p>
+        </div>
+
+        <div class="trust-grid">
+            <div class="trust-item reveal">
+                <div class="trust-icon-circle"><i class="fa-solid fa-envelope"></i></div>
+                <h3 style="margin-bottom: 10px;"><span class="lang-en">Email</span><span class="lang-jp">メール</span></h3>
+                <p><a href="mailto:info@wonderlandjapan.net" style="color: var(--w-red); text-decoration: none;">info@wonderlandjapan.net</a></p>
+            </div>
+            <div class="trust-item reveal">
+                <div class="trust-icon-circle"><i class="fa-brands fa-instagram"></i></div>
+                <h3 style="margin-bottom: 10px;">Instagram</h3>
+                <p style="color:#666;"><span class="lang-en">DM us for quick questions.</span><span class="lang-jp">DMでお気軽にどうぞ。</span></p>
+            </div>
+            <div class="trust-item reveal">
+                <div class="trust-icon-circle"><i class="fa-solid fa-location-dot"></i></div>
+                <h3 style="margin-bottom: 10px;"><span class="lang-en">Kyoto</span><span class="lang-jp">京都</span></h3>
+                <p style="color:#666;"><span class="lang-en">Based in Kyoto, guiding across Kansai.</span><span class="lang-jp">京都拠点、関西全域対応。</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="concierge-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>Wonderland Japan</h2>
+                <p>
+                    <span class="lang-en">Private guided tours & cultural experiences in Kyoto and Osaka.</span>
+                    <span class="lang-jp">京都・大阪のプライベートガイド＆文化体験。</span>
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4><span class="lang-en">Explore</span><span class="lang-jp">メニュー</span></h4>
+                <ul>
+                    <li><a href="#tours"><span class="lang-en">Experiences</span><span class="lang-jp">ツアー</span></a></li>
+                    <li><a href="#team"><span class="lang-en">Team</span><span class="lang-jp">チーム</span></a></li>
+                    <li><a href="#faq"><span class="lang-en">FAQ</span><span class="lang-jp">FAQ</span></a></li>
+                    <li><a href="#contact"><span class="lang-en">Contact</span><span class="lang-jp">お問い合わせ</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4><span class="lang-en">Contact</span><span class="lang-jp">連絡先</span></h4>
+                <ul>
+                    <li><a href="mailto:info@wonderlandjapan.net">info@wonderlandjapan.net</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4><span class="lang-en">Legal</span><span class="lang-jp">規約</span></h4>
+                <ul>
+                    <li><a href="#" onclick="return false;"><span class="lang-en">Privacy</span><span class="lang-jp">プライバシー</span></a></li>
+                    <li><a href="#" onclick="return false;"><span class="lang-en">Terms</span><span class="lang-jp">利用規約</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:40px; color:#666;">
+            © <span id="year"></span> Wonderland Japan
+        </div>
+    </footer>
+
+    <!-- MODAL (basic) -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-close" id="modalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></div>
+        <div class="modal-content">
+            <div class="modal-img-col">
+                <div class="gallery-container" id="gallery">
+                    <img class="gallery-slide active" id="slide1" src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=2064" alt="Slide 1">
+                    <img class="gallery-slide" id="slide2" src="https://images.unsplash.com/photo-1549693578-d683be217e58?q=80&w=2064" alt="Slide 2">
+                </div>
+                <button class="gallery-nav gallery-prev" id="prevBtn" aria-label="Previous">‹</button>
+                <button class="gallery-nav gallery-next" id="nextBtn" aria-label="Next">›</button>
+            </div>
+            <div class="modal-scroll-area">
+                <div class="modal-title" id="modalTitle">Tour</div>
+                <div class="modal-subtitle" id="modalSubtitle">Kyoto</div>
+
+                <div class="feature-list" id="modalFeatures">
+                    <div class="feature-item"><i class="fa-solid fa-clock"></i> <span class="lang-en">2–3 hours</span><span class="lang-jp">2〜3時間</span></div>
+                    <div class="feature-item"><i class="fa-solid fa-users"></i> <span class="lang-en">Small group</span><span class="lang-jp">少人数</span></div>
+                    <div class="feature-item"><i class="fa-solid fa-camera"></i> <span class="lang-en">Photo spots</span><span class="lang-jp">撮影</span></div>
+                    <div class="feature-item"><i class="fa-solid fa-map"></i> <span class="lang-en">Local route</span><span class="lang-jp">ローカル</span></div>
+                </div>
+
+                <div class="modal-desc" id="modalDesc">
+                    <span class="lang-en">Click “Request Booking” and tell us your preferred time.</span>
+                    <span class="lang-jp">「予約リクエスト」から希望時間をお知らせください。</span>
+                </div>
+
+                <div class="booking-widget">
+                    <div class="widget-title"><span class="lang-en">Request Booking</span><span class="lang-jp">予約リクエスト</span></div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label><span class="lang-en">Name</span><span class="lang-jp">お名前</span></label>
+                            <input class="form-input" type="text" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input class="form-input" type="email" placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="lang-en">Date</span><span class="lang-jp">日付</span></label>
+                            <input class="form-input" type="date">
+                        </div>
+                        <div class="form-group">
+                            <label><span class="lang-en">Group Size</span><span class="lang-jp">人数</span></label>
+                            <select class="form-input">
+                                <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn-modal-book" type="button" onclick="alert('Request sent! (Demo)')">
+                        <span class="lang-en">REQUEST BOOKING</span><span class="lang-jp">予約を送信</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Footer year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navbar scroll style
+        const navbar = document.getElementById('navbar');
+        function checkScroll() {
+            if (!navbar) return;
+            if (window.scrollY > 30) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        }
+
+        // Reveal on scroll
+        function reveal() {
+            const els = document.querySelectorAll('.reveal');
+            const trigger = window.innerHeight * 0.88;
+            els.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < trigger) el.classList.add('active');
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            checkScroll();
+            reveal();
+            parallaxHero();
+        });
+        window.addEventListener('load', () => {
+            checkScroll();
+            reveal();
+            initLangFromStorage();
+        });
+
+        // Hero parallax
+        const heroBg = document.getElementById('hero-bg');
+        const heroText = document.getElementById('hero-text');
+        function parallaxHero() {
+            if (!heroBg || !heroText) return;
+            const y = window.scrollY;
+            heroBg.style.transform = `translateY(${y * 0.18}px)`;
+            heroText.style.transform = `translateY(${y * 0.08}px)`;
+        }
+
+        // Language switch (EN/JP) + persist
+        function setLang(lang) {
+            const body = document.body;
+            const btnEn = document.getElementById('btn-en');
+            const btnJp = document.getElementById('btn-jp');
+
+            if (lang === 'jp') {
+                body.classList.add('is-jp');
+                btnJp && btnJp.classList.add('active');
+                btnEn && btnEn.classList.remove('active');
+            } else {
+                body.classList.remove('is-jp');
+                btnEn && btnEn.classList.add('active');
+                btnJp && btnJp.classList.remove('active');
+            }
+
+            try { localStorage.setItem('wj_lang', lang); } catch (e) {}
+        }
+
+        function initLangFromStorage() {
+            try {
+                const saved = localStorage.getItem('wj_lang');
+                if (saved === 'jp') setLang('jp');
+                else setLang('en');
+            } catch (e) {
+                setLang('en');
+            }
+        }
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-item .faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                if (!item) return;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Modal basic open/close
+        const modal = document.getElementById('modal');
+        const modalClose = document.getElementById('modalClose');
+        function openModal() {
+            if (!modal) return;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            if (!modal) return;
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        modalClose && modalClose.addEventListener('click', closeModal);
+        modal && modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Tour cards open modal + set title
+        const modalTitle = document.getElementById('modalTitle');
+        const modalSubtitle = document.getElementById('modalSubtitle');
+        const modalDesc = document.getElementById('modalDesc');
+
+        document.querySelectorAll('.tour-card:not(.coming-soon)').forEach(card => {
+            card.addEventListener('click', () => {
+                const tour = card.getAttribute('data-tour') || 'tour';
+                if (tour === 'arashiyama') {
+                    if (modalTitle) modalTitle.textContent = 'Arashiyama';
+                    if (modalSubtitle) modalSubtitle.textContent = 'Kyoto';
+                    if (modalDesc) {
+                        modalDesc.innerHTML =
+                            `<span class="lang-en">Early bamboo grove walk + local backstreets. Tell us your preferred time.</span>
+                             <span class="lang-jp">早朝の竹林＋裏路地散策。希望時間をお知らせください。</span>`;
+                    }
+                } else if (tour === 'gion') {
+                    if (modalTitle) modalTitle.textContent = 'Gion & Higashiyama';
+                    if (modalSubtitle) modalSubtitle.textContent = 'Kyoto';
+                    if (modalDesc) {
+                        modalDesc.innerHTML =
+                            `<span class="lang-en">Historic lanes, shrines, and viewpoints—perfect for first-time visitors.</span>
+                             <span class="lang-jp">歴史ある路地・神社・絶景。初めての方におすすめ。</span>`;
+                    }
+                }
+                // Ensure language visibility inside modal after innerHTML changes
+                openModal();
+            });
+        });
+
+        // Simple gallery
+        const slides = [document.getElementById('slide1'), document.getElementById('slide2')].filter(Boolean);
+        let slideIndex = 0;
+        function showSlide(i) {
+            slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+        }
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        prevBtn && prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+            showSlide(slideIndex);
+        });
+        nextBtn && nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlide(slideIndex);
+        });
     </script>
-<script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=530&amp;locationId=33984848&amp;lang=zh_TW&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
+
+    <!-- TripAdvisor Widgets (EN + JP) -->
+    <script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=669&amp;locationId=33984848&amp;lang=en_US&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
+    <script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=954&amp;locationId=33984848&amp;lang=ja&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
 </body>
 </html>
