@@ -377,8 +377,8 @@
             </div>
 
             <div id="formHint" style="margin-top:10px;color:#666;font-size:.85rem;line-height:1.6;">
-              <span class="lang-en">Tip: “Proceed to Payment” will open a secure Stripe checkout link for this experience.</span>
-              <span class="lang-jp">※「決済へ進む」を押すと、Stripeの安全な決済ページ（本体験専用）を開きます。</span>
+              <span class="lang-en">Tip: “Proceed to Payment” opens a secure Stripe checkout link (English) for this experience.</span>
+              <span class="lang-jp">※「決済へ進む」を押すと、Stripeの安全な決済ページ（英語表示）を開きます。</span>
             </div>
           </form>
 
@@ -447,8 +447,8 @@
       </div>
       <div class="faq-answer">
         <p>
-          <span class="lang-en">Choose your preferred date/time and send a request. We confirm availability and finalize details. For eligible experiences, you can proceed to secure Stripe payment.</span>
-          <span class="lang-jp">希望日時を選びリクエスト送信 → 空き状況を確認 → 詳細を確定。対象体験はStripeで安全に決済できます。</span>
+          <span class="lang-en">Choose your preferred date/time and send a request. We confirm availability and finalize details. You can then proceed to secure Stripe payment.</span>
+          <span class="lang-jp">希望日時を選びリクエスト送信 → 空き状況を確認 → 詳細を確定。Stripeで安全に決済できます。</span>
         </p>
       </div>
     </div>
@@ -623,7 +623,7 @@
 
     /* ============================
        FIXED ALBUMS + FIXED TIMES
-       (as you requested)
+       + STRIPE LINKS (YOUR LINKS)
     ============================ */
     const tours = [
       {
@@ -900,12 +900,21 @@ Please confirm availability and next steps.`
       window.location.href = `mailto:info@wonderlandjapan.net?subject=${subject}&body=${body}`;
     }
 
+    /* ✅ KEY CHANGE:
+       - Directly open your Stripe Payment Link
+       - Force Stripe page language to English via locale=en
+       - Keep your optional params for tracking (does not break)
+    */
     function payStripe(t){
       const payload = collectForm();
       if(!payload) return;
 
-      // Open the Stripe Payment Link directly (with optional querystring)
       const url = new URL(t.stripeUrl);
+
+      // Force English Stripe checkout UI
+      url.searchParams.set("locale", "en");
+
+      // Optional: attach booking info for your internal tracking (Stripe may ignore)
       url.searchParams.set("prefill_date", payload.date);
       url.searchParams.set("prefill_time", payload.time);
       url.searchParams.set("prefill_guests", payload.guests);
