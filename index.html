@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -646,7 +646,7 @@
         },
         images: ["Taiko1.jpg","Taiko2.jpg","Taiko3.jpg","Taiko4.jpg","Taiko5.jpg","Taiko6.jpg"],
         times: ["14:30","15:30","16:30","18:00","19:00","20:00"],
-        stripeUrl: "https://buy.stripe.com/REPLACE_TAIKO"
+        stripeUrl: "https://buy.stripe.com/7sY4gB0wfcEEfYP808awo00"
       },
       {
         id: "gion",
@@ -668,7 +668,7 @@
         },
         images: ["gion1.jpg","gion2.jpg","gion3.jpg","gion4.jpg","gion5.jpg","gion6.jpg","gion7.jpg"],
         times: ["10:30","13:30","16:30"],
-        stripeUrl: "https://buy.stripe.com/REPLACE_GION"
+        stripeUrl: "https://buy.stripe.com/6oU3cx5Qz9ss6of5S0awo03"
       },
       {
         id: "food",
@@ -690,7 +690,7 @@
         },
         images: ["kyoto1.jpg","kyoto2.jpg","kyoto3.jpg","kyoto4.jpg","kyoto5.jpg"],
         times: ["18:00"],
-        stripeUrl: "https://buy.stripe.com/REPLACE_FOOD"
+        stripeUrl: "https://buy.stripe.com/6oUfZj0wf9ss4g75S0awo01"
       },
       {
         id: "bamboo",
@@ -714,7 +714,7 @@
         weekdayOnly: true,
         fixedTime: "07:30",
         times: ["07:30"],
-        stripeUrl: "https://buy.stripe.com/REPLACE_BAMBOO"
+        stripeUrl: "https://buy.stripe.com/00waEZ5QzeMMdQHfsAawo02"
       }
     ];
 
@@ -784,7 +784,7 @@
 
       modalState.isOpen = true;
       modalState.tourId = tourId;
-      modalState.images = (t.images || []).slice(0, 24); // plenty
+      modalState.images = (t.images || []).slice(0, 24);
       modalState.idx = 0;
 
       document.getElementById('modalTitle').textContent = tText(t.title);
@@ -904,6 +904,7 @@ Please confirm availability and next steps.`
       const payload = collectForm();
       if(!payload) return;
 
+      // Open the Stripe Payment Link directly (with optional querystring)
       const url = new URL(t.stripeUrl);
       url.searchParams.set("prefill_date", payload.date);
       url.searchParams.set("prefill_time", payload.time);
