@@ -376,6 +376,9 @@
               </button>
             </div>
 
+            <!-- Stripe Buy Button mount (used only for specific tours) -->
+            <div id="stripeBuyButtonMount" style="margin-top:12px;"></div>
+
             <div id="formHint" style="margin-top:10px;color:#666;font-size:.85rem;line-height:1.6;">
               <span class="lang-en">Tip: “Proceed to Payment” opens a secure Stripe checkout link (English) for this experience.</span>
               <span class="lang-jp">※「決済へ進む」を押すと、Stripeの安全な決済ページ（英語表示）を開きます。</span>
@@ -563,6 +566,9 @@
   <script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=669&amp;locationId=33984848&amp;lang=en_US&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
   <script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=954&amp;locationId=33984848&amp;lang=ja&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
 
+  <!-- Stripe Buy Button (added) -->
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
   <script>
     function setLang(lang){
       const isJP = (lang === 'jp');
@@ -715,6 +721,80 @@
         fixedTime: "07:30",
         times: ["07:30"],
         stripeUrl: "https://buy.stripe.com/00waEZ5QzeMMdQHfsAawo02"
+      },
+
+      /* ============================
+         UPDATED: OSAKA Dotonbori Night Walk & Street Food Culture
+         - Times changed to 11:30 and 14:30 only
+         - Direct checkout via Stripe Buy Button
+      ============================ */
+      {
+        id: "osaka-dotonbori",
+        badge: { en: "Osaka", jp: "大阪" },
+        title: { en: "Osaka Dotonbori Night Walk & Street Food Culture", jp: "大阪 道頓堀ナイトウォーク＆食べ歩き" },
+        meta: { en: ["2 hours", "Dotonbori culture walk"], jp: ["2時間", "道頓堀散策"] },
+        priceJPY: 4500,
+        shortDesc: {
+          en: "Neon reflections, canal-side stories, and Osaka’s street-food soul — guided like a local friend who knows exactly what’s worth your stomach space (2 snacks included).",
+          jp: "（英語版のみ運用）"
+        },
+        desc: {
+          en:
+            "Osaka has always been Japan’s merchant city — bold, practical, and proudly food-obsessed. On this walk, we connect the dots between history and today’s vibe: theater streets, trading roots, and the reason Osaka earned its reputation as the nation’s kitchen.\n\n" +
+            "Then we step into Dotonbori — neon mirrored on the canal, energy spilling out of side alleys, and the kind of street-food culture that never really sleeps. Your guide keeps it fun, fast, and deeply local, with two personal must-try picks included:\n" +
+            "• Takoyaki — crispy outside, molten inside (yes, the real “lava”).\n" +
+            "• Kushikatsu skewers — golden, crunchy, and dangerously snackable.\n\n" +
+            "Expect great photo moments, quick cultural context, and a pace that feels like a night out — not a lecture. Osaka doesn’t whisper. It winks.",
+          jp: "（英語版のみ運用）"
+        },
+        features: {
+          en: ["2 street snacks included", "Osaka = Japan’s Kitchen (explained)", "Dotonbori canal & neon photos", "2-hour route"],
+          jp: ["（英語版のみ運用）"]
+        },
+        images: ["osakaw_main.jpg","osakaw_2.jpg","osakaw_3.jpg","osakaw_4.jpg","osakaw_5.jpg","osakaw_6.jpg","osakaw_7.jpg"],
+        times: ["11:30","14:30"],
+        stripeBuyButtonId: "buy_btn_1T3uDpQnEjWXCkKGrbgxz8wp",
+        stripePublishableKey: "pk_live_51SgenJQnEjWXCkKGSEdYWLCpOwzn7Ty37WAoDtUlQ1D1s0IlaxI1JBYgm84z3PxqnVFA9aGKxziSytZujT7VDcUp004ohcOGpH"
+      },
+
+      /* ============================
+         NEW: Osaka Local Night Food Tour (3 HOURS)
+         - Emphasize Osaka as Japan's Kitchen
+         - Hidden local restaurants, drinks, dessert
+         - Osaka local foodie host
+         - Direct checkout via Stripe Buy Button (your provided ID)
+      ============================ */
+      {
+        id: "osaka-night-food",
+        badge: { en: "Osaka", jp: "大阪" },
+        title: { en: "Osaka Local Night Food Tour", jp: "大阪 ローカル夜グルメツアー" },
+        meta: { en: ["3 hours", "Night tasting"], jp: ["3時間", "夜の食べ歩き"] },
+        priceJPY: 16000,
+        shortDesc: {
+          en: "Osaka is Japan’s Kitchen — and this is the after-dark version locals actually love: hidden restaurants, local drinks, and a sweet finish, curated by an Osaka foodie.",
+          jp: "（英語版のみ運用）"
+        },
+        desc: {
+          en:
+            "Osaka didn’t earn the nickname “Japan’s Kitchen” by accident. This city lives for good food — bold flavors, quick laughs, and the kind of places you’d never find alone.\n\n" +
+            "This 3-hour night tour is designed like a great night out: we hop between local-favorite spots, balancing atmosphere and taste, while keeping the pacing relaxed. Expect the real Osaka nightlife energy — not tourist traps — with a foodie guide who grew up in Osaka and knows exactly what’s worth ordering.\n\n" +
+            "You’ll enjoy a curated progression that typically includes:\n" +
+            "• Local restaurants & hidden counters (the places locals actually line up for)\n" +
+            "• A “secret” drink or two — regional favorites & tucked-away bars\n" +
+            "• A proper sweet ending (dessert that hits different at night)\n\n" +
+            "Tell us dietary needs in advance — we’ll confirm what’s possible before finalizing. Come hungry. Osaka plays offense.",
+          jp: "（英語版のみ運用）"
+        },
+        features: {
+          en: ["Osaka foodie host", "Hidden local restaurants", "Local drinks + sweet finish", "3-hour curated flow"],
+          jp: ["（英語版のみ運用）"]
+        },
+        // If you have Osaka-night-food images, replace these filenames.
+        // For now, we reuse Osaka walk album as a safe default.
+        images: ["osakaw_main.jpg","osakaw_2.jpg","osakaw_3.jpg","osakaw_4.jpg","osakaw_5.jpg","osakaw_6.jpg","osakaw_7.jpg"],
+        times: ["18:00"],
+        stripeBuyButtonId: "buy_btn_1T3urZQnEjWXCkKGhYfoIYdn",
+        stripePublishableKey: "pk_live_51SgenJQnEjWXCkKGSEdYWLCpOwzn7Ty37WAoDtUlQ1D1s0IlaxI1JBYgm84z3PxqnVFA9aGKxziSytZujT7VDcUp004ohcOGpH"
       }
     ];
 
@@ -805,6 +885,9 @@
       buildTimeOptions(t);
       applyDateRules(t);
 
+      // show Stripe Buy Button only for tours that have it
+      renderStripeBuyButtonIfNeeded(t);
+
       document.getElementById('btnSendRequest').onclick = ()=> sendRequest(t);
       document.getElementById('btnPayStripe').onclick = ()=> payStripe(t);
 
@@ -881,6 +964,28 @@
       }
     }
 
+    // mount Stripe Buy Button for specific tours (Osaka)
+    function renderStripeBuyButtonIfNeeded(t){
+      const mount = document.getElementById('stripeBuyButtonMount');
+      if(!mount) return;
+      mount.innerHTML = "";
+
+      const btnPay = document.getElementById('btnPayStripe');
+
+      // default: show existing payment button (Stripe payment link)
+      if(btnPay) btnPay.style.display = "";
+
+      // if tour uses Stripe Buy Button, mount it and hide the old one
+      if(t.stripeBuyButtonId && t.stripePublishableKey){
+        if(btnPay) btnPay.style.display = "none";
+
+        const el = document.createElement('stripe-buy-button');
+        el.setAttribute('buy-button-id', t.stripeBuyButtonId);
+        el.setAttribute('publishable-key', t.stripePublishableKey);
+        mount.appendChild(el);
+      }
+    }
+
     function sendRequest(t){
       const payload = collectForm();
       if(!payload) return;
@@ -900,12 +1005,13 @@ Please confirm availability and next steps.`
       window.location.href = `mailto:info@wonderlandjapan.net?subject=${subject}&body=${body}`;
     }
 
-    /* ✅ KEY CHANGE:
-       - Directly open your Stripe Payment Link
-       - Force Stripe page language to English via locale=en
-       - Keep your optional params for tracking (does not break)
-    */
+    // payment-link flow (only used by tours that have stripeUrl)
     function payStripe(t){
+      if(!t.stripeUrl){
+        alert("Payment link is not set for this experience.");
+        return;
+      }
+
       const payload = collectForm();
       if(!payload) return;
 
