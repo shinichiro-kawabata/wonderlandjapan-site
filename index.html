@@ -289,7 +289,7 @@
   <section id="tours" class="tours-section">
     <div class="section-header reveal">
       <span class="section-tag"><span class="lang-en">Curated Experiences</span><span class="lang-jp">厳選体験</span></span>
-      <h2><span class="lang-en">Kyoto & Osaka, done properly.</span><span class="lang-jp">京都・大阪を“本物”で。</span></h2>
+      <h2><span class="lang-en">Kyoto & Osaka, done properly.</span><span class="lang-jp">京都・大阪を本物で。</span></h2>
       <div style="margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
         <span class="pill"><i class="fa-solid fa-language"></i> <span class="lang-en">Multi-language on request</span><span class="lang-jp">多言語対応（要予約）</span></span>
         <span class="pill"><i class="fa-solid fa-shield-halved"></i> <span class="lang-en">Clear policies & support</span><span class="lang-jp">明確な規約・サポート</span></span>
@@ -376,12 +376,12 @@
               </button>
             </div>
 
-            <!-- ✅ Stripe Buy Button always mounted here (same place for all tours that use it) -->
+            <!-- ✅ Stripe Buy Button mounts here only AFTER validation for Osaka tours -->
             <div id="stripeBuyButtonMount" style="margin-top:12px;"></div>
 
             <div id="formHint" style="margin-top:10px;color:#666;font-size:.85rem;line-height:1.6;">
-              <span class="lang-en">Tip: “Proceed to Payment” opens a secure Stripe checkout link (English) for this experience.</span>
-              <span class="lang-jp">※「決済へ進む」を押すと、Stripeの安全な決済ページ（英語表示）を開きます。</span>
+              <span class="lang-en">Tip: Please fill in the form first. Then proceed to payment.</span>
+              <span class="lang-jp">※まず必須項目をご入力ください。その後に決済へ進めます。</span>
             </div>
           </form>
 
@@ -445,13 +445,13 @@
 
     <div class="faq-item reveal">
       <div class="faq-question">
-        <span><span class="lang-en">How does “Request Booking” work?</span><span class="lang-jp">「予約リクエスト」とは？</span></span>
+        <span><span class="lang-en">How does “Request Booking” work?</span><span class="lang-jp">予約リクエストとは？</span></span>
         <i class="fa-solid fa-chevron-down"></i>
       </div>
       <div class="faq-answer">
         <p>
-          <span class="lang-en">Choose your preferred date/time and send a request. We confirm availability and finalize details. You can then proceed to secure Stripe payment.</span>
-          <span class="lang-jp">希望日時を選びリクエスト送信 → 空き状況を確認 → 詳細を確定。Stripeで安全に決済できます。</span>
+          <span class="lang-en">Choose your preferred date/time and send a request. We confirm availability and finalize details. You can then proceed to payment.</span>
+          <span class="lang-jp">希望日時を選びリクエスト送信後、空き状況を確認して詳細を確定します。その後に決済へ進めます。</span>
         </p>
       </div>
     </div>
@@ -463,7 +463,7 @@
       </div>
       <div class="faq-answer">
         <p>
-          <span class="lang-en">Yes — please add details in Notes. We’ll confirm what’s possible before finalizing.</span>
+          <span class="lang-en">Yes. Please add details in Notes. We will confirm what is possible before finalizing.</span>
           <span class="lang-jp">可能です。備考欄にご記入ください。確定前に対応可否を確認します。</span>
         </p>
       </div>
@@ -476,7 +476,7 @@
         <h2>Wonderland Japan</h2>
         <p>
           <span class="lang-en">Authentic experiences in Kyoto & beyond — with careful pacing, warm hosting, and clear policies.</span>
-          <span class="lang-jp">京都を中心に、丁寧な導線と温かなホスピタリティ、明確な規約で“本物”の体験をお届けします。</span>
+          <span class="lang-jp">京都を中心に、丁寧な導線と温かなホスピタリティ、明確な規約で本物の体験をお届けします。</span>
         </p>
         <p style="margin-top:14px;">
           <a href="https://www.instagram.com/_localtour_osaka.kyoto/" target="_blank" rel="noopener" style="color:var(--w-gold);text-decoration:none;">
@@ -566,7 +566,7 @@
   <script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=669&amp;locationId=33984848&amp;lang=en_US&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
   <script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=954&amp;locationId=33984848&amp;lang=ja&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
 
-  <!-- ✅ Stripe Buy Button script (one time) -->
+  <!-- Stripe Buy Button script (one time) -->
   <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 
   <script>
@@ -627,9 +627,6 @@
       return document.body.classList.contains('is-jp') ? obj.jp : obj.en;
     }
 
-    /* ============================
-       TOURS
-    ============================ */
     const tours = [
       {
         id: "taiko",
@@ -639,15 +636,15 @@
         priceJPY: 7000,
         shortDesc: {
           en: "Feel the heartbeat of Japan — a powerful, intimate taiko performance crafted for travelers who want something real, not staged.",
-          jp: "旅のために整えられた“本物”の鼓動。迫力と余韻が残る、濃密な和太鼓ライブ体験。"
+          jp: "旅のために整えられた本物の鼓動。迫力と余韻が残る、濃密な和太鼓ライブ体験。"
         },
         desc: {
           en: "A taiko performance is more than rhythm — it is discipline, breath, and communal energy. In this live show, you’ll experience dynamic pieces rooted in tradition and refined for modern audiences, without losing authenticity.",
-          jp: "和太鼓は“リズム”以上のもの。鍛錬、呼吸、そして場をひとつにするエネルギーです。本公演では、伝統に根ざしつつ現代の感性で磨かれた演目を、芯を失わずにお届けします。"
+          jp: "和太鼓はリズム以上のもの。鍛錬、呼吸、そして場をひとつにするエネルギーです。本公演では、伝統に根ざしつつ現代の感性で磨かれた演目を、芯を失わずにお届けします。"
         },
         features: {
           en: ["Ticketed live show", "45-minute program", "Central access", "Clear policies & support"],
-          jp: ["チケット制ライブ", "45分プログラム", "アクセス良好", "明確な規約・サポート"]
+          jp: ["チケット制ライブ", "45分プログラム", "アクセス良好", "明確な規約とサポート"]
         },
         images: ["Taiko1.jpg","Taiko2.jpg","Taiko3.jpg","Taiko4.jpg","Taiko5.jpg","Taiko6.jpg"],
         times: ["14:30","15:30","16:30","18:00","19:00","20:00"],
@@ -665,7 +662,7 @@
         },
         desc: {
           en: "This is Kyoto at human scale: stone-paved alleys, soft lantern light, and the quiet geometry of old-town life. Your guide threads the cultural context so you don’t just see Kyoto, you understand it.",
-          jp: "石畳の小径、行灯の光、旧市街の静かな秩序。ガイドが背景を丁寧につなぎ、ただ“見る”のではなく“理解する”京都へ導きます。"
+          jp: "石畳の小径、行灯の光、旧市街の静かな秩序。ガイドが背景を丁寧につなぎ、ただ見るのではなく理解する京都へ導きます。"
         },
         features: {
           en: ["Local storytelling", "Photo-friendly pace", "Small-group comfort", "2-hour route"],
@@ -683,11 +680,11 @@
         priceJPY: 16000,
         shortDesc: {
           en: "Kyoto after dark — hidden counters, trusted kitchens, and a curated flow that tastes like the city, not a checklist.",
-          jp: "夜の京都へ。隠れた名店と信頼できる一皿を、チェックリストではなく“街の味”として巡ります。"
+          jp: "夜の京都へ。隠れた名店と信頼できる一皿を、街の味として巡ります。"
         },
         desc: {
           en: "Kyoto cuisine is subtle — built on craftsmanship, temperature, timing, and restraint. This night tour is designed like a menu: we move with intention, balancing flavors and atmospheres while keeping the pace comfortable.",
-          jp: "京都の味は繊細で、技術と温度、タイミング、引き算で成立します。この夜ツアーは“献立”のように設計。味と空気感のバランスを整え、心地よいテンポで巡ります。"
+          jp: "京都の味は繊細で、技術と温度、タイミング、引き算で成立します。この夜ツアーは献立のように設計。味と空気感のバランスを整え、心地よいテンポで巡ります。"
         },
         features: {
           en: ["Curated progression", "Local venues", "3-hour experience", "Dietary notes welcome (advance)"],
@@ -705,11 +702,11 @@
         priceJPY: 9800,
         shortDesc: {
           en: "Start before the crowds: bamboo hush, clean morning air, and a matcha moment that slows time (30-minute matcha experience included).",
-          jp: "混雑前の朝へ。竹林の静けさ、澄んだ空気、時間がほどける抹茶のひととき（抹茶体験30分込み）。"
+          jp: "混雑前の朝へ。竹林の静けさと澄んだ空気、締めは抹茶のひととき（抹茶体験30分込み）。"
         },
         desc: {
           en: "Arashiyama at 7:30 is a different world — the light is soft, footsteps are few, and the bamboo feels like a living cathedral. We walk with a calm rhythm, then settle into a 30-minute matcha experience to complete the morning with intention.",
-          jp: "7:30の嵐山は別世界。光は柔らかく、人影はまばらで、竹林は“生きた聖堂”のように感じられます。静かなリズムで歩き、最後に30分の抹茶体験で朝を整えます。"
+          jp: "7:30の嵐山は別世界。光は柔らかく、人影はまばらで、竹林は生きた聖堂のように感じられます。静かなリズムで歩き、最後に30分の抹茶体験で朝を整えます。"
         },
         features: {
           en: ["Weekdays only", "Fixed start 07:30", "2.5-hour route", "Matcha experience (30 min) included"],
@@ -722,49 +719,40 @@
         stripeUrl: "https://buy.stripe.com/00waEZ5QzeMMdQHfsAawo02"
       },
 
-      /* ============================
-         OSAKA Dotonbori Night Walk & Street Food Culture
-         - Times: 11:30 and 14:30 only
-         - ✅ Checkout SAME FLOW as others (button in the same widget)
-         - ✅ But uses Stripe Buy Button embed instead of stripeUrl
-      ============================ */
+      /* OSAKA: Dotonbori Walk */
       {
         id: "osaka-dotonbori",
         badge: { en: "Osaka", jp: "大阪" },
-        title: { en: "Osaka Dotonbori Night Walk & Street Food Culture", jp: "大阪 道頓堀ナイトウォーク＆食べ歩き" },
-        meta: { en: ["2 hours", "Dotonbori culture walk"], jp: ["2時間", "道頓堀散策"] },
+        title: { en: "Osaka Dotonbori Night Walk & Street Food Culture", jp: "大阪 道頓堀 街歩きとストリートフード文化" },
+        meta: { en: ["2 hours", "Dotonbori walk"], jp: ["2時間", "道頓堀散策"] },
         priceJPY: 4500,
         shortDesc: {
-          en: "Neon reflections, canal-side stories, and Osaka’s street-food soul — guided like a local friend who knows exactly what’s worth your stomach space.",
-          jp: "（英語版のみ運用）"
+          en: "Neon reflections, canal-side stories, and Osaka’s street-food soul, guided by a local who actually hangs out here.",
+          jp: "ネオンが水面に揺れる道頓堀を、地元の目線で案内。観光地の顔と日常の温度が一度にわかる街歩き。"
         },
         desc: {
           en:
-            "Osaka has always been Japan’s merchant city — bold, practical, and proudly food-obsessed. On this walk, we connect the dots between history and today’s vibe: theater streets, trading roots, and the reason Osaka earned its reputation as the nation’s kitchen.\n\n" +
-            "Then we step into Dotonbori — neon mirrored on the canal, energy spilling out of side alleys, and the kind of street-food culture that never really sleeps. Your guide keeps it fun, fast, and deeply local.\n\n" +
-            "Expect great photo moments, quick cultural context, and a pace that feels like a night out — not a lecture. Osaka doesn’t whisper. It winks.",
-          jp: "（英語版のみ運用）"
+            "Osaka is loud in the best way. It is a city built by merchants, theatre, and appetite. This walk connects the history to what you see tonight, why Dotonbori looks the way it does, what locals eat, and where the energy really comes from.\n\n" +
+            "We keep the pacing light and photo friendly, but the stories are sharp and specific. You will notice details you would normally walk right past.\n\n" +
+            "This is not a lecture. It feels like being shown around by someone from Osaka who knows what is worth your time.",
+          jp:
+            "大阪は勢いがある街です。商人の文化と芝居小屋のにおい、そして食への執着で育ってきました。この散策では、道頓堀が今の姿になった理由を、今日の景色とつなげてわかりやすく案内します。\n\n" +
+            "写真はしっかり撮れるペースで歩きます。ただ歩くだけだと見逃す細部を、地元の視点で拾っていきます。\n\n" +
+            "堅い講義ではありません。大阪の知り合いに連れられて夜の街を歩くような感覚です。"
         },
         features: {
-          en: ["Dotonbori canal & neon photos", "Osaka street-food culture", "Local storytelling", "2-hour route"],
-          jp: ["（英語版のみ運用）"]
+          en: ["Local storytelling", "Photo friendly pace", "2-hour route", "Dotonbori highlights"],
+          jp: ["地元目線の解説", "写真が撮りやすいペース", "2時間ルート", "道頓堀の見どころ"]
         },
         images: ["osakaw_main.jpg","osakaw_2.jpg","osakaw_3.jpg","osakaw_4.jpg","osakaw_5.jpg","osakaw_6.jpg","osakaw_7.jpg"],
         times: ["11:30","14:30"],
-
-        // ✅ Use Stripe Buy Button
         stripeBuyButton: {
           buyButtonId: "buy_btn_1T3uDpQnEjWXCkKGrbgxz8wp",
           publishableKey: "pk_live_51SgenJQnEjWXCkKGSEdYWLCpOwzn7Ty37WAoDtUlQ1D1s0IlaxI1JBYgm84z3PxqnVFA9aGKxziSytZujT7VDcUp004ohcOGpH"
         }
       },
 
-      /* ============================
-         OSAKA Local Night Food Tour (3 HOURS)
-         - ✅ Cover: OSAKAFOODCOVER.jpg
-         - ✅ Gallery: OSAKAFOOD.jpg ~ OSAKAFOOD5.jpg
-         - ✅ Stripe Buy Button
-      ============================ */
+      /* OSAKA: Local Night Food Tour */
       {
         id: "osaka-night-food",
         badge: { en: "Osaka", jp: "大阪" },
@@ -772,28 +760,25 @@
         meta: { en: ["3 hours", "Night tasting"], jp: ["3時間", "夜の食べ歩き"] },
         priceJPY: 16000,
         shortDesc: {
-          en: "Osaka is Japan’s Kitchen — after dark: hidden local restaurants, secret drinks, and a sweet finish, curated by a true Osaka foodie.",
-          jp: "（英語版のみ運用）"
+          en: "Osaka is Japan’s Kitchen at night: local-only spots, hidden drinks, and a sweet finish, curated by a true Osaka foodie.",
+          jp: "食い倒れの街は夜が本番。地元の人が通う店と隠れた一杯、最後は甘い締めまで。大阪のフーディーが流れを作ります。"
         },
         desc: {
           en:
-            "Osaka didn’t earn the nickname “Japan’s Kitchen” by accident. This city lives for good food — bold flavors, quick laughs, and the kind of places you’d never find alone.\n\n" +
-            "This 3-hour night tour is designed like a great night out: we hop between local-favorite spots, balancing atmosphere and taste, while keeping the pacing comfortable. Expect the real Osaka nightlife energy — not tourist traps — with a foodie guide who knows exactly what’s worth ordering.\n\n" +
-            "You’ll enjoy a curated progression that typically includes:\n" +
-            "• Hidden local restaurants & counters\n" +
-            "• Local drinks (tucked-away spots)\n" +
-            "• A proper sweet ending (dessert)\n\n" +
-            "Tell us dietary needs in advance — we’ll confirm what’s possible before finalizing. Come hungry. Osaka plays offense.",
-          jp: "（英語版のみ運用）"
+            "Osaka earned the nickname Japan’s Kitchen because people here take food seriously. Not fancy. Just honest, fast, and delicious.\n\n" +
+            "This 3-hour tour is built like a great night out. We move through local favorite restaurants and small counters, add a hidden drink stop, and finish with a proper dessert.\n\n" +
+            "Your guide is an Osaka local foodie, so the recommendations are personal, not generic. If you want the real vibe, this is it.",
+          jp:
+            "大阪が食い倒れの街と呼ばれるのは、食に本気だからです。派手さより、うまいものをちゃんと食べる。その空気が街にあります。\n\n" +
+            "この3時間は、夜の遊び方として気持ちよく組んでいます。地元に愛される店やカウンターを巡り、知っている人だけが寄る一杯の場所も挟みます。最後はきちんと甘い締めまで。\n\n" +
+            "ガイドは大阪のローカルフーディーです。テンプレの店ではなく、実際に通う感覚で案内します。大阪の夜を一気に掴みたい人におすすめです。"
         },
         features: {
-          en: ["Osaka foodie host", "Hidden local restaurants", "Local drinks + sweet finish", "3-hour curated flow"],
-          jp: ["（英語版のみ運用）"]
+          en: ["Osaka foodie host", "Local-only venues", "Hidden drinks stop", "Dessert finish"],
+          jp: ["大阪のフーディーが案内", "地元の店中心", "隠れた一杯も案内", "甘い締めまで"]
         },
         images: ["OSAKAFOODCOVER.jpg","OSAKAFOOD.jpg","OSAKAFOOD2.jpg","OSAKAFOOD3.jpg","OSAKAFOOD4.jpg","OSAKAFOOD5.jpg"],
         times: ["18:00"],
-
-        // ✅ Use Stripe Buy Button
         stripeBuyButton: {
           buyButtonId: "buy_btn_1T3urZQnEjWXCkKGhYfoIYdn",
           publishableKey: "pk_live_51SgenJQnEjWXCkKGSEdYWLCpOwzn7Ty37WAoDtUlQ1D1s0IlaxI1JBYgm84z3PxqnVFA9aGKxziSytZujT7VDcUp004ohcOGpH"
@@ -888,13 +873,11 @@
       buildTimeOptions(t);
       applyDateRules(t);
 
-      // ✅ Key: keep booking UI consistent
-      // - If tour has Stripe Buy Button -> show it in the same widget area
-      // - Otherwise -> use the existing Proceed to Payment (stripeUrl)
-      renderStripeInSameWidget(t);
+      // Reset Stripe mount every time modal opens
+      clearStripeBuyButton();
 
       document.getElementById('btnSendRequest').onclick = ()=> sendRequest(t);
-      document.getElementById('btnPayStripe').onclick = ()=> payStripe(t);
+      document.getElementById('btnPayStripe').onclick = ()=> proceedPayment(t);
 
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -969,26 +952,62 @@
       }
     }
 
-    // ✅ Render stripe in the same widget area, matching your existing layout:
-    // - If tour has stripeBuyButton => hide Proceed-to-Payment button, show buy button
-    // - Else => show Proceed-to-Payment button, clear buy button area
-    function renderStripeInSameWidget(t){
+    function clearStripeBuyButton(){
       const mount = document.getElementById('stripeBuyButtonMount');
-      const btnPay = document.getElementById('btnPayStripe');
+      if(mount) mount.innerHTML = "";
+    }
+
+    // ✅ The unified payment gate:
+    // 1) Validate required fields first (same as your screenshot)
+    // 2) If Osaka tours => mount buy button after validation
+    // 3) Else => open Stripe payment link
+    function proceedPayment(t){
+      const payload = collectForm();
+      if(!payload) return; // shows "Please fill in all required fields."
+
+      if(t.stripeBuyButton){
+        mountStripeBuyButton(t);
+        return;
+      }
+
+      if(!t.stripeUrl){
+        alert("Payment link is not set for this experience.");
+        return;
+      }
+
+      const url = new URL(t.stripeUrl);
+      url.searchParams.set("locale", "en");
+      url.searchParams.set("prefill_date", payload.date);
+      url.searchParams.set("prefill_time", payload.time);
+      url.searchParams.set("prefill_guests", payload.guests);
+      url.searchParams.set("prefill_name", payload.name);
+      url.searchParams.set("prefill_email", payload.email);
+      url.searchParams.set("prefill_phone", payload.phone);
+      window.open(url.toString(), "_blank", "noopener");
+    }
+
+    function mountStripeBuyButton(t){
+      const mount = document.getElementById('stripeBuyButtonMount');
       if(!mount) return;
 
       mount.innerHTML = "";
+      const hint = document.createElement('div');
+      hint.style.marginBottom = "10px";
+      hint.style.color = "#666";
+      hint.style.fontSize = ".85rem";
+      hint.style.lineHeight = "1.6";
+      hint.textContent = document.body.classList.contains('is-jp')
+        ? "入力内容を確認しました。下のStripeボタンから決済へ進めます。"
+        : "Your details look good. Please use the Stripe button below to complete payment.";
+      mount.appendChild(hint);
 
-      if(t.stripeBuyButton && t.stripeBuyButton.buyButtonId && t.stripeBuyButton.publishableKey){
-        if(btnPay) btnPay.style.display = "none";
+      const el = document.createElement('stripe-buy-button');
+      el.setAttribute('buy-button-id', t.stripeBuyButton.buyButtonId);
+      el.setAttribute('publishable-key', t.stripeBuyButton.publishableKey);
+      mount.appendChild(el);
 
-        const el = document.createElement('stripe-buy-button');
-        el.setAttribute('buy-button-id', t.stripeBuyButton.buyButtonId);
-        el.setAttribute('publishable-key', t.stripeBuyButton.publishableKey);
-        mount.appendChild(el);
-      }else{
-        if(btnPay) btnPay.style.display = "";
-      }
+      // Smooth scroll to the button so user sees it immediately
+      setTimeout(()=> mount.scrollIntoView({ behavior:"smooth", block:"center" }), 50);
     }
 
     function sendRequest(t){
@@ -1008,36 +1027,6 @@ Notes: ${payload.notes || '-'}
 Please confirm availability and next steps.`
       );
       window.location.href = `mailto:info@wonderlandjapan.net?subject=${subject}&body=${body}`;
-    }
-
-    // Payment-link flow (only used by tours that have stripeUrl)
-    function payStripe(t){
-      // If tour uses Stripe Buy Button, do nothing (button is embedded)
-      if(t.stripeBuyButton){
-        return;
-      }
-      if(!t.stripeUrl){
-        alert("Payment link is not set for this experience.");
-        return;
-      }
-
-      const payload = collectForm();
-      if(!payload) return;
-
-      const url = new URL(t.stripeUrl);
-
-      // Force English Stripe checkout UI
-      url.searchParams.set("locale", "en");
-
-      // Optional: attach booking info for your internal tracking (Stripe may ignore)
-      url.searchParams.set("prefill_date", payload.date);
-      url.searchParams.set("prefill_time", payload.time);
-      url.searchParams.set("prefill_guests", payload.guests);
-      url.searchParams.set("prefill_name", payload.name);
-      url.searchParams.set("prefill_email", payload.email);
-      url.searchParams.set("prefill_phone", payload.phone);
-
-      window.open(url.toString(), "_blank", "noopener");
     }
 
     function collectForm(){
