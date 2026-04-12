@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Kyoto & Osaka Tours | Private Guided Tours, Small Groups & Local Experiences | Wonderland Japan</title>
-  <meta name="description" content="Authentic Kyoto & Osaka experiences: cultural walks, night food tours, taiko drum live performance, and Arashiyama bamboo morning walks. Small groups, multilingual support, and easy booking." />
+  <meta name="description" content="Authentic Kyoto & Osaka experiences: cultural walks, night food tours, taiko drum live performance, and Arashiyama bamboo & flower foot bath small-group experience. Small groups of up to 6 guests, multilingual support, and easy booking." />
   <meta name="robots" content="index,follow" />
 
   <meta property="og:title" content="Wonderland Japan | Kyoto & Osaka Tours" />
-  <meta property="og:description" content="Authentic small-group experiences in Kyoto & Osaka — culture, food, taiko, and bamboo grove mornings." />
+  <meta property="og:description" content="Authentic small-group experiences in Kyoto & Osaka — culture, food, taiko, and Arashiyama bamboo with flower foot bath relaxation." />
   <meta property="og:type" content="website" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,32 +44,26 @@
     h1,h2,h3,h4{font-family:var(--font-lux);line-height:1.2;}
     img{max-width:100%;display:block;}
 
-    body.is-jp{
-      font-family:var(--font-jp)!important;
-    }
+    body.is-jp{font-family:var(--font-jp)!important;}
     body.is-jp h1,body.is-jp h2,body.is-jp h3,body.is-jp h4,
     body.is-jp p,body.is-jp a,body.is-jp span,body.is-jp div,
-    body.is-jp input,body.is-jp button,body.is-jp select,body.is-jp label{
+    body.is-jp input,body.is-jp button,body.is-jp select,body.is-jp label,body.is-jp textarea{
       font-family:var(--font-jp)!important;
       letter-spacing:.04em;
     }
 
-    body.is-tc{
-      font-family:var(--font-tc)!important;
-    }
+    body.is-tc{font-family:var(--font-tc)!important;}
     body.is-tc h1,body.is-tc h2,body.is-tc h3,body.is-tc h4,
     body.is-tc p,body.is-tc a,body.is-tc span,body.is-tc div,
-    body.is-tc input,body.is-tc button,body.is-tc select,body.is-tc label{
+    body.is-tc input,body.is-tc button,body.is-tc select,body.is-tc label,body.is-tc textarea{
       font-family:var(--font-tc)!important;
     }
 
     .lang-en,.lang-tc,.lang-jp{display:none;}
     body.lang-en-active .lang-en{display:inline!important;}
     body.lang-en-active .lang-en.block{display:block!important;}
-
     body.is-tc .lang-tc{display:inline!important;}
     body.is-tc .lang-tc.block{display:block!important;}
-
     body.is-jp .lang-jp{display:inline!important;}
     body.is-jp .lang-jp.block{display:block!important;}
 
@@ -100,6 +94,7 @@
     .logo-img{height:45px;width:45px;background:var(--w-red);border-radius:50%;object-fit:cover;}
     .brand-text h1{font-size:1.2rem;color:white;margin:0;font-weight:700;}
     .brand-text span{font-size:.65rem;color:var(--w-gold);letter-spacing:3px;display:block;}
+
     nav.scrolled .brand-text h1{color:var(--w-red);}
     nav.scrolled .nav-menu a{color:var(--w-black);}
     nav.scrolled .lang-btn{color:var(--w-black);border-color:#333;}
@@ -130,7 +125,10 @@
     }
     .hero-content{text-align:center;color:white;z-index:2;padding:0 20px;will-change:transform;}
     .hero-title{font-size:4rem;margin-bottom:15px;letter-spacing:2px;text-shadow:0 10px 30px rgba(0,0,0,.3);}
-    .hero-subtitle{font-size:1.3rem;margin-bottom:40px;color:var(--w-gold);letter-spacing:2px;}
+    .hero-subtitle{font-size:1.3rem;margin-bottom:24px;color:var(--w-gold);letter-spacing:2px;}
+    .hero-small{
+      max-width:820px;margin:0 auto 38px auto;font-size:1rem;color:rgba(255,255,255,.92);
+    }
     .hero-cta{
       background:var(--w-red);color:white;text-decoration:none;
       padding:18px 50px;border-radius:50px;font-size:.9rem;letter-spacing:2px;font-weight:600;
@@ -158,6 +156,32 @@
       margin-top:12px;font-size:.82rem;color:#777;
     }
 
+    .review-marquee{
+      background:#fff;
+      border-top:1px solid #eee;
+      border-bottom:1px solid #eee;
+      overflow:hidden;
+      padding:14px 0;
+    }
+    .marquee{
+      width:100%;
+      overflow:hidden;
+    }
+    .track{
+      display:flex;
+      gap:56px;
+      width:max-content;
+      animation:scrollReviews 38s linear infinite;
+      white-space:nowrap;
+      font-size:.9rem;
+      color:#444;
+    }
+    .track span{opacity:.92;}
+    @keyframes scrollReviews{
+      0%{transform:translateX(0);}
+      100%{transform:translateX(calc(-50% - 28px));}
+    }
+
     .tours-section{padding:100px 5%;background:transparent;}
     .section-header{text-align:center;margin-bottom:70px;}
     .section-tag{
@@ -165,6 +189,9 @@
       display:block;margin-bottom:10px;
     }
     .section-header h2{font-size:3rem;color:var(--w-black);margin-bottom:20px;}
+    .section-sub{
+      max-width:900px;margin:0 auto;color:#666;font-size:1rem;
+    }
     .tours-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:35px;}
 
     .tour-card{
@@ -209,16 +236,16 @@
     .team-note{margin-top:22px;color:#666;font-size:.9rem;max-width:900px;margin-left:auto;margin-right:auto;}
     .team-note strong{color:#222;}
 
-    .faq-section{padding:80px 5%;background:transparent;max-width:900px;margin:0 auto;}
+    .faq-section{padding:80px 5%;background:transparent;max-width:980px;margin:0 auto;}
     .faq-item{border-bottom:1px solid rgba(0,0,0,.1);}
     .faq-question{
       padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
       font-weight:600;font-size:1rem;color:var(--w-black);transition:.3s;
     }
     .faq-question:hover{color:var(--w-red);}
-    .faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease;font-size:.9rem;color:#555;line-height:1.6;}
-    .faq-answer p{padding-bottom:20px;}
-    .faq-item.active .faq-answer{max-height:260px;}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .45s ease;font-size:.94rem;color:#555;line-height:1.8;}
+    .faq-answer p{padding-bottom:22px;}
+    .faq-item.active .faq-answer{max-height:380px;}
     .faq-item.active .faq-question i{transform:rotate(180deg);}
 
     .concierge-footer{background:#1a1a1a;color:#999;padding:80px 5%;font-size:.9rem;}
@@ -280,7 +307,7 @@
     .feature-list{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:30px;}
     .feature-item{font-size:.85rem;color:#555;display:flex;align-items:center;gap:8px;}
     .feature-item i{color:var(--w-red);}
-    .modal-desc{font-size:1rem;color:#444;margin-bottom:30px;line-height:1.85;white-space:pre-line;}
+    .modal-desc{font-size:1rem;color:#444;margin-bottom:30px;line-height:1.9;white-space:pre-line;}
 
     .booking-widget{background:#f9f9f9;padding:28px;border-radius:12px;border:1px solid #eee;margin-top:auto;}
     .widget-title{font-size:1rem;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;}
@@ -307,6 +334,7 @@
 
     @media (max-width:768px){
       .hero-title{font-size:2.8rem;}
+      .hero-small{font-size:.95rem;}
       .modal-content{grid-template-columns:1fr;height:100%;border-radius:0;}
       .modal-img-col{height:280px;}
       .nav-menu{display:none;}
@@ -315,6 +343,7 @@
       .form-grid{grid-template-columns:1fr;}
       .legal-grid{grid-template-columns:1fr;}
       .lang-switcher{justify-content:flex-end;}
+      .track{gap:34px;font-size:.84rem;}
     }
   </style>
 </head>
@@ -371,6 +400,11 @@
         <span class="lang-tc">通往日本的那扇門，從這裡開始。</span>
         <span class="lang-jp">日本への扉が、ここから開きます。</span>
       </p>
+      <p class="hero-small">
+        <span class="lang-en">Refined small-group experiences in Kyoto and Osaka, designed for travelers who want warmth, quality, and something more memorable than a standard tour.</span>
+        <span class="lang-tc">為想要質感、溫度與更深層體驗的旅人設計。不是制式觀光，而是真正值得記住的京都與大阪小團行程。</span>
+        <span class="lang-jp">ありきたりな観光ではなく、温かさと質のある、記憶に残る京都・大阪の少人数体験をご用意しています。</span>
+      </p>
       <a href="#tours" class="hero-cta">
         <span class="lang-en">VIEW JOURNEYS</span>
         <span class="lang-tc">查看行程</span>
@@ -390,9 +424,18 @@
       <div class="trust-badge">
         <i class="fa-solid fa-users"></i>
         <span>
-          <span class="lang-en">Small Group</span>
-          <span class="lang-tc">小團制</span>
-          <span class="lang-jp">少人数制</span>
+          <span class="lang-en">Small Groups Only</span>
+          <span class="lang-tc">僅限小團</span>
+          <span class="lang-jp">少人数限定</span>
+        </span>
+      </div>
+
+      <div class="trust-badge">
+        <i class="fa-solid fa-user-group"></i>
+        <span>
+          <span class="lang-en">Max 6 Guests</span>
+          <span class="lang-tc">最多 6 人</span>
+          <span class="lang-jp">最大6名</span>
         </span>
       </div>
 
@@ -451,6 +494,24 @@
     </div>
   </section>
 
+  <section class="review-marquee">
+    <div class="marquee">
+      <div class="track">
+        <span>“Amazing experience, truly unforgettable.” ★★★★★</span>
+        <span>“Best tour in Kyoto. Highly recommend.” ★★★★★</span>
+        <span>“The small group size made it feel personal and premium.” ★★★★★</span>
+        <span>“Our guide felt more like a knowledgeable local friend.” ★★★★★</span>
+        <span>“One of the highlights of our Japan trip.” ★★★★★</span>
+
+        <span>“Amazing experience, truly unforgettable.” ★★★★★</span>
+        <span>“Best tour in Kyoto. Highly recommend.” ★★★★★</span>
+        <span>“The small group size made it feel personal and premium.” ★★★★★</span>
+        <span>“Our guide felt more like a knowledgeable local friend.” ★★★★★</span>
+        <span>“One of the highlights of our Japan trip.” ★★★★★</span>
+      </div>
+    </div>
+  </section>
+
   <section id="tours" class="tours-section">
     <div class="section-header reveal">
       <span class="section-tag">
@@ -463,6 +524,11 @@
         <span class="lang-tc">真正值得體驗的京都與大阪。</span>
         <span class="lang-jp">京都・大阪を、本物の形で。</span>
       </h2>
+      <p class="section-sub">
+        <span class="lang-en">Every experience is intentionally kept small, calm, and personal, with a maximum of 6 guests.</span>
+        <span class="lang-tc">每個行程都刻意保持小團、舒服且有溫度，全程最多 6 位來賓。</span>
+        <span class="lang-jp">すべての体験は、最大6名までの少人数で、落ち着きと親密さを大切にしています。</span>
+      </p>
 
       <div style="margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
         <span class="pill">
@@ -549,8 +615,8 @@
                   <span class="lang-jp">人数</span>
                 </label>
                 <select class="form-input" id="bkGuests" required>
-                  <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
-                  <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+                  <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                  <option value="4">4</option><option value="5">5</option><option value="6">6</option>
                 </select>
               </div>
               <div class="form-group">
@@ -720,17 +786,53 @@
     <div class="faq-item reveal">
       <div class="faq-question">
         <span>
-          <span class="lang-en">Can you accommodate dietary restrictions?</span>
-          <span class="lang-tc">可以配合飲食限制嗎？</span>
-          <span class="lang-jp">食事制限には対応できますか？</span>
+          <span class="lang-en">Who are these experiences best for?</span>
+          <span class="lang-tc">這些行程適合什麼樣的旅客？</span>
+          <span class="lang-jp">どんな旅行者に向いていますか？</span>
         </span>
         <i class="fa-solid fa-chevron-down"></i>
       </div>
       <div class="faq-answer">
         <p>
-          <span class="lang-en">Yes. Please include details in the Notes field. We will confirm what is possible before finalizing the booking.</span>
-          <span class="lang-tc">可以，請在備註欄填寫詳細需求。我們會在確認預約前先告知可配合的範圍。</span>
-          <span class="lang-jp">可能です。備考欄に詳細をご記入ください。予約確定前に対応可能範囲をご案内します。</span>
+          <span class="lang-en">They are ideal for travelers who want something more personal than a large bus tour. If you value smaller groups, quality pacing, local context, and a more refined experience, these will suit you well.</span>
+          <span class="lang-tc">特別適合不想要制式觀光團、而是想要更有質感、更有溫度旅程的旅客。如果你在意小團、節奏舒服、能理解當地文化，而不只是拍照打卡，這些行程會很適合你。</span>
+          <span class="lang-jp">大人数の観光ツアーではなく、よりパーソナルで上質な体験を求める方におすすめです。少人数、心地よいペース、地域の背景を理解しながら旅したい方に向いています。</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">
+        <span>
+          <span class="lang-en">Will the tour feel rushed?</span>
+          <span class="lang-tc">行程會不會很趕？</span>
+          <span class="lang-jp">慌ただしい行程ですか？</span>
+        </span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        <p>
+          <span class="lang-en">No. We intentionally keep all groups to a maximum of 6 guests so the pacing stays comfortable. There is time to look, ask, photograph, and actually enjoy where you are.</span>
+          <span class="lang-tc">不會。我們刻意把所有團控制在最多 6 人，就是為了讓節奏保持舒服。你會有時間看風景、拍照、提問，也真的能感受當下，而不是一路被趕著走。</span>
+          <span class="lang-jp">いいえ。すべて最大6名までに抑えているのは、ペースを快適に保つためです。景色を見て、写真を撮って、質問して、その場をきちんと味わう時間があります。</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">
+        <span>
+          <span class="lang-en">Are these suitable for families or children?</span>
+          <span class="lang-tc">適合親子或小朋友參加嗎？</span>
+          <span class="lang-jp">家族連れや子どもでも参加できますか？</span>
+        </span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        <p>
+          <span class="lang-en">Yes, many of our experiences work well for families. If you have a stroller, younger children, or mobility concerns, tell us in advance and we will advise the most suitable option.</span>
+          <span class="lang-tc">可以，許多行程都很適合親子。如果你有嬰兒車、年紀較小的小朋友，或步行方面的需求，請提前告訴我們，我們會協助你判斷最適合的方案。</span>
+          <span class="lang-jp">はい。多くの体験はご家族でも参加しやすい内容です。ベビーカー、小さなお子様、歩行面でのご不安がある場合は、事前にご相談ください。最適な体験をご案内します。</span>
         </p>
       </div>
     </div>
@@ -746,9 +848,27 @@
       </div>
       <div class="faq-answer">
         <p>
-          <span class="lang-en">Most experiences operate rain or shine. If severe weather affects safety, we will contact you and arrange the best solution.</span>
-          <span class="lang-tc">大部分體驗皆可雨天進行。若遇到影響安全的惡劣天氣，我們會主動聯絡並安排最合適的處理方式。</span>
-          <span class="lang-jp">多くの体験は雨天でも実施しますが、安全に影響する荒天時は、こちらから連絡のうえ最適な対応を行います。</span>
+          <span class="lang-en">Most experiences operate rain or shine. In fact, some places in Kyoto feel especially beautiful in light rain. If severe weather affects safety, we will contact you and arrange the best solution.</span>
+          <span class="lang-tc">大部分體驗皆可雨天進行，而且京都有些景色在小雨中反而更有氣氛。若遇到影響安全的惡劣天氣，我們會主動聯絡並安排最合適的處理方式。</span>
+          <span class="lang-jp">多くの体験は雨天でも実施します。むしろ京都は小雨の方が美しく感じられる場所もあります。安全に影響する荒天時は、こちらから連絡のうえ最適な対応を行います。</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">
+        <span>
+          <span class="lang-en">Can you accommodate dietary restrictions?</span>
+          <span class="lang-tc">可以配合飲食限制嗎？</span>
+          <span class="lang-jp">食事制限には対応できますか？</span>
+        </span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        <p>
+          <span class="lang-en">Yes. Please include details in the Notes field. We will confirm what is possible before finalizing the booking.</span>
+          <span class="lang-tc">可以，請在備註欄填寫詳細需求。我們會在確認預約前先告知可配合的範圍。</span>
+          <span class="lang-jp">可能です。備考欄に詳細をご記入ください。予約確定前に対応可能範囲をご案内します。</span>
         </p>
       </div>
     </div>
@@ -973,14 +1093,14 @@
           jp: "日本の鼓動をダイレクトに感じる、迫力と余韻のある和太鼓ライブです。"
         },
         desc: {
-          en: "A taiko performance is more than rhythm. It is discipline, breath, timing, and the shared energy of a room. This show gives you a vivid and polished introduction to Japanese drumming without losing its raw force.",
-          tc: "和太鼓不只是節奏而已，它包含了呼吸、鍛鍊、默契與空間裡共同被帶動的能量。這場演出會讓你在不失真實力量的前提下，感受到日本鼓樂最直接的魅力。",
-          jp: "和太鼓は単なるリズムではありません。鍛錬、呼吸、間合い、そして場をひとつにする力があります。この公演では、その本質を失わずに、洗練された形で体感していただけます。"
+          en: "A taiko performance is more than rhythm. It is discipline, breath, timing, and the shared energy of a room. This show gives you a vivid and polished introduction to Japanese drumming without losing its raw force.\n\nAs with all of our experiences, seating is kept intentionally intimate, with a maximum of 6 guests for the smoothest, most personal atmosphere.",
+          tc: "和太鼓不只是節奏而已，它包含了呼吸、鍛鍊、默契與空間裡共同被帶動的能量。這場演出會讓你在不失真實力量的前提下，感受到日本鼓樂最直接的魅力。\n\n和我們所有體驗一樣，整體安排也維持在最多 6 人的小團規模，讓現場更舒服、更有臨場感。",
+          jp: "和太鼓は単なるリズムではありません。鍛錬、呼吸、間合い、そして場をひとつにする力があります。この公演では、その本質を失わずに、洗練された形で体感していただけます。\n\nすべての体験と同様に、最大6名までの少人数で、より親密で心地よい雰囲気を大切にしています。"
         },
         features: {
-          en: ["Ticketed live show", "45-minute program", "Easy access", "Clear support"],
-          tc: ["售票制現場表演", "45分鐘節目", "交通方便", "規則清楚"],
-          jp: ["チケット制ライブ", "45分プログラム", "アクセス良好", "明確なサポート"]
+          en: ["Max 6 guests", "Ticketed live show", "45-minute program", "Easy access"],
+          tc: ["最多 6 人", "售票制現場表演", "45分鐘節目", "交通方便"],
+          jp: ["最大6名", "チケット制ライブ", "45分プログラム", "アクセス良好"]
         },
         images: ["Taiko1.jpg","Taiko2.jpg","Taiko3.jpg","Taiko4.jpg","Taiko5.jpg","Taiko6.jpg"],
         times: ["14:30","15:30","16:30","18:00","19:00","20:00"],
@@ -1006,14 +1126,14 @@
           jp: "京都の美意識が育った路地を歩きます。茶屋、神社、そして物語が街を立体的に見せてくれます。"
         },
         desc: {
-          en: "This is Kyoto at human scale. Stone paths, lantern light, hidden corners, and the cultural texture behind what you are seeing. We do not rush. The point is not only to look at Kyoto, but to understand why it feels the way it does.",
-          tc: "這是最適合用步行理解的京都。石板路、燈籠、轉角與看似安靜卻很有層次的街景，背後都有文化脈絡。這不是趕景點，而是讓你真的理解京都為什麼會有這種氣質。",
-          jp: "石畳、灯り、静かな路地、そして見えている景色の背景にある文化的な文脈。急がずに歩き、京都をただ見るのではなく、なぜこの街がこう感じられるのかを理解していただく散策です。"
+          en: "This is Kyoto at human scale. Stone paths, lantern light, hidden corners, and the cultural texture behind what you are seeing. We do not rush. The point is not only to look at Kyoto, but to understand why it feels the way it does.\n\nKept intentionally small at a maximum of 6 guests, this walk feels personal, elegant, and easy to enjoy.",
+          tc: "這是最適合用步行理解的京都。石板路、燈籠、轉角與看似安靜卻很有層次的街景，背後都有文化脈絡。這不是趕景點，而是讓你真的理解京都為什麼會有這種氣質。\n\n全程控制在最多 6 人的小團規模，讓整段散步更有質感，也更容易沉浸在祇園的氣氛裡。",
+          jp: "石畳、灯り、静かな路地、そして見えている景色の背景にある文化的な文脈。急がずに歩き、京都をただ見るのではなく、なぜこの街がこう感じられるのかを理解していただく散策です。\n\n最大6名までの少人数で、より上質で親密な祇園体験をお楽しみいただけます。"
         },
         features: {
-          en: ["Local storytelling", "Photo-friendly pace", "Small-group comfort", "2-hour route"],
-          tc: ["在地故事解說", "方便拍照的步調", "小團舒適", "2小時路線"],
-          jp: ["丁寧な解説", "写真が撮りやすいペース", "少人数で快適", "2時間ルート"]
+          en: ["Max 6 guests", "Local storytelling", "Photo-friendly pace", "2-hour route"],
+          tc: ["最多 6 人", "在地故事解說", "方便拍照的步調", "2小時路線"],
+          jp: ["最大6名", "丁寧な解説", "写真が撮りやすいペース", "2時間ルート"]
         },
         images: ["gion1.jpg","gion2.jpg","gion3.jpg","gion4.jpg","gion5.jpg","gion6.jpg","gion7.jpg"],
         times: ["10:30","13:30","16:30"],
@@ -1039,14 +1159,14 @@
           jp: "夜の京都を、ただのチェックリストではなく、街の味として体験するためのツアーです。"
         },
         desc: {
-          en: "Kyoto cuisine is subtle. It is built on detail, restraint, temperature, timing, and craft. This night tour is designed like a good menu. The progression feels balanced, the venues feel local, and the evening unfolds naturally.",
-          tc: "京都料理的魅力不在浮誇，而在細節、火候、節奏與克制。這個夜間美食行程像是一套安排得很好的套餐，味道、氛圍與順序都經過設計，吃起來自然、舒服，而且很京都。",
-          jp: "京都の味は派手さではなく、細部、温度、タイミング、そして技術で成り立っています。この夜ツアーは一つの良い献立のように設計されており、流れも雰囲気も自然に整っています。"
+          en: "Kyoto cuisine is subtle. It is built on detail, restraint, temperature, timing, and craft. This night tour is designed like a good menu. The progression feels balanced, the venues feel local, and the evening unfolds naturally.\n\nWith a maximum of 6 guests, it stays personal and relaxed rather than noisy or rushed.",
+          tc: "京都料理的魅力不在浮誇，而在細節、火候、節奏與克制。這個夜間美食行程像是一套安排得很好的套餐，味道、氛圍與順序都經過設計，吃起來自然、舒服，而且很京都。\n\n全程最多 6 人，整體感受更像被熟人帶著吃，而不是吵雜匆忙的大團行程。",
+          jp: "京都の味は派手さではなく、細部、温度、タイミング、そして技術で成り立っています。この夜ツアーは一つの良い献立のように設計されており、流れも雰囲気も自然に整っています。\n\n最大6名の少人数制なので、騒がしさよりも心地よさと親密さを大切にした夜になります。"
         },
         features: {
-          en: ["Curated progression", "Local venues", "3-hour experience", "Dietary notes welcome"],
-          tc: ["行程安排有層次", "在地店家", "3小時體驗", "可先告知飲食需求"],
-          jp: ["流れを設計", "ローカル店", "3時間", "食事制限は事前相談可"]
+          en: ["Max 6 guests", "Curated progression", "Local venues", "Dietary notes welcome"],
+          tc: ["最多 6 人", "行程安排有層次", "在地店家", "可先告知飲食需求"],
+          jp: ["最大6名", "流れを設計", "ローカル店", "食事制限は事前相談可"]
         },
         images: ["kyoto1.jpg","kyoto2.jpg","kyoto3.jpg","kyoto4.jpg","kyoto5.jpg"],
         times: ["18:00"],
@@ -1056,30 +1176,30 @@
         id: "bamboo",
         badge: { en: "Arashiyama", tc: "嵐山", jp: "嵐山" },
         title: {
-          en: "Arashiyama Bamboo Morning Walk",
-          tc: "嵐山竹林晨間散步",
-          jp: "嵐山 竹林の朝散歩"
+          en: "Arashiyama Scenic Walk & Flower Foot Bath Escape",
+          tc: "嵐山風景人文散策＋花足浴療癒體驗",
+          jp: "嵐山 景観散策＋フラワーフットバス体験"
         },
         meta: {
-          en: ["2.5 hours", "Morning walk"],
-          tc: ["2.5小時", "晨間散步"],
-          jp: ["2.5時間", "朝の散歩"]
+          en: ["2.5 hours", "Scenic walk + relaxation"],
+          tc: ["2.5小時", "風景散步＋療癒放鬆"],
+          jp: ["2.5時間", "景観散策＋リラクゼーション"]
         },
         priceUSD: 69,
         shortDesc: {
-          en: "Start before the crowds. Quiet bamboo, clean morning air, and a softer side of Kyoto that most visitors never see.",
-          tc: "在人潮出現前出發。清晨的竹林、乾淨的空氣，以及大多數旅客不曾真正看見的嵐山。",
-          jp: "混雑前の静かな竹林と澄んだ空気。多くの旅行者がまだ知らない嵐山の朝を味わえます。"
+          en: "A refined small-group journey through Arashiyama’s scenery, culture, and history, ending with a beautiful flower foot bath and massage to reward your legs.",
+          tc: "以高質感的小團步調，走進嵐山最美的風景、人文與歷史，最後用花足浴與按摩好好犒賞雙腿。",
+          jp: "嵐山の風景・文化・歴史を上質な少人数で巡り、最後はフラワーフットバスとマッサージで足を癒す特別な体験です。"
         },
         desc: {
-          en: "Arashiyama early in the morning feels completely different from the daytime version most people know. The light is softer, the atmosphere calmer, and the bamboo grove finally has space to breathe. This experience is about timing done right.",
-          tc: "清晨的嵐山和白天完全是兩個世界。光線柔和、人少、空氣乾淨，竹林終於有了它應有的安靜。這個行程的重點就是把時間抓對，讓你遇見真正好看的嵐山。",
-          jp: "朝の嵐山は、日中の姿とはまったく異なります。光は柔らかく、人は少なく、竹林が本来の静けさを取り戻します。この体験は、時間を正しく選ぶことで成立する嵐山です。"
+          en: "This is not just a bamboo grove walk.\n\nWe guide you through the beauty of Arashiyama with the right pace and the right perspective: quiet lanes, elegant scenery, cultural landmarks, and the human stories that give the area its depth.\n\nRather than rushing from spot to spot, the experience is designed to feel graceful and restorative.\n\nAt the end of the walk, you will step into a carefully selected relaxation space and reward your legs with a beautiful flower foot bath and massage.\n\nIt is the kind of finish that makes the whole morning feel complete.\n\nAs with all of our experiences, this is kept intentionally intimate, with a maximum of 6 guests.",
+          tc: "這不只是竹林散步而已。\n\n我們會用剛剛好的節奏與視角，帶你走進嵐山真正迷人的地方：安靜的小路、優雅的風景、值得停下來看的文化景點，以及讓這個區域更有深度的人文與歷史。\n\n整個行程不是趕著打卡，而是讓你在舒服、優雅的步調裡慢慢體會嵐山。\n\n散步結束後，會帶你進入一個精心挑選的療癒空間，用一場美好的花足浴與按摩，好好犒賞今天走過的雙腿。\n\n這種收尾，會讓整個早晨變得非常完整。\n\n和我們所有體驗一樣，這個行程也維持在最多 6 人的小團規模，安靜、舒服，而且更有專屬感。",
+          jp: "これは単なる竹林散策ではありません。\n\n嵐山の本当の魅力を、ちょうどよいペースと視点でご案内します。静かな小道、上品な景色、文化的な見どころ、そしてこの土地に奥行きを与える人文や歴史まで、丁寧に味わうための体験です。\n\nただ名所を急いで回るのではなく、優雅で整った時間として設計されています。\n\n散策の最後には、厳選したリラクゼーション空間へご案内し、美しいフラワーフットバスとマッサージで歩いた足を癒していただきます。\n\n朝の体験全体が、そこで美しく完成します。\n\nすべての体験と同様に、最大6名までの少人数制で、静かで心地よい特別感を大切にしています。"
         },
         features: {
-          en: ["Best before crowds", "Relaxed pacing", "Scenic route", "Morning atmosphere"],
-          tc: ["避開人潮", "舒服步調", "景色佳的路線", "最美的清晨氣氛"],
-          jp: ["混雑前に最適", "ゆったりしたペース", "景観の良いルート", "朝ならではの空気感"]
+          en: ["Max 6 guests", "Scenic Arashiyama walk", "Cultural & historical insights", "Flower foot bath", "Relaxing massage"],
+          tc: ["最多 6 人", "嵐山美景散策", "人文歷史導覽", "花足浴", "舒緩按摩"],
+          jp: ["最大6名", "嵐山景観散策", "文化・歴史解説", "フラワーフットバス", "リラックスマッサージ"]
         },
         images: ["arashiyama1.jpg","arashiyama2.jpg","arashiyama3.jpg","arashiyama4.jpg","arashiyama5.jpg","arashiyama6.jpg","arashiyama7.jpg","arashiyama8.jpg"],
         times: ["07:30","10:30"],
@@ -1105,14 +1225,14 @@
           jp: "ネオン、水辺、そして大阪の夜らしい活気を、心地よいテンポで体感できます。"
         },
         desc: {
-          en: "Osaka is loud in the best possible way. This walk connects the history, the theatre district energy, the food culture, and the modern neon landscape into one easy but sharp introduction to the city.",
-          tc: "大阪的熱鬧不是雜亂，而是一種有生命力的節奏。這個散步行程會把歷史、劇場感、食文化與現代霓虹街景自然串在一起，讓你很快抓到大阪的靈魂。",
-          jp: "大阪のにぎやかさは、ただ騒がしいのではなく、街の生命力そのものです。この散策では、歴史、芝居の街としての空気、食文化、そして現代のネオン風景を自然につなげて体感していただけます。"
+          en: "Osaka is loud in the best possible way. This walk connects the history, the theatre district energy, the food culture, and the modern neon landscape into one easy but sharp introduction to the city.\n\nBecause it is limited to 6 guests maximum, it feels lighter, more conversational, and far more enjoyable than a typical large-group city walk.",
+          tc: "大阪的熱鬧不是雜亂，而是一種有生命力的節奏。這個散步行程會把歷史、劇場感、食文化與現代霓虹街景自然串在一起，讓你很快抓到大阪的靈魂。\n\n而且因為全程最多 6 人，所以整體更像輕鬆聊天式的在地夜遊，而不是被大團推著走的城市導覽。",
+          jp: "大阪のにぎやかさは、ただ騒がしいのではなく、街の生命力そのものです。この散策では、歴史、芝居の街としての空気、食文化、そして現代のネオン風景を自然につなげて体感していただけます。\n\n最大6名までの少人数なので、大人数ツアーよりも会話しやすく、ずっと心地よく楽しめます。"
         },
         features: {
-          en: ["Local storytelling", "Photo-friendly pace", "2-hour route", "Dotonbori highlights"],
-          tc: ["在地解說", "拍照友善步調", "2小時路線", "道頓堀重點一次看"],
-          jp: ["地元目線の解説", "写真が撮りやすいペース", "2時間ルート", "道頓堀の見どころ"]
+          en: ["Max 6 guests", "Local storytelling", "Photo-friendly pace", "Dotonbori highlights"],
+          tc: ["最多 6 人", "在地解說", "拍照友善步調", "道頓堀重點一次看"],
+          jp: ["最大6名", "地元目線の解説", "写真が撮りやすいペース", "道頓堀の見どころ"]
         },
         images: ["osakaw_main.jpg","osakaw_2.jpg","osakaw_3.jpg","osakaw_4.jpg","osakaw_5.jpg","osakaw_6.jpg","osakaw_7.jpg"],
         times: ["11:30","14:30"],
@@ -1141,14 +1261,14 @@
           jp: "夜の大阪は、まさに天下の台所。地元の店、隠れた一杯、そして甘い締めまで楽しめます。"
         },
         desc: {
-          en: "Osaka takes food seriously, but never too seriously. Good food here feels direct, warm, local, and alive. This tour is designed like a great night out, moving through venues and flavors with the kind of flow a local would actually choose.",
-          tc: "大阪人對吃很認真，但不會端著。這裡的美味是直接、熱情、真實的。這個行程就像一場被安排得很漂亮的夜晚，一站一站都有節奏，而且是大阪人真的會去的那種店。",
-          jp: "大阪の食は本気ですが、肩肘は張りません。温かく、率直で、街に根ざした美味しさがあります。このツアーは、地元の人が実際に選ぶような流れで店と味をつないだ、良い夜の形です。"
+          en: "Osaka takes food seriously, but never too seriously. Good food here feels direct, warm, local, and alive. This tour is designed like a great night out, moving through venues and flavors with the kind of flow a local would actually choose.\n\nThe maximum of 6 guests helps keep it personal, smooth, and far more enjoyable than a crowded tasting route.",
+          tc: "大阪人對吃很認真，但不會端著。這裡的美味是直接、熱情、真實的。這個行程就像一場被安排得很漂亮的夜晚，一站一站都有節奏，而且是大阪人真的會去的那種店。\n\n因為最多只收 6 人，整體更像被在地朋友帶著享受夜晚，而不是擁擠、公式化的試吃行程。",
+          jp: "大阪の食は本気ですが、肩肘は張りません。温かく、率直で、街に根ざした美味しさがあります。このツアーは、地元の人が実際に選ぶような流れで店と味をつないだ、良い夜の形です。\n\n最大6名までなので、混み合った食べ歩きよりもずっと快適で、パーソナルな時間になります。"
         },
         features: {
-          en: ["Osaka foodie host", "Local venues", "Drinks stop", "Dessert finish"],
-          tc: ["大阪在地主理人", "在地店家", "小酌一站", "甜點收尾"],
-          jp: ["大阪のフーディーが案内", "地元の店中心", "一杯も楽しめる", "甘い締めまで"]
+          en: ["Max 6 guests", "Osaka foodie host", "Local venues", "Dessert finish"],
+          tc: ["最多 6 人", "大阪在地主理人", "在地店家", "甜點收尾"],
+          jp: ["最大6名", "大阪のフーディーが案内", "地元の店中心", "甘い締めまで"]
         },
         images: ["OSAKAFOODCOVER.jpg","OSAKAFOOD.jpg","OSAKAFOOD2.jpg","OSAKAFOOD3.jpg","OSAKAFOOD4.jpg","OSAKAFOOD5.jpg"],
         times: ["18:00"],
